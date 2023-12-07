@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: WildWood;
+        src: url("/assets/fonts/wild-wood-font.ttf");
+      }
+      @font-face {
+        font-family: CFOneTwoTrees;
+        src: url("/assets/fonts/cf-one-two-trees-font.ttf");
+      }
+      @font-face {
+        font-family: BosqueEncantado;
+        src: url("/assets/fonts/bosque-encantado.ttf");
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        height: 900vh;
+        text-align: center;
+        font-size: 1.5rem;
+        font-family: WildWood;
+      }
+      #myVideo {
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+      }
+      #hero {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #000;
+        font-size: 3rem;
+      }
+      #about,
+      #contact {
+        height: 300vh;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        color: #000;
+        margin-left: 20vw;
+        margin-right: 20vw;
+      }
+      i {
+        font-size: 2rem;
+        position: absolute;
+        bottom: 10vh;
+        left: 50%;
+        transform: translateX(-50%);
+        /* animate icon on load */
+        animation: animateDown 1s ease 2;
+        color: #000;
+      }
+      @keyframes animateDown {
+        0% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+      .spacer {
+        height: 25vh;
+      }
+      .container {
+        position: -webkit-sticky;
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        height: 100vh;
+      }
+      #title {
+        font-size: 5rem;
+        margin-bottom: 0;
+      }
+      #year {
+        margin-top: 0;
+        font-size: 4rem;
+      }
+      .fade-in-top {
+        -webkit-animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
+          both;
+        animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+      }
+      .fade-in-bottom {
+        -webkit-animation: fade-in-bottom 0.6s
+          cubic-bezier(0.39, 0.575, 0.565, 1) both;
+        animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+      }
+      @-webkit-keyframes fade-in-top {
+        0% {
+          -webkit-transform: translateY(-50px);
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes fade-in-top {
+        0% {
+          -webkit-transform: translateY(-50px);
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @-webkit-keyframes fade-in-bottom {
+        0% {
+          -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes fade-in-bottom {
+        0% {
+          -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      p {
+        font-size: 1.5rem;
+        margin: 2%;
+      }
+    </style>
+    <script
+      src="https://kit.fontawesome.com/70c60c8db8.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section id="hero">
+      <div class="container">
+        <div class="spacer"></div>
+        <p id="title" class="fade-in-top">King's</p>
+        <p id="title" class="fade-in-top">Affair</p>
+        <p id="year" class="fade-in-bottom">2024</p>
+        <!-- add downward arrow -->
+        <a href="#about"><i class="fa-solid fa-angles-down"></i></a>
+      </div>
+    </section>
+    <section id="about">
+      <div
+        class="container"
+        style="
+          top: 0;
+          height: 100vh;
+          font-size: 1.25em;
+          font-family: CFOneTwoTrees;
+        "
+      >
+        <p style="font-size: 2.5em">About the King's Affair</p>
+        <p>At King's, we like to do things differently.</p>
+        <p>
+          Celebrated as the 'antidote to the monotony of traditional May Balls',
+          the King's Affair is held on the Wednesday of May Week, transforming
+          the infamous grounds of King's College into a spectacular, daring,
+          dream-like world for one night a year.
+        </p>
+        <p>Here, inclusivity is our champion.</p>
+        <p>
+          Gowns and tuxedos are exchanged for extravagant fancy dress and
+          costume, up-and-coming artists rule the stage, whilst glittering
+          lights and wild artwork take over the senses.
+        </p>
+        <p>
+          Think festival, 'beats not bollingers', and a world turned upside
+          down.
+        </p>
+      </div>
+    </section>
+    <section id="about">
+      <div
+        class="container"
+        style="
+          top: 0;
+          height: 100vh;
+          font-size: 1.25em;
+          font-family: CFOneTwoTrees;
+        "
+      >
+        <p style="font-size: 2.5em">About the King's Affair</p>
+        <p>At King's, we like to do things differently.</p>
+        <p>
+          Celebrated as the 'antidote to the monotony of traditional May Balls',
+          the King's Affair is held on the Wednesday of May Week, transforming
+          the infamous grounds of King's College into a spectacular, daring,
+          dream-like world for one night a year.
+        </p>
+        <p>Here, inclusivity is our champion.</p>
+        <p>
+          Gowns and tuxedos are exchanged for extravagant fancy dress and
+          costume, up-and-coming artists rule the stage, whilst glittering
+          lights and wild artwork take over the senses.
+        </p>
+        <p>
+          Think festival, 'beats not bollingers', and a world turned upside
+          down.
+        </p>
+      </div>
+    </section>
+    <section id="contact">
+      <div
+        class="container"
+        style="
+          top: 0;
+          height: 100vh;
+          font-size: 1.25em;
+          font-family: CFOneTwoTrees;
+        "
+      >
+        <p style="font-size: 2.5em">Contact Us</p>
+      </div>
+    </section>
+    <!-- background video -->
+    <video muted id="myVideo" tabindex="0" , autobuffer preload="auto">
+      <source type="video/ogg" src="/assets/bg/video.ogg" />
+      <source type="video/webm" src="/assets/bg/bg.webm" />
+      <source type="video/mp4" src="/assets/bg/bg.mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <script>
+      // seek video with scroll
+      var video = document.getElementById("myVideo");
+      var totalScroll = document.body.scrollHeight - window.innerHeight;
+      var skip = 2;
+
+      function seekVideo() {
+        var value = window.scrollY;
+        var seekTime = (value / totalScroll) * (video.duration - skip) + skip;
+        video.currentTime = seekTime;
+      }
+
+      window.addEventListener("scroll", seekVideo, false);
+      video.addEventListener("loadeddata", seekVideo, false);
+
+      //   get location of contact section
+      var contact_section = document.getElementById("contact");
+      var contact_section_location = contact_section.offsetTop;
+      var max_scroll = document.body.scrollHeight - window.innerHeight;
+
+      // change colour of contact section from black to white when contact section is in view smoothly
+      window.addEventListener("scroll", function () {
+        if (
+          window.scrollY >=
+          contact_section_location - window.innerHeight / 2
+        ) {
+          percentage_of_contact_section =
+            (window.scrollY - contact_section_location) /
+            (max_scroll - contact_section_location);
+          contact_section.style.color =
+            "rgb(" +
+            255 * percentage_of_contact_section +
+            "," +
+            255 * percentage_of_contact_section +
+            "," +
+            255 * percentage_of_contact_section +
+            ")";
+        }
+      });
+    </script>
+  </body>
+</html>

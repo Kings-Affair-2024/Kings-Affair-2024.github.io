@@ -1,6 +1,6 @@
 @font-face {
     font-family: KAfont;
-    src: url('font/BLKCHCRY.TTF') format('truetype');
+    src: url('assets/fonts/BLKCHCRY.ttf') format('truetype');
 }
 body { 
     background-color: #c6d7de;
