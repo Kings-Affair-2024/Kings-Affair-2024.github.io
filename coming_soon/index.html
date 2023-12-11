@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>King's Affair 2024</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/kalnia/v2/11hdGpPCwUbbYwZZP0RBuDY62BQZhjvO4N8XQQ.woff2"
+      crossorigin="anonymous"
+    />
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-FE8K02JJRH"
@@ -30,15 +38,28 @@
       crossorigin="anonymous"
     ></script>
     <style>
+      @font-face {
+        font-family: "Kalnia";
+        font-style: normal;
+        font-weight: 400;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/kalnia/v2/11hdGpPCwUbbYwZZP0RBuDY62BQZhjvO4N8XQQ.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
       body {
-        background-color: #000000;
+        background-color: #000;
       }
 
       p {
         color: #ffffff;
-        font-size: 40px;
+        font-size: 7vmin;
         text-align: center;
-        font-family: "Noto Sans JP", sans-serif;
+        font-family: "Kalnia", sans-serif;
         margin: 0;
       }
 
@@ -47,6 +68,12 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 90%;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       a {
@@ -63,29 +90,35 @@
 
       .social-media-icons {
         width: 100%;
-        margin-top: 5%;
+        margin-top: 2%;
         text-align: center;
       }
 
+      i {
+        font-size: 7vmin;
+      }
+
       iframe {
-        width: 100vh;
-        height: 56.25vh;
         border: none;
+        width: 80vmin;
+        height: 45vmin;
       }
 
       .text {
         margin-top: 5%;
       }
+
+      .loading {
+        font-size: 5vmin;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="video-container">
-        <iframe
-          src="https://drive.google.com/file/d/1qkQ_nX0LfQXFz7jafa204g1LI2atjj-g/preview?start=1"
-          allow="autoplay"
-        ></iframe>
-      </div>
+      <iframe
+        src="https://drive.google.com/file/d/1qkQ_nX0LfQXFz7jafa204g1LI2atjj-g/preview?start=1"
+        allow="autoplay"
+      ></iframe>
       <div class="text">
         <p>King's Affair 2024</p>
         <p class="loading">Coming Soon...</p>
