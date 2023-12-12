@@ -271,7 +271,39 @@
           align-items: center; 
           justify-content: center;
         }
+
       }
+      #navbar{
+          position:fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #666a3a;
+          z-index: 99;
+        }
+        .navbox{
+          display:inline;
+          float: left;
+        }
+        .navitem{
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+        .navbox:hover{
+          background-color:#46562a;
+        }
+        .navbox:active{
+          background-colour:#1e2719;
+        }
       */
     </style>
     <script
@@ -288,6 +320,15 @@
     ></script>
   </head>
   <body>
+    <ul id="navbar">
+      <li class="navbox"><a class="navitem" href="#about">About</a></li>
+      <li class="navbox"><a class="navitem" href="#launch">Launch Party</a></li>
+      <li class="navbox"><a class="navitem" href="#tickets">Tickets</a></li>
+      <li class="navbox"><a class="navitem" href="#namechange">Name Changes</a></li>
+      <li class="navbox"><a class="navitem" href="#charity">Charity Raffle</a></li>
+      <li class="navbox"><a class="navitem" href="#contact">Contact</a></li>
+    </ul>
+    <!-- Testing out a navigation bar-->
     <section id="hero">
       <div class="container">
         <div id="splash" style="margin-top: 25vh">
@@ -300,80 +341,50 @@
         </div>
       </div>
     </section>
-    <section id="about">
-      <div
-        class="container"
-        style="
-          top: 0;
-          height: 100vh;
-          font-size: 1.25em;
-          font-family: 'Kalnia', serif;
-        "
-      >
-        <h3>
-          About the King's Affair
-        </h3>
-        <p>
-          Celebrated as the 'antidote to the monotony of traditional May Balls',
-          the <b>King's Affair</b> is held on the Wednesday of May Week,
-          transforming the infamous grounds of King's College into a
-          spectacular, daring, dream-like world for one night a year.
-        </p>
-        <p>Here, inclusivity is our champion.</p>
-        <p>
-          Gowns and tuxedos are exchanged for extravagant fancy dress and
-          costume, up-and-coming artists rule the stage, whilst glittering
-          lights and wild artwork take over the senses.
-        </p>
-        <p>
-          Think festival, 'beats not bollingers', and a world turned upside
-          down.
-        </p>
-      </div>
-    </section>
-    <section id="about">
-      <div
-        class="container"
-        style="
-          top: 0;
-          height: 100vh;
-          font-size: 1.25em;
-          font-family: CFOneTwoTrees;
-        "
-      >
-        <h3> About the King's Affair</h3>
-        <p>At King's, we like to do things differently.</p>
-        <p>
-          Celebrated as the 'antidote to the monotony of traditional May Balls',
-          the King's Affair is held on the Wednesday of May Week, transforming
-          the infamous grounds of King's College into a spectacular, daring,
-          dream-like world for one night a year.
-        </p>
-        <p>Here, inclusivity is our champion.</p>
-        <p>
-          Gowns and tuxedos are exchanged for extravagant fancy dress and
-          costume, up-and-coming artists rule the stage, whilst glittering
-          lights and wild artwork take over the senses.
-        </p>
-        <p>
-          Think festival, 'beats not bollingers', and a world turned upside
-          down.
-        </p>
-      </div>
-    </section>
-    <section id="contact">
-      <div
-        class="container"
-        style="
-          top: 0;
-          height: 100vh;
-          font-size: 1.25em;
-          font-family: CFOneTwoTrees;
-        "
-      >
-        <p style="font-size: 2.5em">Contact Us</p>
-      </div>
-    </section>
+    <div data-bs-spy="scroll" data-bs-target="#navigationBar" data-bs-offset="0" tabindex="0">
+      <section id="about">
+        <div
+          class="container"
+          style="
+            top: 0;
+            height: 100vh;
+            font-size: 1.25em;
+            font-family: 'Kalnia', serif;
+          ">
+          <h3> About the King's Affair</h3>
+          <p>At King's, we like to do things differently.</p>
+          <p>
+            Celebrated as the 'antidote to the monotony of traditional May Balls',
+            the King's Affair is held on the Wednesday of May Week, transforming
+            the infamous grounds of King's College into a spectacular, daring,
+            dream-like world for one night a year.
+          </p>
+          <p>Here, inclusivity is our champion.</p>
+          <p>
+            Gowns and tuxedos are exchanged for extravagant fancy dress and
+            costume, up-and-coming artists rule the stage, whilst glittering
+            lights and wild artwork take over the senses.
+          </p>
+          <p>
+            Think festival, 'beats not bollingers', and a world turned upside
+            down.
+          </p>
+        </div>
+      </section>
+      <section id="contact">
+        <div
+          class="container"
+          style="
+            top: 0;
+            height: 100vh;
+            font-size: 1.25em;
+            font-family: CFOneTwoTrees;
+          "
+        >
+          <p style="font-size: 2.5em">Contact Us</p>
+        </div>
+      </section>
+    </div>
     <video muted id="bgVideo" tabindex="0" , autobuffer preload="auto">
       <source type="video/ogg" src="/assets/bg/1080.ogv" />
       <source type="video/webm" src="/assets/bg/1080.webm" />
