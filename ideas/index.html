@@ -227,6 +227,37 @@
           opacity: 1;
         }
       }
+      @media (max-width: 600px) {
+        /* from 0 - 600 px width --> works on smaller screens */
+        .spacer { 
+          height: 0 vh; 
+        }
+        #myVideo { 
+          width: 100%; 
+          height: auto; 
+          content: url('/assets/bg/1212.mp4');
+        }
+        /* #hero { 
+          justify-content: center; 
+        } */
+        #body { 
+          width: 100%; 
+          margin: auto ; 
+        }
+        #about, #contact { 
+          display: flex; ; 
+          width: 100%; 
+          justify-content: center;
+          align-items: center; 
+          margin: auto; 
+        }
+        .container {
+          width: 100%;
+          align-items: center; 
+          justify-content: center;
+        }
+        
+      }
     </style>
     <script
       async
