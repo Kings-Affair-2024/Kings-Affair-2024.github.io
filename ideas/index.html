@@ -75,6 +75,11 @@
         font-size: 1.5rem;
         margin: 2%;
       }
+      
+      h3 { 
+        font-size: 1.5em; 
+        text-align: center;
+      }
 
       #bgVideo {
         position: fixed;
@@ -229,11 +234,22 @@
       }
       @media (max-width: 600px) {
         /* from 0 - 600 px width --> works on smaller screens */
-      
+        p { 
+          font-size:large; 
+        }
+        
+        h3 { 
+          font-size:larger; 
+        }
         #bgVideo { 
           width: 100%; 
           height: auto; 
-          /* content: url('/assets/bg/1212.mp4'); */
+          position: fixed;
+          inset: 0;
+          object-fit: cover;
+          object-position: top left;
+          z-index: -1;
+          content: url('/assets/bg/1212(1).mp4'); /* can add the right video when get it */
         }
         /* #hero { 
           justify-content: center; 
@@ -250,13 +266,13 @@
           margin: auto; 
         }
         .container {
-          font-size: 16 px; 
           width: 100%;
           display: flex; 
           align-items: center; 
           justify-content: center;
         }
-        
+
+       
       }
     </style>
     <script
@@ -295,10 +311,9 @@
           font-family: 'Kalnia', serif;
         "
       >
-        <p style="font-size: 1.5em; text-align: center">
+        <h3>
           About the King's Affair
-        </p>
-        <p>At King's, we like to do things differently.</p>
+        </h3>
         <p>
           Celebrated as the 'antidote to the monotony of traditional May Balls',
           the <b>King's Affair</b> is held on the Wednesday of May Week,
@@ -327,7 +342,7 @@
           font-family: CFOneTwoTrees;
         "
       >
-        <p style="font-size: 2.5em">About the King's Affair</p>
+        <h3> About the King's Affair</h3>
         <p>At King's, we like to do things differently.</p>
         <p>
           Celebrated as the 'antidote to the monotony of traditional May Balls',
@@ -360,7 +375,7 @@
         <p style="font-size: 2.5em">Contact Us</p>
       </div>
     </section>
-    <video muted id="bgVideo" tabindex="0" , autobuffer preload="auto">
+    <video autoplay muted id="bgVideo" tabindex="0" , autobuffer preload="auto">
       <source type="video/ogg" src="/assets/bg/1080.ogv" />
       <source type="video/webm" src="/assets/bg/1080.webm" />
       <source type="video/mp4" src="/assets/bg/1080.mp4" />
