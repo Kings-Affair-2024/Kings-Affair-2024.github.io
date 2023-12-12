@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <body>
+        <div class = "container">
+            <div class = "left">
+                <img src= "footsteps left.png" style = "width: 50px; height: auto" >
+                <img src= "footsteps left.png" style = "width: 50px; height: auto" >
+                <img src= "footsteps left.png" style = "width: 50px; height: auto" >
+                <img src= "footsteps left.png" style = "width: 50px; height: auto" >
+            </div>
+            <div class = "right">
+                <img src= "footsteps right.png" style = "width: 50px; height: auto" >
+                <img src= "footsteps right.png" style = "width: 50px; height: auto" >
+                <img src= "footsteps right.png" style = "width: 50px; height: auto" >
+                <img src= "footsteps right.png" style = "width: 50px; height: auto" >
+            </div>
+        </div>
+    </body>
+    <style>
+        @keyframes fadeIn { 
+        0% {opacity: 1};
+        /* 10% {opacity: 0.2};  */
+        100% {opacity: 1}; 
+      }
+      @keyframes fadeOut { 
+        25% {opacity: 0}; 
+        100% {opacity: 0}; 
+      }
+      .container {
+        display: flex; 
+      }
+      .left { 
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+      .left img, .right img {
+        opacity: 0; 
+        display: block; 
+        animation: fadeIn, fadeOut;
+        animation-duration: 5s, 5s;
+      }
+  
+      .right img:first-child { 
+        animation-delay: 3.5s, 6.5s; 
+      }
+      .left img:first-child { 
+        animation-delay: 4s, 7s;
+      }
+      .right img:nth-child(2) { 
+        animation-delay: 2.5s, 5.5s; 
+      }
+      .left img:nth-child(2) { 
+        animation-delay: 3s, 6s; 
+      }
+      .right img:nth-child(3) { 
+        animation-delay: 1.5s, 4.5s; 
+      }
+      .left img:nth-child(3) { 
+        animation-delay: 2s, 5s; 
+      }
+      .right img:nth-child(4) { 
+        animation-delay: 0.5s, 3.5s; 
+      }
+      .left img:nth-child(4) { 
+        animation-delay: 1s, 4s;
+      }
+    </style>
+</head>
