@@ -3,16 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>King's Affair 2024</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/kalnia/v2/11hdGpPCwUbbYwZZP0RBuDY62BQZhjvO4N8XQQ.woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="/assets/fonts/wild-wood-font.ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="/assets/fonts/cf-one-two-trees-font.ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="/assets/fonts/bosque-encantado.ttf"
+      crossorigin="anonymous"
+    />
     <style>
+      @font-face {
+        font-family: "Kalnia";
+        font-style: normal;
+        font-weight: 350;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/kalnia/v2/11hdGpPCwUbbYwZZP0RBuDY62BQZhjvO4N8XQQ.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
       @font-face {
         font-family: WildWood;
         src: url("/assets/fonts/wild-wood-font.ttf");
       }
+
       @font-face {
         font-family: CFOneTwoTrees;
         src: url("/assets/fonts/cf-one-two-trees-font.ttf");
       }
+
       @font-face {
         font-family: BosqueEncantado;
         src: url("/assets/fonts/bosque-encantado.ttf");
@@ -21,21 +64,28 @@
       html {
         scroll-behavior: smooth;
       }
+
       body {
-        height: 900vh;
         text-align: center;
         font-size: 1.5rem;
         font-family: WildWood;
       }
-      #myVideo {
+
+      p {
+        font-size: 1.5rem;
+        margin: 2%;
+      }
+
+      #bgVideo {
         position: fixed;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top left;
         z-index: -1;
       }
+
       #hero {
         height: 100vh;
         display: flex;
@@ -44,6 +94,7 @@
         color: #000;
         font-size: 3rem;
       }
+
       #about,
       #contact {
         height: 300vh;
@@ -51,20 +102,30 @@
         justify-content: center;
         /* align-items: center; */
         color: #000;
-        margin-left: 20vw;
-        margin-right: 20vw;
+        margin: auto 31vw;
       }
-      i {
+
+      #about {
+        text-align: justify;
+        text-align-last: center;
+      }
+
+      .fa {
         font-size: 2rem;
         position: absolute;
         bottom: 10vh;
         left: 50%;
         transform: translateX(-50%);
-        /* animate icon on load */
-        animation: animateDown 1s ease 2;
+        animation: iconPulse 1s ease 2;
         color: #000;
+        transition-duration: 0.1s;
       }
-      @keyframes animateDown {
+
+      .fa:hover {
+        color: #858585;
+      }
+
+      @-webkit-keyframes iconPulse {
         0% {
           transform: translateX(-50%) translateY(0);
         }
@@ -75,9 +136,19 @@
           transform: translateX(-50%) translateY(0);
         }
       }
-      .spacer {
-        height: 25vh;
+
+      @keyframes iconPulse {
+        0% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
       }
+
       .container {
         position: -webkit-sticky;
         position: sticky;
@@ -88,24 +159,23 @@
         top: 0;
         height: 100vh;
       }
-      #title {
+
+      .title {
         font-size: 5rem;
         margin-bottom: 0;
-      }
-      #year {
-        margin-top: 0;
-        font-size: 4rem;
-      }
-      .fade-in-top {
         -webkit-animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
           both;
         animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
       }
-      .fade-in-bottom {
+
+      .year {
+        margin-top: 0;
+        font-size: 4rem;
         -webkit-animation: fade-in-bottom 0.6s
           cubic-bezier(0.39, 0.575, 0.565, 1) both;
         animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
       }
+
       @-webkit-keyframes fade-in-top {
         0% {
           -webkit-transform: translateY(-50px);
@@ -118,6 +188,7 @@
           opacity: 1;
         }
       }
+
       @keyframes fade-in-top {
         0% {
           -webkit-transform: translateY(-50px);
@@ -130,6 +201,7 @@
           opacity: 1;
         }
       }
+
       @-webkit-keyframes fade-in-bottom {
         0% {
           -webkit-transform: translateY(50px);
@@ -142,6 +214,7 @@
           opacity: 1;
         }
       }
+
       @keyframes fade-in-bottom {
         0% {
           -webkit-transform: translateY(50px);
@@ -154,25 +227,31 @@
           opacity: 1;
         }
       }
-      p {
-        font-size: 1.5rem;
-        margin: 2%;
-      }
     </style>
     <script
+      async
       src="https://kit.fontawesome.com/70c60c8db8.js"
       crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      data-color="#676a3d"
+      data-type="1"
+      data-account="3yfIkdOQox"
+      src="https://cdn.userway.org/widget.js"
     ></script>
   </head>
   <body>
     <section id="hero">
       <div class="container">
-        <div class="spacer"></div>
-        <p id="title" class="fade-in-top">King's</p>
-        <p id="title" class="fade-in-top">Affair</p>
-        <p id="year" class="fade-in-bottom">2024</p>
-        <!-- add downward arrow -->
-        <a href="#about"><i class="fa-solid fa-angles-down"></i></a>
+        <div id="splash" style="margin-top: 25vh">
+          <p class="title">King's</p>
+          <p class="title">Affair</p>
+          <p class="year">2024</p>
+          <a href="#about" aria-label="Scroll down to learn more"
+            ><i class="fa fa-solid fa-angles-down"></i
+          ></a>
+        </div>
       </div>
     </section>
     <section id="about">
@@ -182,16 +261,18 @@
           top: 0;
           height: 100vh;
           font-size: 1.25em;
-          font-family: CFOneTwoTrees;
+          font-family: 'Kalnia', serif;
         "
       >
-        <p style="font-size: 2.5em">About the King's Affair</p>
+        <p style="font-size: 1.5em; text-align: center">
+          About the King's Affair
+        </p>
         <p>At King's, we like to do things differently.</p>
         <p>
           Celebrated as the 'antidote to the monotony of traditional May Balls',
-          the King's Affair is held on the Wednesday of May Week, transforming
-          the infamous grounds of King's College into a spectacular, daring,
-          dream-like world for one night a year.
+          the <b>King's Affair</b> is held on the Wednesday of May Week,
+          transforming the infamous grounds of King's College into a
+          spectacular, daring, dream-like world for one night a year.
         </p>
         <p>Here, inclusivity is our champion.</p>
         <p>
@@ -248,16 +329,14 @@
         <p style="font-size: 2.5em">Contact Us</p>
       </div>
     </section>
-    <!-- background video -->
-    <video muted id="myVideo" tabindex="0" , autobuffer preload="auto">
-      <source type="video/ogg" src="/assets/bg/video.ogg" />
-      <source type="video/webm" src="/assets/bg/bg.webm" />
-      <source type="video/mp4" src="/assets/bg/bg.mp4" />
+    <video muted id="bgVideo" tabindex="0" , autobuffer preload="auto">
+      <source type="video/ogg" src="/assets/bg/1080.ogv" />
+      <source type="video/webm" src="/assets/bg/1080.webm" />
+      <source type="video/mp4" src="/assets/bg/1080.mp4" />
       Your browser does not support the video tag.
     </video>
     <script>
-      // seek video with scroll
-      var video = document.getElementById("myVideo");
+      var video = document.getElementById("bgVideo");
       var totalScroll = document.body.scrollHeight - window.innerHeight;
       var skip = 2;
 
@@ -270,12 +349,10 @@
       window.addEventListener("scroll", seekVideo, false);
       video.addEventListener("loadeddata", seekVideo, false);
 
-      //   get location of contact section
       var contact_section = document.getElementById("contact");
       var contact_section_location = contact_section.offsetTop;
       var max_scroll = document.body.scrollHeight - window.innerHeight;
 
-      // change colour of contact section from black to white when contact section is in view smoothly
       window.addEventListener("scroll", function () {
         if (
           window.scrollY >=
