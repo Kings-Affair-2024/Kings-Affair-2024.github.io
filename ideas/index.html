@@ -305,29 +305,95 @@
           background-color:#46562a;
         }
         .navbox:active{
-          background-colour:#1e2719;
+          background-color:#1e2719;
         }
 
+        /*Ava trying out something for the contacts section */
         #contactlist{
-          width: 100%;
-          font-size: 0.75em;
-          font-family: 'Kalnia', serif;
-          text-align: center;
+          box-sizing: border-box;
+          display: grid;
+          grid-template-columns: minmax(300px, 1fr);
+          justify-content: center;
+          grid-gap: 2rem;
+          margin: 2rem;
         }
         .contact{
           margin: 0;
           padding: 0;
-          line-height: 10px;
-          width: 30%;
+          line-height: 20px;
+          display: inline;
+          align-items: center;
+
+          font-size: 1rem;
+          font-family: 'Kalnia', serif;
+        }   
+        .ContactBox{
+          height: 200px;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+          position: relative;
+          background-color: #fd9113;
+          overflow: hidden;
+
+          border-radius: 2rem 2rem 8rem 8rem;
+          transform-origin: center -20px;
         }
-        .ContactsRow:after{
-          content: " ";
-          display: table;
-          clear: both;
+
+        .light{
+
+          opacity: 0.5;
+          z-index: 2;
+          width: 50px;
+          aspect-ratio: 1;
+          background-color: #fa700e;
+          border-radius: 2% 87% 45% 85%;
+          transform: translate(-50%, -50%) rotate(45deg);
+
+          position: absolute;
+          bottom: 0;
+          left: 50%;
         }
-        .ContactsColumn{
-          float: left;
-          width: 33.33%
+
+        .ContactBox:hover, .ContactBox:active{
+          animation: swing ease-in-out 1s infinite alternate, glowBox 2s infinite alternate;
+          .light{
+            animation: glow 2s infinite alternate;
+          }
+        }
+        @media screen and (min-width: 600px){
+          #contactlist{
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media screen and (min-width: 900px){
+          #contactlist{
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
+        @keyframes swing{
+          0% {transform: rotate(3deg);}
+          100%{transform: rotate(-3deg);}
+        }
+
+        @keyframes glow {
+          from {
+            box-shadow: -30px -30px 15px 5px #fa700e;
+          }
+          to {
+            box-shadow: -30px -30px 15px 60px #fa700e;
+          }
+        }
+
+        @keyframes glowBox {
+          from {
+            box-shadow: 0 0 30px -5px #fbd260;
+          }
+          to {
+            box-shadow: 0 0 30px 5px #fbd260;
+          }
         }
 
       */
@@ -411,28 +477,17 @@
         </div>
         </section>
         <div id="contactlist">
-          <div class="ContactsRow">
-            <div class="ContactsColumn"><p style="display: inline;" class="contact"><b>Chairs</b><br> <a href="mailto: chair@kingsaffair.co.uk">chair@kingsaffair.co.uk</a> <br> Esther Welbrock, Marielle Lee</p></div>
-            <div class="ContactsColumn"><p style="display: inline;" class="contact"><b>Treasurers</b><br> <a href="mailto: treasurer@kingsaffair.co.uk">treasurer@kingsaffair.co.uk</a> <br> Joshitha Yeggoni, Astrid Healy-Carrasco</p></div>
-            <div class="ContactsColumn"><p style="display: inline;" class="contact"><b>Arts</b><br> <a href="mailto: arts@kingsaffair.co.uk">arts@kingsaffair.co.uk</a> <br> Edie Levine, Teddy Graham, Olga Krivdina</p></div>
-          </div>
-          <br>
-          <div class="ContactsRow">
-            <div class="ContactsColumn"><p style="display: inline;" class="contact"><b>Production</b> <br> <a href="mailto: production@kingsaffair.co.uk">production@kingsaffair.co.uk</a> <br> Eva Lemmy, Will Rowlands</p></div>
-            <div class="ContactsColumn"><p style="display: inline;" class="contact"><b>Music</b><br> <a href="mailto: music@kingsaffair.co.uk">music@kingsaffair.co.uk</a> <br> Steph Theodorou, Izzy Wilkinson, Rose Papadopoulos-Hedden</p></div>
-            <div class="ContactsColumn"><p style="display: inline;" class="contact"><b>Ents</b><br> <a href="mailto: ents@kingsaffair.co.uk">ents@kingsaffair.co.uk</a> <br> Farzana Ramazan, Zaheda Hussain</p></div>
-          </div>
-          <br>
-          <div class="ContactsRow">
-            <div class="ContactsColumn"><p style="display: inline;" class="contact"><b>Food and Drink</b><br> <a href="mailto: food@kingsaffair.co.uk">food@kingsaffair.co.uk</a> <br> Lauren Todd, Kiya Gupta</p></div>
-            <div class="ContactsColumn"><p style="display: inline;" class="contact"><b>Security and Infrastructure</b><br> <a href="mailto: security@kingsaffair.co.uk">security@kingsaffair.co.uk</a> <br> Ed Marsh, Luca De Maestri</p></div>
-            <div class="ContactsColumn"><p style="display: inline;" class="contact"><b>Sustainability</b><br> <a href="mailto: sustainability@kingsaffair.co.uk">sustainability@kingsaffair.co.uk</a> <br> Lily-Rose Dupin</p></div>
-          </div>
-          <br>
-          <div style="width: 66.66%;" class="ContactsRow">
-            <div style="float: left; width: 50%"><p style="display: inline;" class="contact"><b>Workers and Legal</b><br> <a href="mailto: workers@kingsaffair.co.uk">workers@kingsaffair.co.uk</a> <br> Pakruti Rao, Lara Riddell</p></div>
-            <div style="float: left; width: 50%"><p style="display: inline;" class="contact"><b>Ticketing and IT</b><br> <a href="mailto: ticketing@kingsaffair.co.uk">ticketing@kingsaffair.co.uk</a> <br> Sam Mashil, Hannah Yang, Ava James</p></div>
-          </div>
+          <div class="ContactBox"><p class="contact"><b>Chairs</b><br> <a href="mailto: chair@kingsaffair.co.uk">chair@kingsaffair.co.uk</a> <br> Esther Welbrock<br> Marielle Lee<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Treasurers</b><br> <a href="mailto: treasurer@kingsaffair.co.uk">treasurer@kingsaffair.co.uk</a> <br> Joshitha Yeggoni<br> Astrid Healy-Carrasco<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Arts</b><br> <a href="mailto: arts@kingsaffair.co.uk">arts@kingsaffair.co.uk</a> <br> Edie Levine<br> Teddy Graham<br> Olga Krivdina<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Production</b> <br> <a href="mailto: production@kingsaffair.co.uk">production@kingsaffair.co.uk</a> <br> Eva Lemmy<br> Will Rowlands<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Music</b><br> <a href="mailto: music@kingsaffair.co.uk">music@kingsaffair.co.uk</a> <br> Steph Theodorou<br> Izzy Wilkinson<br> Rose Papadopoulos-Hedden<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Ents</b><br> <a href="mailto: ents@kingsaffair.co.uk">ents@kingsaffair.co.uk</a> <br> Farzana Ramazan<br> Zaheda Hussain<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Food and Drink</b><br> <a href="mailto: food@kingsaffair.co.uk">food@kingsaffair.co.uk</a> <br> Lauren Todd<br> Kiya Gupta<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Security and Infrastructure</b><br> <a href="mailto: security@kingsaffair.co.uk">security@kingsaffair.co.uk</a> <br> Ed Marsh<br> Luca De Maestri<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Sustainability</b><br> <a href="mailto: sustainability@kingsaffair.co.uk">sustainability@kingsaffair.co.uk</a> <br> Lily-Rose Dupin<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Workers and Legal</b><br> <a href="mailto: workers@kingsaffair.co.uk">workers@kingsaffair.co.uk</a> <br> Pakruti Rao<br> Lara Riddell<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Ticketing and IT</b><br> <a href="mailto: ticketing@kingsaffair.co.uk">ticketing@kingsaffair.co.uk</a> <br> Sam Mashil<br>  Hannah Yang<br> Ava James<div class="light"></div></p></div>
         </div>
     </div>
     <video muted id="bgVideo" tabindex="0" , autobuffer preload="auto">
