@@ -245,7 +245,131 @@
           align-items: center;
           justify-content: center;
         }
+        .ContactsColumn{
+          width: 100%;
+        }
+
       }
+      #navbar{
+          position:fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #666a3a;
+          z-index: 10;
+        }
+        .navbox{
+          display:inline;
+          float: left;
+        }
+        .navitem{
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+        .navbox:hover{
+          background-color:#46562a;
+        }
+        .navbox:active{
+          background-color:#1e2719;
+        }
+
+        /*Ava trying out something for the contacts section */
+        #contactlist{
+          box-sizing: border-box;
+          display: grid;
+          grid-template-columns: minmax(300px, 1fr);
+          justify-content: center;
+          grid-gap: 2rem;
+          margin: 2rem;
+        }
+        .contact{
+          margin: 0;
+          padding: 0;
+          line-height: 20px;
+          display: inline;
+          align-items: center;
+
+          font-size: 1rem;
+          font-family: 'Kalnia', serif;
+        }   
+        .ContactBox{
+          height: 200px;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+          position: relative;
+          background-color: #fd9113;
+          overflow: hidden;
+
+          border-radius: 2rem 2rem 8rem 8rem;
+          transform-origin: center -20px;
+        }
+
+        .light{
+
+          opacity: 0.5;
+          z-index: 2;
+          width: 50px;
+          aspect-ratio: 1;
+          background-color: #fa700e;
+          border-radius: 2% 87% 45% 85%;
+          transform: translate(-50%, -50%) rotate(45deg);
+
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+        }
+
+        .ContactBox:hover, .ContactBox:active{
+          animation: swing ease-in-out 1s infinite alternate, glowBox 2s infinite alternate;
+          .light{
+            animation: glow 2s infinite alternate;
+          }
+        }
+        @media screen and (min-width: 600px){
+          #contactlist{
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media screen and (min-width: 900px){
+          #contactlist{
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
+        @keyframes swing{
+          0% {transform: rotate(3deg);}
+          100%{transform: rotate(-3deg);}
+        }
+
+        @keyframes glow {
+          from {
+            box-shadow: -30px -30px 15px 5px #fa700e;
+          }
+          to {
+            box-shadow: -30px -30px 15px 60px #fa700e;
+          }
+        }
+
+        @keyframes glowBox {
+          from {
+            box-shadow: 0 0 30px -5px #fbd260;
+          }
+          to {
+            box-shadow: 0 0 30px 5px #fbd260;
+          }
+        }
+
       */
     </style>
     <script
@@ -262,6 +386,15 @@
     ></script>
   </head>
   <body>
+    <ul id="navbar">
+      <li class="navbox"><a class="navitem" href="#about">About</a></li>
+      <li class="navbox"><a class="navitem" href="#launch">Launch Party</a></li>
+      <li class="navbox"><a class="navitem" href="#tickets">Tickets</a></li>
+      <li class="navbox"><a class="navitem" href="#namechange">Name Changes</a></li>
+      <li class="navbox"><a class="navitem" href="#charity">Charity Raffle</a></li>
+      <li class="navbox"><a class="navitem" href="#contact">Contact</a></li>
+    </ul>
+    <!-- Testing out a navigation bar-->
     <section id="hero">
       <div class="container">
         <div id="splash" style="margin-top: 25vh">
@@ -274,78 +407,63 @@
         </div>
       </div>
     </section>
-    <section id="about">
-      <div
-        class="container"
-        style="
-          top: 0;
-          height: 100vh;
-          font-size: 1.25em;
-          font-family: 'Kalnia', serif;
-        "
-      >
-        <h3>About the King's Affair</h3>
-        <p>
-          Celebrated as the 'antidote to the monotony of traditional May Balls',
-          the <b>King's Affair</b> is held on the Wednesday of May Week,
-          transforming the infamous grounds of King's College into a
-          spectacular, daring, dream-like world for one night a year.
-        </p>
-        <p>Here, inclusivity is our champion.</p>
-        <p>
-          Gowns and tuxedos are exchanged for extravagant fancy dress and
-          costume, up-and-coming artists rule the stage, whilst glittering
-          lights and wild artwork take over the senses.
-        </p>
-        <p>
-          Think festival, 'beats not bollingers', and a world turned upside
-          down.
-        </p>
-      </div>
-    </section>
-    <section id="about">
-      <div
-        class="container"
-        style="
-          top: 0;
-          height: 100vh;
-          font-size: 1.25em;
-          font-family: CFOneTwoTrees;
-        "
-      >
-        <h3>About the King's Affair</h3>
-        <p>At King's, we like to do things differently.</p>
-        <p>
-          Celebrated as the 'antidote to the monotony of traditional May Balls',
-          the King's Affair is held on the Wednesday of May Week, transforming
-          the infamous grounds of King's College into a spectacular, daring,
-          dream-like world for one night a year.
-        </p>
-        <p>Here, inclusivity is our champion.</p>
-        <p>
-          Gowns and tuxedos are exchanged for extravagant fancy dress and
-          costume, up-and-coming artists rule the stage, whilst glittering
-          lights and wild artwork take over the senses.
-        </p>
-        <p>
-          Think festival, 'beats not bollingers', and a world turned upside
-          down.
-        </p>
-      </div>
-    </section>
-    <section id="contact">
-      <div
-        class="container"
-        style="
-          top: 0;
-          height: 100vh;
-          font-size: 1.25em;
-          font-family: CFOneTwoTrees;
-        "
-      >
-        <p style="font-size: 2.5em">Contact Us</p>
-      </div>
-    </section>
+    <div data-bs-spy="scroll" data-bs-target="#navigationBar" data-bs-offset="0" tabindex="0">
+      <section id="about">
+        <div
+          class="container"
+          style="
+            top: 0;
+            height: 100vh;
+            font-size: 1.25em;
+            font-family: 'Kalnia', serif;
+          ">
+          <h3> About the King's Affair</h3>
+          <p>At King's, we like to do things differently.</p>
+          <p>
+            Celebrated as the 'antidote to the monotony of traditional May Balls',
+            the King's Affair is held on the Wednesday of May Week, transforming
+            the infamous grounds of King's College into a spectacular, daring,
+            dream-like world for one night a year.
+          </p>
+          <p>Here, inclusivity is our champion.</p>
+          <p>
+            Gowns and tuxedos are exchanged for extravagant fancy dress and
+            costume, up-and-coming artists rule the stage, whilst glittering
+            lights and wild artwork take over the senses.
+          </p>
+          <p>
+            Think festival, 'beats not bollingers', and a world turned upside
+            down.
+          </p>
+        </div>
+      </section>
+      <section id="contact">
+        <div
+          class="container"
+          style="
+            top: 0;
+            height: 100vh;
+            font-size: 1.25em;
+            font-family: CFOneTwoTrees;
+          "
+        >
+          <p style="font-size: 2.5em">Contact Us</p>
+        </div>
+        </section>
+        <div id="contactlist">
+          <div class="ContactBox"><p class="contact"><b>Chairs</b><br> <a href="mailto: chair@kingsaffair.co.uk">chair@kingsaffair.co.uk</a> <br> Esther Welbrock<br> Marielle Lee<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Treasurers</b><br> <a href="mailto: treasurer@kingsaffair.co.uk">treasurer@kingsaffair.co.uk</a> <br> Joshitha Yeggoni<br> Astrid Healy-Carrasco<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Arts</b><br> <a href="mailto: arts@kingsaffair.co.uk">arts@kingsaffair.co.uk</a> <br> Edie Levine<br> Teddy Graham<br> Olga Krivdina<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Production</b> <br> <a href="mailto: production@kingsaffair.co.uk">production@kingsaffair.co.uk</a> <br> Eva Lemmy<br> Will Rowlands<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Music</b><br> <a href="mailto: music@kingsaffair.co.uk">music@kingsaffair.co.uk</a> <br> Steph Theodorou<br> Izzy Wilkinson<br> Rose Papadopoulos-Hedden<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Ents</b><br> <a href="mailto: ents@kingsaffair.co.uk">ents@kingsaffair.co.uk</a> <br> Farzana Ramazan<br> Zaheda Hussain<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Food and Drink</b><br> <a href="mailto: food@kingsaffair.co.uk">food@kingsaffair.co.uk</a> <br> Lauren Todd<br> Kiya Gupta<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Security and Infrastructure</b><br> <a href="mailto: security@kingsaffair.co.uk">security@kingsaffair.co.uk</a> <br> Ed Marsh<br> Luca De Maestri<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Sustainability</b><br> <a href="mailto: sustainability@kingsaffair.co.uk">sustainability@kingsaffair.co.uk</a> <br> Lily-Rose Dupin<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Workers and Legal</b><br> <a href="mailto: workers@kingsaffair.co.uk">workers@kingsaffair.co.uk</a> <br> Pakruti Rao<br> Lara Riddell<div class="light"></div></p></div>
+          <div class="ContactBox"><p class="contact"><b>Ticketing and IT</b><br> <a href="mailto: ticketing@kingsaffair.co.uk">ticketing@kingsaffair.co.uk</a> <br> Sam Mashil<br>  Hannah Yang<br> Ava James<div class="light"></div></p></div>
+        </div>
+    </div>
     <video muted id="bgVideo" tabindex="0" , autobuffer preload="auto">
       <source type="video/ogg" src="/assets/bg/video/1080.ogv" />
       <source type="video/webm" src="/assets/bg/video/1080.webm" />
