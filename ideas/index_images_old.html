@@ -17,29 +17,29 @@
       gtag("js", new Date());
       gtag("config", "G-FE8K02JJRH");
     </script>
+
     <style>
+      html {
+        height: 100vh;
+      }
+
       body {
-        background-color: black;
+        background: #000;
+        height: 3000vh;
         font-family: "Montserrat";
         padding: 3em;
       }
 
-      #v0 {
+      canvas {
         position: fixed;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        min-width: 100%;
-        min-height: 100%;
-        width: 100%;
-        z-index: -100;
-        object-fit: cover;
-      }
-
-      #set-height {
-        display: block;
-        height: 235000px;
+        left: 50%;
+        top: 50%;
+        /* max-height: 100vh; */
+        /* max-width: 200vw; */
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        /* min-height: 100vh; */
+        min-width: 100vw;
       }
 
       section {
@@ -51,18 +51,18 @@
         position: sticky;
         position: -webkit-sticky;
         width: 100%;
-        top: 20%;
-        /* vertical align center */
+        top: 10%;
+        z-index: -1;
+        /* vertical center align */
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         height: 100vh;
       }
 
       h1 {
         font-size: 3em;
-        background: #000;
+        background: #000000;
         display: inline-block;
         padding: 10px 15px;
         border-radius: 5px;
@@ -70,8 +70,8 @@
       }
 
       p {
-        color: #000;
-        font-size: 60px;
+        color: #000000;
+        font-size: 50px;
         text-align: center;
         font-family: "Noto Sans JP", sans-serif;
         margin: 0;
@@ -87,10 +87,7 @@
         height: 1200px;
       }
       section:nth-of-type(4) {
-        height: 1000px;
-      }
-      section:nth-of-type(5) {
-        height: 4000px;
+        height: 1200px;
       }
 
       .entered {
@@ -111,7 +108,6 @@
           opacity: 1;
         }
       }
-
       @keyframes text-focus-in {
         0% {
           -webkit-filter: blur(20px);
@@ -134,35 +130,22 @@
     </section>
     <section class="container">
       <div class="content">
-        <p>html go brrrr</p>
+        <p>slay</p>
       </div>
     </section>
     <section class="container">
       <div class="content">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </p>
+        <p>!!!</p>
       </div>
     </section>
     <section class="container">
       <div class="content">
-        <p>
-          und so weiter und so fort
-        </p>
+        <p>html go brrr</p>
       </div>
     </section>
-
-    <div id="set-height"></div>
-
-    <video id="v0" tabindex="0" , autobuffer preload="auto">
-      <!-- <source type="video/ogg" src="/assets/bg/video.ogg" />
-      <source type="video/webm" src="/assets/bg/bg.webm" /> -->
-      <source type="video/mp4" src="/assets/bg/slowed.mp4" />
-      Your browser does not support the video tag.
-    </video>
+    <canvas id="canvas"></canvas>
     <script src="/assets/js/sticky.js"></script>
     <script>
-      console.log("test.js loaded");
       enterView({
         selector: "section",
         enter: function (el) {
@@ -170,40 +153,82 @@
         },
       });
 
-      var frameNumber = 0, // start video at frame 0
-        // lower numbers = faster playback
-        playbackConst = 500,
-        // get page height from video duration
-        setHeight = document.getElementById("set-height");
-      // select video element
-      vid = document.getElementById("v0");
-      // var vid = $('#v0')[0]; // jquery option
+      const html = document.documentElement;
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      const scaleFactor = 1;
+      const frameCount = 789;
 
-      // dynamically set the page height according to video length
-      vid.addEventListener("loadedmetadata", function () {
-        setHeight.style.height =
-          Math.floor(vid.duration) * playbackConst + "px";
-      });
+      const currentFrame = (index) =>
+        `/assets/bg/images/px-conversions/scene${index
+          .toString()
+          .padStart(3, "0")}.webp`;
 
-      // Use requestAnimationFrame for smooth playback
-      function scrollPlay() {
-        var frameNumber = window.scrollY / playbackConst;
-        vid.currentTime = frameNumber;
-        window.requestAnimationFrame(scrollPlay);
+      const preloadImages = () => {
+        for (let i = 1; i <= frameCount; i++) {
+          const img = new Image();
+          img.src = currentFrame(i);
+        }
+      };
+
+      function preload(index) {
+        index = index || 0;
+        if (index <= frameCount) {
+          var img = new Image();
+          img.onload = function () {
+            preload(index + 1);
+          };
+          img.src = `/assets/test_bg/images/scene${index
+            .toString()
+            .padStart(3, "0")}.png`;
+        }
       }
 
-      window.requestAnimationFrame(scrollPlay);
+      const img = new Image();
+      img.src = currentFrame(1);
 
-      // fix for firefox not refreshing video
-      vid.addEventListener(
-        "ended",
-        function () {
-          vid.pause();
-          // to capture IE10
-          vidFade();
-        },
-        false
-      );
+      canvas.width = 768 * scaleFactor;
+      canvas.height = 720 * scaleFactor;
+
+      img.onload = function () {
+        // context.drawImage(img, 0, 0);
+        // draw image in center of canvas
+        context.drawImage(
+          img,
+          0,
+          0,
+          img.width * scaleFactor,
+          img.height * scaleFactor
+        );
+      };
+
+      const updateImage = (index) => {
+        img.src = currentFrame(index);
+        // context.drawImage(img, 0, 0);
+        // draw image in center of canvas
+        context.drawImage(
+          img,
+          0,
+          0,
+          img.width * scaleFactor,
+          img.height * scaleFactor
+        );
+      };
+
+      window.addEventListener("scroll", () => {
+        const scrollTop = html.scrollTop;
+        const maxScrollTop = html.scrollHeight - window.innerHeight;
+        const scrollFraction = scrollTop / maxScrollTop;
+        const frameIndex = Math.min(
+          frameCount - 1,
+          Math.ceil(scrollFraction * frameCount)
+        );
+
+        requestAnimationFrame(() => updateImage(frameIndex + 1));
+      });
+
+      preloadImages();
+      // preload();
     </script>
   </body>
 </html>

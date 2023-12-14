@@ -3,31 +3,239 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scrolling Background Test</title>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-FE8K02JJRH"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-FE8K02JJRH");
-    </script>
-
+    <title>King's Affair 2024</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/kalnia/v2/11hdGpPCwUbbYwZZP0RBuDY62BQZhjvO4N8XQQ.woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="/assets/fonts/wild-wood-font.ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="/assets/fonts/cf-one-two-trees-font.ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="/assets/fonts/bosque-encantado.ttf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/assets/css/fonts.css" />
     <style>
       html {
-        height: 100vh;
+        scroll-behavior: smooth;
       }
 
       body {
-        background: #000;
-        height: 3000vh;
-        font-family: "Montserrat";
-        padding: 3em;
+        text-align: center;
+        font-size: 1.5rem;
+        font-family: WildWood;
+      }
+
+      p {
+        font-size: 1.5rem;
+        margin: 2%;
+      }
+
+      h3 {
+        font-size: 1.5em;
+        text-align: center;
+      }
+
+      #hero {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #000;
+        font-size: 3rem;
+      }
+
+      #about,
+      #contact {
+        height: 300vh;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        color: #000;
+        margin: auto 31vw;
+      }
+
+      #about {
+        text-align: justify;
+        text-align-last: center;
+      }
+
+      .fa {
+        font-size: 2rem;
+        position: absolute;
+        bottom: 10vh;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: iconPulse 1s ease 2;
+        color: #000;
+        transition-duration: 0.1s;
+      }
+
+      .fa:hover {
+        color: #858585;
+      }
+
+      @-webkit-keyframes iconPulse {
+        0% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      @keyframes iconPulse {
+        0% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      .container {
+        position: -webkit-sticky;
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        height: 100vh;
+      }
+
+      .title {
+        font-size: 5rem;
+        margin-bottom: 0;
+        -webkit-animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
+          both;
+        animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+      }
+
+      .year {
+        margin-top: 0;
+        font-size: 4rem;
+        -webkit-animation: fade-in-bottom 0.6s
+          cubic-bezier(0.39, 0.575, 0.565, 1) both;
+        animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+      }
+
+      @-webkit-keyframes fade-in-top {
+        0% {
+          -webkit-transform: translateY(-50px);
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fade-in-top {
+        0% {
+          -webkit-transform: translateY(-50px);
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes fade-in-bottom {
+        0% {
+          -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fade-in-bottom {
+        0% {
+          -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 600px) {
+        p {
+          font-size: large;
+        }
+
+        h3 {
+          font-size: larger;
+        }
+        /* #bgVideo {
+          width: 100%;
+          height: auto;
+          position: fixed;
+          inset: 0;
+          object-fit: cover;
+          object-position: top left;
+          z-index: -1;
+          content: url('/assets/bg/portrait.mp4');
+        } */
+        #hero {
+          justify-content: center;
+        }
+        #body {
+          width: 100%;
+          margin: auto;
+        }
+        #about,
+        #contact {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+        }
+        .container {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
 
       canvas {
@@ -41,194 +249,192 @@
         /* min-height: 100vh; */
         min-width: 100vw;
       }
-
-      section {
-        z-index: 1;
-        position: relative;
-      }
-
-      .content {
-        position: sticky;
-        position: -webkit-sticky;
-        width: 100%;
-        top: 10%;
-        z-index: -1;
-        /* vertical center align */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      }
-
-      h1 {
-        font-size: 3em;
-        background: #000000;
-        display: inline-block;
-        padding: 10px 15px;
-        border-radius: 5px;
-        margin: 0;
-      }
-
-      p {
-        color: #000000;
-        font-size: 50px;
-        text-align: center;
-        font-family: "Noto Sans JP", sans-serif;
-        margin: 0;
-      }
-
-      section:nth-of-type(1) {
-        height: 1200px;
-      }
-      section:nth-of-type(2) {
-        height: 1200px;
-      }
-      section:nth-of-type(3) {
-        height: 1200px;
-      }
-      section:nth-of-type(4) {
-        height: 1200px;
-      }
-
-      .entered {
-        -webkit-animation: text-focus-in 1s
-          cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-        animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-      }
-
-      @-webkit-keyframes text-focus-in {
-        0% {
-          -webkit-filter: blur(20px);
-          filter: blur(20px);
-          opacity: 0;
-        }
-        100% {
-          -webkit-filter: blur(0px);
-          filter: blur(0px);
-          opacity: 1;
-        }
-      }
-      @keyframes text-focus-in {
-        0% {
-          -webkit-filter: blur(20px);
-          filter: blur(20px);
-          opacity: 0;
-        }
-        100% {
-          -webkit-filter: blur(0px);
-          filter: blur(0px);
-          opacity: 1;
-        }
-      }
     </style>
+    <script
+      async
+      src="https://kit.fontawesome.com/70c60c8db8.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      data-color="#676a3d"
+      data-type="1"
+      data-account="3yfIkdOQox"
+      src="https://cdn.userway.org/widget.js"
+    ></script>
   </head>
   <body>
-    <section class="container">
-      <div class="content">
-        <p>King's Affair 2024</p>
+    <section id="hero">
+      <div class="container">
+        <div id="splash" style="margin-top: 25vh">
+          <p class="title">King's</p>
+          <p class="title">Affair</p>
+          <p class="year">2024</p>
+          <a href="#about" aria-label="Scroll down to learn more"
+            ><i class="fa fa-solid fa-angles-down"></i
+          ></a>
+        </div>
       </div>
     </section>
-    <section class="container">
-      <div class="content">
-        <p>slay</p>
+    <section id="about">
+      <div
+        class="container"
+        style="
+          top: 0;
+          height: 100vh;
+          font-size: 1.25em;
+          font-family: 'Kalnia', serif;
+        "
+      >
+        <h3>About the King's Affair</h3>
+        <p>
+          Celebrated as the 'antidote to the monotony of traditional May Balls',
+          the <b>King's Affair</b> is held on the Wednesday of May Week,
+          transforming the infamous grounds of King's College into a
+          spectacular, daring, dream-like world for one night a year.
+        </p>
+        <p>Here, inclusivity is our champion.</p>
+        <p>
+          Gowns and tuxedos are exchanged for extravagant fancy dress and
+          costume, up-and-coming artists rule the stage, whilst glittering
+          lights and wild artwork take over the senses.
+        </p>
+        <p>
+          Think festival, 'beats not bollingers', and a world turned upside
+          down.
+        </p>
       </div>
     </section>
-    <section class="container">
-      <div class="content">
-        <p>!!!</p>
+    <section id="about">
+      <div
+        class="container"
+        style="
+          top: 0;
+          height: 100vh;
+          font-size: 1.25em;
+          font-family: CFOneTwoTrees;
+        "
+      >
+        <h3>About the King's Affair</h3>
+        <p>At King's, we like to do things differently.</p>
+        <p>
+          Celebrated as the 'antidote to the monotony of traditional May Balls',
+          the King's Affair is held on the Wednesday of May Week, transforming
+          the infamous grounds of King's College into a spectacular, daring,
+          dream-like world for one night a year.
+        </p>
+        <p>Here, inclusivity is our champion.</p>
+        <p>
+          Gowns and tuxedos are exchanged for extravagant fancy dress and
+          costume, up-and-coming artists rule the stage, whilst glittering
+          lights and wild artwork take over the senses.
+        </p>
+        <p>
+          Think festival, 'beats not bollingers', and a world turned upside
+          down.
+        </p>
       </div>
     </section>
-    <section class="container">
-      <div class="content">
-        <p>html go brrr</p>
+    <section id="contact">
+      <div
+        class="container"
+        style="
+          top: 0;
+          height: 100vh;
+          font-size: 1.25em;
+          font-family: CFOneTwoTrees;
+        "
+      >
+        <p style="font-size: 2.5em">Contact Us</p>
       </div>
     </section>
-    <canvas id="canvas"></canvas>
-    <script src="/js/sticky.js"></script>
+    <canvas id="bg"></canvas>
     <script>
-      enterView({
-        selector: "section",
-        enter: function (el) {
-          el.classList.add("entered");
-        },
+      var contact_section = document.getElementById("contact");
+      var contact_section_location = contact_section.offsetTop;
+      var max_scroll = document.body.scrollHeight - window.innerHeight;
+
+      window.addEventListener("scroll", function () {
+        if (
+          window.scrollY >=
+          contact_section_location - window.innerHeight / 2
+        ) {
+          percentage_of_contact_section =
+            (window.scrollY - contact_section_location) /
+            (max_scroll - contact_section_location);
+          contact_section.style.color =
+            "rgb(" +
+            255 * percentage_of_contact_section +
+            "," +
+            255 * percentage_of_contact_section +
+            "," +
+            255 * percentage_of_contact_section +
+            ")";
+        }
       });
 
       const html = document.documentElement;
-      const canvas = document.getElementById("canvas");
-      const context = canvas.getContext("2d");
-      const scaleFactor = 1;
-      const frameCount = 789;
+      const canvas = document.getElementById("bg");
+      const ctx = canvas.getContext("2d");
+      const numFrames = 789;
+      const filePrefix = "/assets/bg/images/4k/";
+      const fileExt = "jpg";
+      const filePath = (i) =>
+        `${filePrefix}${fileExt}/${i.toString().padStart(3, "0")}.${fileExt}`;
 
-      const currentFrame = (index) =>
-        `/assets/bg/images/edited/scene${index
-          .toString()
-          .padStart(3, "0")}.png`;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
-      const preloadImages = () => {
-        for (let i = 1; i <= frameCount; i++) {
-          const img = new Image();
-          img.src = currentFrame(i);
-        }
-      };
+      const images = [];
 
-      function preload(index) {
-        index = index || 0;
-        if (index <= frameCount) {
-          var img = new Image();
-          img.onload = function () {
-            preload(index + 1);
-          };
-          img.src = `/assets/test_bg/images/scene${index
-            .toString()
-            .padStart(3, "0")}.png`;
+      for (var i = 0; i < numFrames; i++) {
+        images[i] = new Image();
+        images[i].src = filePath(i + 1);
+      }
+
+      const imgRatio = images[0].width / images[0].height
+
+      function updateImage(frame) {
+        if (canvas.width / canvas.height > imgRatio) {
+          ctx.drawImage(
+            images[frame],
+            0,
+            0,
+            canvas.width,
+            canvas.width / imgRatio
+          );
+        } else {
+          ctx.drawImage(
+            images[frame],
+            0,
+            0,
+            canvas.height * imgRatio,
+            canvas.height
+          );
         }
       }
 
-      const img = new Image();
-      img.src = currentFrame(1);
+      window.addEventListener("load", () => updateImage(0));
 
-      canvas.width = 768 * scaleFactor;
-      canvas.height = 720 * scaleFactor;
-
-      img.onload = function () {
-        // context.drawImage(img, 0, 0);
-        // draw image in center of canvas
-        context.drawImage(
-          img,
-          0,
-          0,
-          img.width * scaleFactor,
-          img.height * scaleFactor
-        );
-      };
-
-      const updateImage = (index) => {
-        img.src = currentFrame(index);
-        // context.drawImage(img, 0, 0);
-        // draw image in center of canvas
-        context.drawImage(
-          img,
-          0,
-          0,
-          img.width * scaleFactor,
-          img.height * scaleFactor
-        );
-      };
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        updateImage(0);
+      });
 
       window.addEventListener("scroll", () => {
         const scrollTop = html.scrollTop;
         const maxScrollTop = html.scrollHeight - window.innerHeight;
         const scrollFraction = scrollTop / maxScrollTop;
         const frameIndex = Math.min(
-          frameCount - 1,
-          Math.ceil(scrollFraction * frameCount)
+          numFrames - 1,
+          Math.floor(scrollFraction * numFrames)
         );
 
-        requestAnimationFrame(() => updateImage(frameIndex + 1));
+        requestAnimationFrame(() => updateImage(frameIndex));
       });
 
-      preloadImages();
-      // preload();
+      console.log("Loaded");
     </script>
   </body>
 </html>
