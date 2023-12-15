@@ -4,34 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>King's Affair 2024</title>
+    <link rel="preload" as="video" href="/assets/bg/video/4k.mp4" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       rel="preload"
       as="font"
       type="font/woff2"
       href="https://fonts.gstatic.com/s/kalnia/v2/11hdGpPCwUbbYwZZP0RBuDY62BQZhjvO4N8XQQ.woff2"
-      crossorigin="anonymous"
+      crossorigin
     />
     <link
       rel="preload"
       as="font"
       type="font/ttf"
       href="/assets/fonts/wild-wood-font.ttf"
-      crossorigin="anonymous"
+      crossorigin
     />
     <link
       rel="preload"
       as="font"
       type="font/ttf"
       href="/assets/fonts/cf-one-two-trees-font.ttf"
-      crossorigin="anonymous"
+      crossorigin
     />
     <link
       rel="preload"
       as="font"
       type="font/ttf"
       href="/assets/fonts/bosque-encantado.ttf"
-      crossorigin="anonymous"
+      crossorigin
     />
     <link rel="stylesheet" href="/assets/css/fonts.css" />
     <style>
@@ -516,18 +517,28 @@
       var totalScroll = document.body.scrollHeight - window.innerHeight;
       var skip = 2;
 
-      const videoRequest = new XMLHttpRequest();
-        videoRequest.open("GET", "/assets/bg/video/2k.mp4", true);
-        videoRequest.responseType = "blob";
-        videoRequest.onload = function () {
-          if (this.status === 200) {
-            var videoBlob = this.response;
-            var vid = URL.createObjectURL(videoBlob);
-            video.src = vid;
-          }
-        };
+    //   const videoRequest = new XMLHttpRequest();
+    //     videoRequest.open("GET", "/assets/bg/video/2k.mp4", true);
+    //     videoRequest.responseType = "blob";
+    //     videoRequest.onload = function () {
+    //       if (this.status === 200) {
+    //         var videoBlob = this.response;
+    //         var vid = URL.createObjectURL(videoBlob);
+    //         video.src = vid;
+    //       }
+    //     };
 
-        videoRequest.send();
+    //     videoRequest.send();
+
+      // video.src = "/assets/bg/video/4k.mp4";
+
+      // use fetch to get the video file
+      fetch("/assets/bg/video/4k.mp4")
+        .then((response) => response.blob())
+        .then((blob) => {
+          var vid = URL.createObjectURL(blob);
+          video.src = vid;
+        });
 
       function seekVideo() {
         var value = window.scrollY;
