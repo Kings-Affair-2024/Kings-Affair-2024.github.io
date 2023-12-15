@@ -395,11 +395,8 @@
       const filePath = (i) =>
         `${filePrefix}${fileExt}/${i.toString().padStart(3, "0")}.${fileExt}`;
 
-      // canvas.width = window.innerWidth;
-      // canvas.height = window.innerHeight;
-
-      canvas.width = window.outerWidth;
-      canvas.height = window.outerHeight;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
       const images = [];
 
@@ -426,7 +423,8 @@
         }
       }
 
-      for (var i = 0; i < numFrames; i++) {
+      // load every other image first, then load the rest
+      for (var i = 0; i < numFrames; i += 2) {
         images[i] = new Image();
         images[i].src = filePath(i + 1);
         images[i].onload = () => {
@@ -435,9 +433,17 @@
           if (loaded == 1) {
             imgRatio = images[0].width / images[0].height;
           }
-          if (loaded == numFrames) {
-            console.log("Loaded all images");
+          if (loaded == Math.floor(numFrames / 2)) {
+            console.log("Loaded half images");
             updateImage(0);
+            for (var i = 1; i < numFrames; i += 2) {
+              images[i] = new Image();
+              images[i].src = filePath(i + 1);
+              images[i].onload = () => {
+                loaded++;
+                console.log((loaded / numFrames) * 100 + "%");
+              };
+            }
           }
         };
       }
