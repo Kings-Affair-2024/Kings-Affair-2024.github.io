@@ -1,7 +1,7 @@
 // This is basically a copy-paste of code from here - just repackaging it into a simple library/module.
 // https://w3c.github.io/webcodecs/samples/video-decode-display/
 
-function getVideoFrames(opts = {}) {
+export default function getVideoFrames(opts = {}) {
   let onFinishResolver;
   let onFinishPromise = new Promise((r) => (onFinishResolver = r));
 
@@ -66,7 +66,7 @@ class MP4Demuxer {
     fetch(uri).then(async (response) => {
       // highWaterMark should be large enough for smooth streaming, but lower is better for memory usage.
       await response.body.pipeTo(
-        new WritableStream(fileSink, { highWaterMark: 2 })
+        new WritableStream(fileSink, { highWaterMark: 10 })
       );
 
       await this.#videoDecoder.flush();
