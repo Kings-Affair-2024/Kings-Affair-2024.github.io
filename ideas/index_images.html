@@ -35,6 +35,19 @@
     />
     <link rel="stylesheet" href="/assets/css/fonts.css" />
     <style>
+      /* if on mobile */
+      @media (max-width: 600px) {
+        html {
+          overflow: hidden;
+          width: 100%;
+        }
+        body {
+          height: 100%;
+          position: fixed;
+          overflow-y: scroll;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
       html {
         scroll-behavior: smooth;
       }
@@ -377,22 +390,34 @@
       const canvas = document.getElementById("bg");
       const ctx = canvas.getContext("2d");
       const numFrames = 789;
-      const filePrefix = "/assets/bg/images/4k/";
+      const filePrefix = "/assets/bg/images/1920/";
       const fileExt = "jpg";
       const filePath = (i) =>
         `${filePrefix}${fileExt}/${i.toString().padStart(3, "0")}.${fileExt}`;
 
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      // canvas.width = window.innerWidth;
+      // canvas.height = window.innerHeight;
+
+      canvas.width = window.outerWidth;
+      canvas.height = window.outerHeight;
 
       const images = [];
+      var loaded = 0;
 
       for (var i = 0; i < numFrames; i++) {
         images[i] = new Image();
         images[i].src = filePath(i + 1);
+        images[i].onload = () => {
+          loaded++;
+          console.log(loaded / numFrames * 100 + "%")
+          if (loaded == numFrames) {
+            console.log("Loaded all images");
+            updateImage(0);
+          }
+        };
       }
 
-      const imgRatio = images[0].width / images[0].height
+      const imgRatio = images[0].width / images[0].height;
 
       function updateImage(frame) {
         if (canvas.width / canvas.height > imgRatio) {
@@ -414,25 +439,50 @@
         }
       }
 
-      window.addEventListener("load", () => updateImage(0));
-
       window.addEventListener("resize", () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         updateImage(0);
       });
 
-      window.addEventListener("scroll", () => {
-        const scrollTop = html.scrollTop;
-        const maxScrollTop = html.scrollHeight - window.innerHeight;
-        const scrollFraction = scrollTop / maxScrollTop;
-        const frameIndex = Math.min(
-          numFrames - 1,
-          Math.floor(scrollFraction * numFrames)
-        );
+        document.body.addEventListener("scroll", () => {
+          const scrollTop = document.body.scrollTop;
+          const maxScrollTop = document.body.scrollHeight - window.innerHeight;
+          const scrollFraction = scrollTop / maxScrollTop;
+          const frameIndex = Math.min(
+            numFrames - 1,
+            Math.floor(scrollFraction * numFrames)
+          );
 
-        requestAnimationFrame(() => updateImage(frameIndex));
-      });
+          requestAnimationFrame(() => updateImage(frameIndex));
+        });
+
+        window.addEventListener("touchmove", () => {
+          const scrollTop = html.scrollTop;
+          const maxScrollTop = html.scrollHeight - window.innerHeight;
+          const scrollFraction = scrollTop / maxScrollTop;
+          const frameIndex = Math.min(
+            numFrames - 1,
+            Math.floor(scrollFraction * numFrames)
+          );
+
+          requestAnimationFrame(() => updateImage(frameIndex));
+        });
+
+        window.addEventListener("scroll", () => {
+          const scrollTop = html.scrollTop;
+          const maxScrollTop = document.body.scrollHeight - window.innerHeight;
+          const scrollFraction = scrollTop / maxScrollTop;
+          const frameIndex = Math.min(
+            numFrames - 1,
+            Math.floor(scrollFraction * numFrames)
+          );
+
+          requestAnimationFrame(() => updateImage(frameIndex));
+        });
+      
+
+      requestAnimationFrame(() => updateImage(0));
 
       console.log("Loaded");
     </script>

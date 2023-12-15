@@ -506,12 +506,25 @@
           <div class="ContactBox"><p class="contact"><b>Ticketing and IT</b><br> <a href="mailto: ticketing@kingsaffair.co.uk">ticketing@kingsaffair.co.uk</a> <br> Sam Mashil<br>  Hannah Yang<br> Ava James<div class="light"></div></p></div>
         </div>
     </div>
+    <canvas id="canvas"></canvas>
     <video muted id="bgVideo" tabindex="0" , autobuffer preload="auto">
       <!-- <source type="video/ogg" src="/assets/bg/video/1080.ogv" />
       <source type="video/webm" src="/assets/bg/video/1080.webm" />
       <source type="video/mp4" src="/assets/bg/video/1080.mp4" />
       Your browser does not support the video tag. -->
     </video>
+    <script type="module">
+      let file = await fetch("/assets/bg/video/1080.mp4");
+      let blob = await file.blob();
+      let videoUrl = URL.createObjectURL(blob);
+
+      var video = document.getElementById("bgVideo");
+
+      video.src = videoUrl;
+
+      console.log("video loaded");
+
+    </script>
     <script>
       var video = document.getElementById("bgVideo");
       var totalScroll = document.body.scrollHeight - window.innerHeight;
@@ -533,17 +546,27 @@
       // video.src = "/assets/bg/video/4k.mp4";
 
       // use fetch to get the video file
-      fetch("/assets/bg/video/4k.mp4")
-        .then((response) => response.blob())
-        .then((blob) => {
-          var vid = URL.createObjectURL(blob);
-          video.src = vid;
-        });
+      // fetch("/assets/bg/video/4k.mp4")
+      //   .then((response) => response.blob())
+      //   .then((blob) => {
+      //     var vid = URL.createObjectURL(blob);
+      //     video.src = vid;
+      //   });
 
       function seekVideo() {
+        // requestAnimationFrame(function () {
+          
         var value = window.scrollY;
+        console.log(value);
         var seekTime = (value / totalScroll) * (video.duration - skip) + skip;
-        video.currentTime = seekTime;
+        // video.currentTime = seekTime;
+        // use fastSeek to seek the video and currenttime only if fastSeek is not supported
+        if (video.fastSeek) {
+          video.fastSeek(seekTime);
+        } else {
+          video.currentTime = seekTime;
+        }
+        // });
       }
 
       window.addEventListener("scroll", seekVideo, false);
@@ -571,6 +594,20 @@
             ")";
         }
       });
+
+      // for mobile
+      window.addEventListener("touchstart", seekVideo, false);
+      window.addEventListener("touchmove", seekVideo, false);
+      window.addEventListener("touchend", seekVideo, false);
+      window.addEventListener("touchcancel", seekVideo, false);
+
+      window.addEventListener("scroll", function () {
+        console.log(window.scrollY);
+      }
+      );
+
+      // set interval to run several times a second
+      // setInterval(seekVideo, 1000 / 60);
     </script>
   </body>
 </html>

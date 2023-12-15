@@ -12,27 +12,6 @@
       href="https://fonts.gstatic.com/s/kalnia/v2/11hdGpPCwUbbYwZZP0RBuDY62BQZhjvO4N8XQQ.woff2"
       crossorigin="anonymous"
     />
-    <link
-      rel="preload"
-      as="font"
-      type="font/ttf"
-      href="/assets/fonts/wild-wood-font.ttf"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      as="font"
-      type="font/ttf"
-      href="/assets/fonts/cf-one-two-trees-font.ttf"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      as="font"
-      type="font/ttf"
-      href="/assets/fonts/bosque-encantado.ttf"
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="/assets/css/fonts.css" />
     <style>
       html {
@@ -348,107 +327,42 @@
         <p style="font-size: 2.5em">Contact Us</p>
       </div>
     </section>
-    <canvas id="bg"></canvas>
+    <canvas id="canvasEl"></canvas>
     <!-- <script src="/assets/js/mod.js"></script> -->
     <script type="module">
-      import getVideoFrames from "/assets/js/mod.js";
+      import getVideoFrames from "https://deno.land/x/get_video_frames@v0.0.9/mod.js";
 
       let frameCount = 0;
-
+      let ctx = canvasEl.getContext("2d");
       const images = [];
-
-      async function framefunc(file) {
-        let ctx = canvasEl.getContext("2d");
-
-        let videoUrl = URL.createObjectURL(file);
-
-        await getVideoFrames({
-          videoUrl: videoUrl,
-          onFrame(frame) {
-            // `frame` is a VideoFrame object: https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame
-            ctx.drawImage(frame, 0, 0, canvasEl.width, canvasEl.height);
-            // images.push(frame);
-            // frame.close();
-            frameCount++;
-            console.log("frame", frameCount);
-          },
-          onConfig(config) {
-            canvasEl.width = config.codedWidth;
-            canvasEl.height = config.codedHeight;
-          },
-          onFinish() {
-            console.log("finished!");
-            console.log("frameCount", frameCount);
-          },
-        });
-      }
-
-      const html = document.documentElement;
-      const canvasEl = document.getElementById("bg");
-      const ctx = canvasEl.getContext("2d");
-      const numFrames = 790;
 
       canvasEl.width = window.innerWidth;
       canvasEl.height = window.innerHeight;
 
-      // use fetch to get video file
-      const video = await fetch("/assets/bg/video/1080.mp4").then((res) =>
-        res.blob()
-      );
+      let file = await fetch("/assets/bg/video/1080.mp4");
+      let blob = await file.blob();
+      let videoUrl = URL.createObjectURL(blob);
 
-      // convert video into array of images using getVideoFrames
-      // framefunc("/assets/bg/video/1080.mp4");
-      framefunc(video);
-
-      // const imgRatio = images[0].width / images[0].height;
-      const imgRatio = 3840 / 2160;
-
-      function updateImage(frame) {
-        console.log("frame", images[frame]);
-        if (canvasEl.width / canvasEl.height > imgRatio) {
-          ctx.drawImage(
-            images[frame],
-            0,
-            0,
-            canvasEl.width,
-            canvasEl.width / imgRatio
-          );
-        } else {
-          ctx.drawImage(
-            images[frame],
-            0,
-            0,
-            canvasEl.height * imgRatio,
-            canvasEl.height
-          );
-        }
-      }
-
-      window.addEventListener("load", () => updateImage(0));
-
-      window.addEventListener("resize", () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        contact_section_location = contact_section.offsetTop;
-        max_scroll = document.body.scrollHeight - window.innerHeight;
-        updateImage(0);
+      await getVideoFrames({
+        videoUrl,
+        onFrame(frame) {
+          // `frame` is a VideoFrame object: https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame
+          ctx.drawImage(frame, 0, 0, canvasEl.width, canvasEl.height);
+          // images.push(canvasEl.toDataURL());
+          frame.close();
+          frameCount++;
+          console.log(frameCount);
+        },
+        onConfig(config) {
+          canvasEl.width = config.codedWidth;
+          canvasEl.height = config.codedHeight;
+        },
+        onFinish() {
+          console.log("frameCount", frameCount);
+        },
       });
 
-      window.addEventListener("scroll", () => {
-        const scrollTop = html.scrollTop;
-        const maxScrollTop = html.scrollHeight - window.innerHeight;
-        const scrollFraction = scrollTop / maxScrollTop;
-        const frameIndex = Math.min(
-          numFrames - 1,
-          Math.floor(scrollFraction * numFrames)
-        );
-
-        requestAnimationFrame(() => updateImage(frameIndex));
-      });
-
-      updateImage(0);
-
-      console.log("Loaded");
+      console.log(images);
     </script>
     <script>
       const contact_section = document.getElementById("contact");
