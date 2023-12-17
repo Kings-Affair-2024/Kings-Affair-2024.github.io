@@ -14,12 +14,7 @@
         body {
           height: 100%;
           position: fixed;
-          overflow-y: scroll;
-          -webkit-overflow-scrolling: touch;
         }
-      }
-      html {
-        scroll-behavior: smooth;
       }
 
       body {
@@ -117,17 +112,25 @@
       .title {
         font-size: 5rem;
         margin-bottom: 0;
+      }
+
+      .title.loaded {
         -webkit-animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
+          1.5s both;
+        animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) 1.5s
           both;
-        animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
       }
 
       .year {
         margin-top: 0;
         font-size: 4rem;
+      }
+
+      .year.loaded {
         -webkit-animation: fade-in-bottom 0.6s
-          cubic-bezier(0.39, 0.575, 0.565, 1) both;
-        animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+          cubic-bezier(0.39, 0.575, 0.565, 1) 1.5s both;
+        animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) 1.5s
+          both;
       }
 
       @-webkit-keyframes fade-in-top {
@@ -250,63 +253,129 @@
       #loader-percentage {
         color: #fff;
         font-size: 2rem;
+        margin-top: 2rem;
       }
 
-      .loader {
-        margin-bottom: 5vh;
-        width: 200px;
-        height: 140px;
-        background: #979794;
-        box-sizing: border-box;
-        position: relative;
-        border-radius: 8px;
-        perspective: 1000px;
+      /* selection of all elements inside loader-container */
+      #loader-container *::selection {
+        background: transparent;
       }
 
-      .loader:before {
-        content: "";
-        position: absolute;
-        left: 10px;
-        right: 10px;
-        top: 10px;
-        bottom: 10px;
-        border-radius: 8px;
-        background: #f5f5f5 no-repeat;
-        background-size: 60px 10px;
-        background-image: linear-gradient(#ddd 100px, transparent 0),
-          linear-gradient(#ddd 100px, transparent 0),
-          linear-gradient(#ddd 100px, transparent 0),
-          linear-gradient(#ddd 100px, transparent 0),
-          linear-gradient(#ddd 100px, transparent 0),
-          linear-gradient(#ddd 100px, transparent 0);
-
-        background-position: 15px 30px, 15px 60px, 15px 90px, 105px 30px,
-          105px 60px, 105px 90px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-      }
-      .loader:after {
-        content: "";
-        position: absolute;
-        width: calc(50% - 10px);
-        right: 10px;
-        top: 10px;
-        bottom: 10px;
-        border-radius: 8px;
-        background: #fff no-repeat;
-        background-size: 60px 10px;
-        background-image: linear-gradient(#ddd 100px, transparent 0),
-          linear-gradient(#ddd 100px, transparent 0),
-          linear-gradient(#ddd 100px, transparent 0);
-        background-position: 50% 30px, 50% 60px, 50% 90px;
-        transform: rotateY(0deg);
-        transform-origin: left center;
-        animation: paging 1s linear infinite;
+      #loader-container {
+        margin: 0px;
+        padding: 0px;
       }
 
-      @keyframes paging {
-        to {
-          transform: rotateY(-180deg);
+      .card {
+        color: #013243; /*SHERPA BLUE*/
+        /* position: absolute; */
+        /* top: 50%; */
+        /* left: 50%; */
+        /* center */
+        width: 300px;
+        height: 400px;
+        background: #e0e1dc;
+        transform-style: preserve-3d;
+        transform: perspective(2000px);
+        box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.5),
+          20px 0 60px rgba(0, 0, 0, 0.5);
+        transition: 1s;
+      }
+
+      .card.loaded {
+        animation: loader 2s ease forwards;
+        box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5),
+          0 10px 100px rgba(0, 0, 0, 0.5);
+      }
+
+      @keyframes loader {
+        0% {
+          transform: perspective(2000px) rotate(0deg) scale(1);
         }
+        50% {
+          transform: perspective(2000px) rotate(15deg) scale(1.2);
+          opacity: 1;
+        }
+        100% {
+          transform: perspective(2000px) rotate(15deg) scale(7);
+          opacity: 0;
+        }
+      }
+
+      .card:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: #bac1ba;
+        transform-origin: bottom;
+        transform: skewX(-45deg);
+      }
+
+      .card:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -5px;
+        width: 5px;
+        height: 100%;
+        background: #92a29c;
+        transform-origin: left;
+        transform: skewY(-45deg);
+      }
+
+      .card .imgBox {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-origin: left;
+        transition: 0.7s;
+      }
+
+      .card .bark {
+        position: absolute;
+        background: #e0e1dc;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: 0.7s;
+      }
+
+      .card .imgBox img {
+        min-width: 250px;
+        max-height: 400px;
+      }
+
+      .card .imgBox.loaded {
+        transform: rotateY(-135deg);
+      }
+
+      .card .bark.loaded {
+        opacity: 1;
+        transition: 0.6s;
+        box-shadow: 300px 200px 100px rgba(0, 0, 0, 0.4) inset;
+      }
+
+      .card .details {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        z-index: -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 0 15%;
+      }
+
+      .card .details p {
+        font-size: 15px;
+        font-family: "Libre Caslon Text", serif;
       }
     </style>
     <script
@@ -319,15 +388,38 @@
   </head>
   <body>
     <div id="loader-container">
-      <span class="loader"></span>
+      <div class="card load">
+        <div class="imgBox load">
+          <div class="bark load"></div>
+          <img src="/assets/media/lastofus.jpg" />
+        </div>
+        <div class="details">
+          <p style="font-size: 1.5rem">The King's Affair</p>
+          <!-- TODO: Check if we're allowed to release the date yet? -->
+          <p style="font-size: 1rem">19th June 2024</p>
+          <p style="font-size: 0.75rem; padding-top: 10%">
+            Made with ❤ by the <br />2024 King's Affair Committee
+          </p>
+          <p
+            style="
+              font-size: 0.5rem;
+              margin-bottom: 10%;
+              position: absolute;
+              bottom: 0;
+            "
+          >
+            Published by the Ticketing and IT Subcommittee
+          </p>
+        </div>
+      </div>
       <span id="loader-percentage">Loading...</span>
     </div>
     <section id="hero">
       <div class="container">
         <div id="splash" style="margin-top: 25vh">
-          <p class="title">King's</p>
-          <p class="title">Affair</p>
-          <p class="year">2024</p>
+          <p class="title load">King's</p>
+          <p class="title load">Affair</p>
+          <p class="year load">2024</p>
           <a href="#about" aria-label="Scroll down to learn more"
             ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
@@ -429,6 +521,7 @@
 
       var loaded = 0;
       var frameIndex = 0;
+      var loadPercentage = 0;
       var imgRatio;
 
       function updateImage(frame) {
@@ -442,37 +535,58 @@
         ctx.drawImage(images[frame], 0, 0, imgWidth, imgHeight);
       }
 
-      // load every other image first, then load the rest
-      for (var i = 0; i < numFrames; i += 2) {
+      function load(i, callback) {
         images[i] = new Image();
         images[i].src = filePath(i + 1);
-        images[i].onload = () => {
+        images[i].onload = callback;
+      }
+
+      body.style.overflowY = "hidden";
+
+      // load every third image first, then load the rest
+      for (var i = 0; i < numFrames; i += 3) {
+        load(i, () => {
           loaded++;
-          console.log((loaded / numFrames) * 100 + "%");
+          // console.log((loaded / numFrames) * 100 + "%");
           document.getElementById("loader-percentage").innerHTML =
-            Math.floor((loaded / numFrames) * 200) + "%";
+            Math.floor((loaded / numFrames) * 300) + "%";
           if (loaded == 1) {
             imgRatio = images[0].width / images[0].height;
           }
-          if (loaded == Math.floor(numFrames / 2)) {
-            document.getElementById("loader-container").style.opacity = 0;
+          if (loaded == Math.floor(numFrames / 3)) {
+            document.querySelectorAll(".load").forEach((e) => {
+              e.classList.add("loaded");
+              e.classList.remove("load");
+            });
+            setTimeout(() => {
+              document.getElementById("loader-container").style.opacity = 0;
+              window.scrollTo(0, 0);
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+              html.style.scrollBehavior = "smooth";
+              body.style.overflowY = "scroll";
+            }, 1000);
             setTimeout(() => {
               document.getElementById("loader-container").style.display =
                 "none";
             }, 2000);
-            console.log("Loaded half images");
+            // console.log("Loaded third images");
             update(html, html);
             update(body, body);
-            for (var i = 1; i < numFrames; i += 2) {
-              images[i] = new Image();
-              images[i].src = filePath(i + 1);
-              images[i].onload = () => {
+            for (var i = 1; i < numFrames; i += 3) {
+              load(i, () => {
                 loaded++;
-                console.log((loaded / numFrames) * 100 + "%");
-              };
+                // console.log((loaded / numFrames) * 100 + "%");
+              });
+            }
+            for (var i = 2; i < numFrames; i += 3) {
+              load(i, () => {
+                loaded++;
+                // console.log((loaded / numFrames) * 100 + "%");
+              });
             }
           }
-        };
+        });
       }
 
       function resize() {
@@ -502,7 +616,7 @@
 
       requestAnimationFrame(() => updateImage(0));
 
-      console.log("Loaded");
+      // console.log("Loaded");
     </script>
   </body>
 </html>
