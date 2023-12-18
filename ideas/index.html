@@ -290,31 +290,46 @@
           grid-gap: 2rem;
           margin: 2rem;
         }
-        .contact{
-          margin: 0;
-          padding: 0;
-          line-height: 20px;
-          display: inline;
-          align-items: center;
 
-          font-size: 1rem;
-          font-family: 'Kalnia', serif;
-        }   
-        .ContactBox{
-          height: 200px;
-          padding: 0;
-          margin: 0;
-          text-align: center;
-          position: relative;
-          background-color: #fd9113;
-          overflow: hidden;
-          box-shadow: 0 0 30px 1px #fbd260;
-
-          border-radius: 2rem 2rem 8rem 8rem;
-          transform-origin: center -20px;
+        @media screen and (min-width: 700px){
+          #contactlist{
+            grid-template-columns: repeat(3, 1fr);
+          }
         }
 
+        @media screen and (min-width: 950px){
+          #contactlist{
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+
+        .lanterncontainer{
+          position: relative;
+          text-align: center;
+          transform-origin: center -20px;
+        }
+        .lantern{
+          filter: drop-shadow(0px 0px 30px #fbd260);
+          width: 200px;
+        }
+        .contact{
+          position: absolute;
+          text-align: center;
+          font-size: 1.1rem;
+          font-family: 'Kalnia', serif;
+          width: 200px;
+          display: block;
+          margin: 0;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          word-wrap: break-word;
+        }
         .light{
+          position: absolute;
+          left: 50%;
+          bottom: 5%;
+          transform: translate(-50%, 0);
 
           opacity: 0.5;
           z-index: 2;
@@ -324,27 +339,24 @@
           border-radius: 2% 87% 45% 85%;
           transform: translate(-50%, -50%) rotate(45deg);
           box-shadow: -10px -10px 15px 5px #fa700e;
-
-          position: absolute;
-          bottom: 0;
-          left: 50%;
         }
-
-        .ContactBox:hover, .ContactBox:active{
-          animation: swing ease-in-out 1s infinite alternate, glowBox 2s infinite alternate;
+        .lanterncontainer:hover, .lanterncontainer:active{
+          animation: swing ease-in-out 1s infinite alternate;
+          .lantern{
+            animation: glowBox 2s infinite alternate;
+          }
           .light{
             animation: glow 2s infinite alternate;
           }
-        }
-        @media screen and (min-width: 600px){
-          #contactlist{
-            grid-template-columns: repeat(3, 1fr);
-          }
+          
         }
 
-        @media screen and (min-width: 900px){
-          #contactlist{
-            grid-template-columns: repeat(4, 1fr);
+        @keyframes glowBox {
+          from {
+            filter: drop-shadow(0px 0px 5px #fbd260);
+          }
+          to {
+            filter: drop-shadow(0px 0px 30px #fbd260);
           }
         }
 
@@ -359,15 +371,6 @@
           }
           to {
             box-shadow: -10px -10px 15px 60px #fa700e;
-          }
-        }
-
-        @keyframes glowBox {
-          from {
-            box-shadow: 0 0 30px -5px #fbd260;
-          }
-          to {
-            box-shadow: 0 0 30px 5px #fbd260;
           }
         }
 
@@ -419,7 +422,6 @@
         </div>
       </div>
     </section>
-    <div data-bs-spy="scroll" data-bs-target="#navigationBar" data-bs-offset="0" tabindex="0">
       <section id="about">
         <div
           class="container"
@@ -463,19 +465,51 @@
         </div>
         </section>
         <div id="contactlist">
-          <div class="ContactBox"><p class="contact"><b>Chairs</b><br> <a href="mailto: chair@kingsaffair.co.uk">chair@kingsaffair.co.uk</a> <br> Esther Welbrock<br> Marielle Lee<div class="light"></div></p></div>
-          <div class="ContactBox"><p class="contact"><b>Treasurers</b><br> <a href="mailto: treasurer@kingsaffair.co.uk">treasurer@kingsaffair.co.uk</a> <br> Joshitha Yeggoni<br> Astrid Healy-Carrasco<div class="light"></div></p></div>
-          <div class="ContactBox"><p class="contact"><b>Arts</b><br> <a href="mailto: arts@kingsaffair.co.uk">arts@kingsaffair.co.uk</a> <br> Edie Levine<br> Teddy Graham<br> Olga Krivdina<div class="light"></div></p></div>
-          <div class="ContactBox"><p class="contact"><b>Production</b> <br> <a href="mailto: production@kingsaffair.co.uk">production@kingsaffair.co.uk</a> <br> Eva Lemmy<br> Will Rowlands<div class="light"></div></p></div>
-          <div class="ContactBox"><p class="contact"><b>Music</b><br> <a href="mailto: music@kingsaffair.co.uk">music@kingsaffair.co.uk</a> <br> Steph Theodorou<br> Izzy Wilkinson<br> Rose Papadopoulos-Hedden<div class="light"></div></p></div>
-          <div class="ContactBox"><p class="contact"><b>Ents</b><br> <a href="mailto: ents@kingsaffair.co.uk">ents@kingsaffair.co.uk</a> <br> Farzana Ramazan<br> Zaheda Hussain<div class="light"></div></p></div>
-          <div class="ContactBox"><p class="contact"><b>Food and Drink</b><br> <a href="mailto: food@kingsaffair.co.uk">food@kingsaffair.co.uk</a> <br> Lauren Todd<br> Kiya Gupta<div class="light"></div></p></div>
-          <div class="ContactBox"><p class="contact"><b>Security and Infrastructure</b><br> <a href="mailto: security@kingsaffair.co.uk">security@kingsaffair.co.uk</a> <br> Ed Marsh<br> Luca De Maestri<div class="light"></div></p></div>
-          <div class="ContactBox"><p class="contact"><b>Sustainability</b><br> <a href="mailto: sustainability@kingsaffair.co.uk">sustainability@kingsaffair.co.uk</a> <br> Lily-Rose Dupin<div class="light"></div></p></div>
-          <div class="ContactBox"><p class="contact"><b>Workers and Legal</b><br> <a href="mailto: workers@kingsaffair.co.uk">workers@kingsaffair.co.uk</a> <br> Pakruti Rao<br> Lara Riddell<div class="light"></div></p></div>
-          <div class="ContactBox"><p class="contact"><b>Ticketing and IT</b><br> <a href="mailto: ticketing@kingsaffair.co.uk">ticketing@kingsaffair.co.uk</a> <br> Sam Mashil<br>  Hannah Yang<br> Ava James<div class="light"></div></p></div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Chairs</b><br> <a href="mailto: chair@kingsaffair.co.uk">chair@kings<br>affair.co.uk</a> <br> Esther Welbrock<br> Marielle Lee<div class="light"></div></p>
+          </div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Treasurers</b><br> <a href="mailto: treasurer@kingsaffair.co.uk">treasurer@kings<br>affair.co.uk</a> <br> Joshitha Yeggoni<br> Astrid Healy-Carrasco<div class="light"></div></p>
+          </div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Arts</b><br> <a href="mailto: arts@kingsaffair.co.uk">arts@kings<br>affair.co.uk</a> <br> Edie Levine<br> Teddy Graham<br> Olga Krivdina<div class="light"></div></p>
+          </div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Production</b> <br> <a href="mailto: production@kingsaffair.co.uk">production@kings<br>affair.co.uk</a> <br> Eva Lemmy<br> Will Rowlands<div class="light"></div></p>
+          </div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Music</b><br> <a href="mailto: music@kingsaffair.co.uk">music@kings<br>affair.co.uk</a> <br> Steph Theodorou<br> Izzy Wilkinson<br> Rose Papadopoulos-Hedden<div class="light"></div></p>
+          </div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Ents</b><br> <a href="mailto: ents@kingsaffair.co.uk">ents@kings<br>affair.co.uk</a> <br> Farzana Ramazan<br> Zaheda Hussain<div class="light"></div></p>
+          </div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Food and Drink</b><br> <a href="mailto: food@kingsaffair.co.uk">food@kings<br>affair.co.uk</a> <br> Lauren Todd<br> Kiya Gupta<div class="light"></div></p>
+          </div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Security and Infrastructure</b><br> <a href="mailto: security@kingsaffair.co.uk">security@kings<br>affair.co.uk</a> <br> Ed Marsh<br> Luca De Maestri<div class="light"></div></p>
+          </div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Sustainability</b><br> <a href="mailto: sustainability@kingsaffair.co.uk">sustainability@kings<br>affair.co.uk</a> <br> Lily-Rose Dupin<div class="light"></div></p>
+          </div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Workers and Legal</b><br> <a href="mailto: workers@kingsaffair.co.uk">workers@kings<br>affair.co.uk</a> <br> Pakruti Rao<br> Lara Riddell<div class="light"></div></p>
+          </div>
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Ticketing and IT</b><br> <a href="mailto: ticketing@kingsaffair.co.uk">ticketing@kings<br>affair.co.uk</a> <br> Sam Mashil<br>  Hannah Yang<br> Ava James<div class="light"></div></p>
+          </div>
         </div>
-    </div>
     <video muted id="bgVideo" tabindex="0" , autobuffer preload="auto">
       <source type="video/ogg" src="/assets/bg/video/1080.ogv" />
       <source type="video/webm" src="/assets/bg/video/1080.webm" />
