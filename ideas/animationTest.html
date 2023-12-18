@@ -40,7 +40,7 @@
           transform: rotateX(60deg) rotateZ(29deg);
         }
         100% {
-          transform: rotateX(0deg) rotateZ(0deg) scale3d(3, 3, 3) translateY(-180px) translateX(-100px);
+          transform: rotateX(0deg) rotateZ(0deg) scale3d(3,3,3) translateY(-180px) translateX(-100px);
           /* opacity: 0; */
         }
       }
@@ -48,7 +48,7 @@
       #flip {
         animation: wrapper 3s ease-in-out forwards;
         height: 350px;
-        width: 253px;
+        width: auto;
         position: absolute;
         left: 50%;
         top: 30%;
@@ -69,12 +69,12 @@
       }
       #flip div {
         height: 350px;
-        width: 24px;
+        width: 35px;
         position: absolute;
         left: calc(100% - 1px);
         transform-origin: 0 100%;
         transform-style: preserve-3d;
-        background-size: 253px 350px;
+        background-size: 350px 350px;
       }
       
       #flip #front,
@@ -146,7 +146,7 @@
       }
 
       #book {
-        width: 248px;
+        width: 350px;
         height: 350px;
         position: absolute;
         left: 50%;
@@ -160,10 +160,12 @@
       #bgVideo {
         position: sticky; 
         width: 100%; 
-        height: auto; 
+        height: 350px; 
       }
       .video-wrapper { 
         position: relative; 
+        width: 350px; 
+        height: 350px;
       }
       @keyframes rotation {
         0% {
@@ -186,21 +188,23 @@
       }
       #book #top {
         animation: book 3s ease-in-out forwards;
-        background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/164210/map2.jpg);
+        background: white;
         background-size: 100% 100%;
         background-position: 100%;
         box-shadow: inset rgba(0, 0, 0, 0.2) 510px 0 50px -140px;
         height: 350px;
-        width: 248px;
+        width: 350px;
         position: absolute;
         left: 0;
         top: 0;
+        overflow: scroll;
+        justify-content: center;
       }
       #book #bottom {
         background: #e7ded1;
         box-shadow: rgba(83, 53, 13, 0.2) 4px 2px 1px, #35582c 1px 1px 0px 0px;
         height: 350px;
-        width: 253px;
+        width: 350px;
         position: absolute;
         transform: translateZ(-40px);
         left: 0;
@@ -210,7 +214,7 @@
         animation: shadow 3s ease-in-out forwards;
         box-shadow: inset rgba(83, 53, 13, 0) -200px 0 150px -140px;
         height: 350px;
-        width: 248px;
+        width: 360px;
         position: absolute;
         left: -100%;
         top: 0;
@@ -231,7 +235,7 @@
         background: -webkit-linear-gradient(top, #fcf6ea, #d8d1c3);
         background-size: 100% 2px;
         box-shadow: inset #c2bba2 3px 0 0px, #35582c -2px 1px 0px 0px;
-        height: 40px;
+        height: 350px;
         width: 251px;
         left: -3px;
         position: absolute;
@@ -319,57 +323,72 @@
         transform: translate3d(12px, 350px, -25px) rotateX(-90deg) skewX(20deg);
         transform-origin: 0 0;
       }
-    </style>
-    <script>
-      var video = document.getElementById("bgVideo");
-      var totalScroll = document.body.scrollHeight - window.innerHeight;
-      var skip = 2;
 
-      function seekVideo() {
-        var value = window.scrollY;
-        var seekTime = (value / totalScroll) * (video.duration - skip) + skip;
-        video.currentTime = seekTime;
+      #hero {
+        height: 30vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #000;
+        font-size: 1rem;
       }
-
-      window.addEventListener("scroll", seekVideo, false);
-      video.addEventListener("loadeddata", seekVideo, false);
-
-      var contact_section = document.getElementById("top");
-      var contact_section_location = contact_section.offsetTop;
-      var max_scroll = document.body.scrollHeight - window.innerHeight;
-
-      window.addEventListener("scroll", function () {
-        if (
-          window.scrollY >=
-          contact_section_location - window.innerHeight / 2
-        ) {
-          percentage_of_contact_section =
-            (window.scrollY - contact_section_location) /
-            (max_scroll - contact_section_location);
-          contact_section.style.color =
-            "rgb(" +
-            255 * percentage_of_contact_section +
-            "," +
-            255 * percentage_of_contact_section +
-            "," +
-            255 * percentage_of_contact_section +
-            ")";
-        }
-      });
-    </script>
+      .container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        height: 100vh;
+      }
+    </style>
   </head>
   <body>
     <div id="entire-thing">
       <div id="book">
         <div id="top">
-          <div class = "video-wrapper"> 
-            <video muted id="bgVideo" tabindex="0" , autobuffer preload="auto">
-              <source type="video/ogg" src="/assets/bg/video/1080.ogv" />
-              <source type="video/webm" src="/assets/bg/video/1080.webm" />
-              <source type="video/mp4" src="/assets/bg/video/1080.mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+          <section id="hero">
+            <div class="container">
+              <div id="splash">
+                <p class="title">King's</p>
+                <p class="title">Affair</p>
+                <p class="year">2024</p>
+                <a href="#about" aria-label="Scroll down to learn more"
+                  ><i class="fa fa-solid fa-angles-down"></i
+                ></a>
+              </div>
+            </div>
+        </section>
+          <section id="about">
+            <div
+              class="container"
+              style="
+              top: 0;
+              left: 10px; 
+              height: 100vh;
+              font-size: 0.8rem;
+              font-family: CFOneTwoTrees;"
+              >
+              <h3> About the King's Affair</h3>
+              <p>At King's, we like to do things differently.</p>
+              <p>
+                Celebrated as the 'antidote to the monotony of traditional May Balls',
+                the King's Affair is held on the Wednesday of May Week, transforming
+                the infamous grounds of King's College into a spectacular, daring,
+                dream-like world for one night a year.
+              </p>
+              <p>Here, inclusivity is our champion.</p>
+              <p>
+                Gowns and tuxedos are exchanged for extravagant fancy dress and
+                costume, up-and-coming artists rule the stage, whilst glittering
+                lights and wild artwork take over the senses.
+              </p>
+              <p>
+                Think festival, 'beats not bollingers', and a world turned upside
+                down.
+              </p>
+              </div>
+            </section>
         </div>
         <div id="front"></div>
         <div id="right"></div>
