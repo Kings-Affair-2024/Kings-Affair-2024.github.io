@@ -292,7 +292,7 @@
         0% {
           transform: perspective(2000px) rotate(0deg) scale(1);
         }
-        50% {
+        75% {
           transform: perspective(2000px) rotate(15deg) scale(1.2);
           opacity: 1;
         }
@@ -550,16 +550,13 @@
           // console.log((loaded / numFrames) * 100 + "%");
           document.getElementById("loader-percentage").innerHTML =
             Math.floor((loaded / numFrames) * 300) + "%";
-          if (loaded == 1) {
-            imgRatio = images[0].width / images[0].height;
-          }
           if (loaded == Math.floor(numFrames / 3)) {
+            imgRatio = images[0].width / images[0].height;
             document.querySelectorAll(".load").forEach((e) => {
               e.classList.add("loaded");
               e.classList.remove("load");
             });
             setTimeout(() => {
-              document.getElementById("loader-container").style.opacity = 0;
               window.scrollTo(0, 0);
               document.body.scrollTop = 0;
               document.documentElement.scrollTop = 0;
@@ -567,9 +564,12 @@
               body.style.overflowY = "scroll";
             }, 1000);
             setTimeout(() => {
+              document.getElementById("loader-container").style.opacity = 0;
+            }, 1500);
+            setTimeout(() => {
               document.getElementById("loader-container").style.display =
                 "none";
-            }, 2000);
+            }, 4000);
             // console.log("Loaded third images");
             update(html, html);
             update(body, body);
