@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width">
     <title>King's Affair 2024</title>
     <link rel="stylesheet" href="/assets/css/fonts.css" />
     <style>
@@ -285,10 +285,16 @@
         #contactlist{
           box-sizing: border-box;
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(1, 1fr);
           justify-content: center;
           grid-gap: 2rem;
           margin: 2rem;
+        }
+
+        @media screen and (min-width: 475px){
+          #contactlist{
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
         @media screen and (min-width: 700px){
@@ -324,6 +330,12 @@
           left: 50%;
           transform: translate(-50%, -50%);
           word-wrap: break-word;
+        }
+        .contacticon{
+          position: relative;
+          width: 75px;
+          opacity: 1;
+          z-index: 4;
         }
         .light{
           position: absolute;
@@ -465,6 +477,14 @@
         </div>
         </section>
         <div id="contactlist">
+          <div class="lanterncontainer">
+            <img src="/assets/KA Banner.png" class="lantern">
+            <p class="contact"><b>Socials</b><br>
+              <a href="https://www.facebook.com/people/Kings-Affair/100089874409050/" target="_blank"><img class="contacticon"src="/assets/fb_black.png"></a>
+              <br>
+              <a href="https://www.instagram.com/kingsaffair/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" target="_blank"><img class="contacticon" src="/assets/ig.svg"></a> 
+              <div class="light"></div></p>
+          </div>
           <div class="lanterncontainer">
             <img src="/assets/KA Banner.png" class="lantern">
             <p class="contact"><b>Chairs</b><br> <a href="mailto: chair@kingsaffair.co.uk">chair@kings<br>affair.co.uk</a> <br> Esther Welbrock<br> Marielle Lee<div class="light"></div></p>
