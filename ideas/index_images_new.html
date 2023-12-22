@@ -317,7 +317,7 @@
       }
       #flip #front,
       #flip #front div {
-        background-image: url(http://blogs.slj.com/afuse8production/files/2012/06/Hobbit1.jpg);
+        background-image: url("/assets/media/book_cover_temp.jpg");
         box-shadow: inset rgba(255, 255, 255, 0.3) 0px -1px 0 0,
           #35582c 0px 1px 0px 0px;
       }
@@ -646,7 +646,11 @@
           <p class="title load">Affair</p>
           <p class="year load">2024</p>
           <a href="#about" aria-label="Scroll down to learn more"
-            ><svg xmlns="http://www.w3.org/2000/svg" class="load" viewBox="0 0 448 512" >
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="load"
+              viewBox="0 0 448 512"
+            >
               <!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
               <path
                 d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z"
@@ -737,7 +741,76 @@
       const numFrames = 789;
       const filePrefix = "/assets/bg/images/1920/";
       const images = [];
-      const fileExt = "jpg";
+
+      var fileExt = "jpg";
+
+      var webp = new Image();
+
+      function supportsWebp() {
+        // as promise
+        return new Promise(function (resolve) {
+          var img = new Image();
+          img.onload = function () {
+            resolve(img.width > 0 && img.height > 0);
+          };
+          img.onerror = function () {
+            resolve(false);
+          };
+          img.src =
+            "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA";
+        });
+      }
+
+      supportsWebp().then(function (result) {
+        fileExt = result ? "webp" : "jpg";
+
+        // load every third image first, then load the rest
+        for (var i = 0; i < numFrames; i += 3) {
+          load(i, () => {
+            loaded++;
+            // console.log((loaded / numFrames) * 100 + "%");
+            document.getElementById("loader-percentage").innerHTML =
+              Math.floor((loaded / numFrames) * 300) + "%";
+            if (loaded == Math.floor(numFrames / 3)) {
+              imgRatio = images[0].width / images[0].height;
+              document.querySelectorAll(".load").forEach((e) => {
+                e.classList.add("loaded");
+                e.classList.remove("load");
+              });
+              setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                html.style.scrollBehavior = "smooth";
+                body.style.overflowY = "scroll";
+              }, 1000);
+              setTimeout(() => {
+                document.getElementById("loader-container").style.opacity = 0;
+                setTimeout(() => {
+                  document.getElementById("loader-container").style.display =
+                    "none";
+                }, 1000);
+              }, 2500);
+              console.log("Loaded third images");
+              update(html, html);
+              update(body, body);
+              for (var i = 1; i < numFrames; i += 3) {
+                load(i, () => {
+                  loaded++;
+                  // console.log((loaded / numFrames) * 100 + "%");
+                });
+              }
+              for (var i = 2; i < numFrames; i += 3) {
+                load(i, () => {
+                  loaded++;
+                  // console.log((loaded / numFrames) * 100 + "%");
+                });
+              }
+            }
+          });
+        }
+      });
+
       const filePath = (i) =>
         `${filePrefix}${fileExt}/${i.toString().padStart(3, "0")}.${fileExt}`;
 
@@ -767,52 +840,6 @@
       }
 
       body.style.overflowY = "hidden";
-
-      // load every third image first, then load the rest
-      for (var i = 0; i < numFrames; i += 3) {
-        load(i, () => {
-          loaded++;
-          // console.log((loaded / numFrames) * 100 + "%");
-          document.getElementById("loader-percentage").innerHTML =
-            Math.floor((loaded / numFrames) * 300) + "%";
-          if (loaded == Math.floor(numFrames / 3)) {
-            imgRatio = images[0].width / images[0].height;
-            document.querySelectorAll(".load").forEach((e) => {
-              e.classList.add("loaded");
-              e.classList.remove("load");
-            });
-            setTimeout(() => {
-              window.scrollTo(0, 0);
-              document.body.scrollTop = 0;
-              document.documentElement.scrollTop = 0;
-              html.style.scrollBehavior = "smooth";
-              body.style.overflowY = "scroll";
-            }, 1000);
-            setTimeout(() => {
-              document.getElementById("loader-container").style.opacity = 0;
-              setTimeout(() => {
-                document.getElementById("loader-container").style.display =
-                  "none";
-              }, 1000);
-            }, 2500);
-            console.log("Loaded third images");
-            update(html, html);
-            update(body, body);
-            for (var i = 1; i < numFrames; i += 3) {
-              load(i, () => {
-                loaded++;
-                // console.log((loaded / numFrames) * 100 + "%");
-              });
-            }
-            for (var i = 2; i < numFrames; i += 3) {
-              load(i, () => {
-                loaded++;
-                // console.log((loaded / numFrames) * 100 + "%");
-              });
-            }
-          }
-        });
-      }
 
       function resize() {
         canvas.width = window.innerWidth;
