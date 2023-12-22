@@ -21,15 +21,18 @@
 }
 @font-face {
   font-family: WildWood;
+  font-display: swap;
   src: url("/assets/fonts/woff2/wild-wood-font.woff2");
 }
 
 @font-face {
   font-family: CFOneTwoTrees;
+  font-display: swap;
   src: url("/assets/fonts/woff2/cf-one-two-trees-font.woff2");
 }
 
 @font-face {
   font-family: BosqueEncantado;
+  font-display: swap;
   src: url("/assets/fonts/woff2/bosque-encantado.woff2");
 }
