@@ -10,7 +10,7 @@
     <title>King's Affair 2024</title>
     <link rel="stylesheet" href="/assets/css/fonts.css" />
     <style>
-        @media (max-width: 600px) {
+      @media (max-width: 600px) {
         html {
           overflow: hidden;
           width: 100%;
@@ -31,7 +31,7 @@
           justify-content: center;
         }
 
-        #body {
+        body {
           width: 100%;
           margin: auto;
         }
@@ -39,20 +39,18 @@
         #about,
         #contact {
           display: flex;
-          /* width: 100%; */
           justify-content: center;
           align-items: center;
           margin: auto;
         }
 
         .container {
-          /* width: 100%; */
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        .ContactsColumn{
+        .ContactsColumn {
           width: 100%;
         }
       }
@@ -75,7 +73,6 @@
 
       #hero {
         height: 100vh;
-        /* width: 100vw; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -88,11 +85,8 @@
         height: 300vh;
         display: flex;
         justify-content: center;
-        /* align-items: center; */
         color: #000;
         margin: auto 31vw;
-        /* padding-left: 31vw; */
-        /* padding-right: 31vw; */
       }
 
       #about {
@@ -240,175 +234,181 @@
         min-width: 100vw;
       }
 
-      /*Navigation Bar*/
-      #navbar{
-          overflow: hidden;
-          background-color: #666a3a;
-          z-index: 10;
-          position: fixed;
-          top: 0;
-          width: 100%;
-          left: 0;
-          
-    display: flex;
-    justify-content: space-evenly;
-        }
+      /* navigation bar */
+      #navbar {
+        overflow: hidden;
+        background-color: #666a3a;
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-evenly;
+      }
 
-        #navbar #icon{
-          display: none;
-        }
-        .navitem{
+      #navbar #icon {
+        display: none;
+      }
+      .navitem {
         float: left;
         display: block;
         color: white;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
-        }
-        .navitem:hover{
-          background-color:#46562a;
-        }
-        .navitem:active{
-          background-color:#1e2719;
-        }
+      }
+      .navitem:hover {
+        background-color: #46562a;
+      }
+      .navitem:active {
+        background-color: #1e2719;
+      }
 
-        @media screen and (max-width: 850px){
-          .navitem{
-            display:none;
-          }
-
-          #navbar {
-            display: block;  
-          }
-
-          #navbar #icon{
-            float: right;
-            display: block;
-          }
-
-          #navbar.responsive {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            left: 0;
-          }
-          #navbar.responsive a#icon {
-            position: absolute;
-            right: 0;
-            top: 0;
-          }
-          #navbar.responsive a {
-            float: none;
-            display: block;
-            text-align: left;
-          }
-          
-}
-
-        /*Ava trying out something for the contacts section */
-        #contactlist{
-          box-sizing: border-box;
-          display: grid;
-          grid-template-columns: repeat(1, 1fr);
-          justify-content: center;
-          grid-gap: 2rem;
-          margin: 2rem;
+      @media screen and (max-width: 850px) {
+        .navitem {
+          display: none;
         }
 
-        @media screen and (min-width: 475px){
-          #contactlist{
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media screen and (min-width: 700px){
-          #contactlist{
-            grid-template-columns: repeat(3, 1fr);
-          }
-        }
-
-        @media screen and (min-width: 950px){
-          #contactlist{
-            grid-template-columns: repeat(4, 1fr);
-          }
-        }
-
-        .lanterncontainer{
-          position: relative;
-          text-align: center;
-          transform-origin: center -20px;
-        }
-        .lantern{
-          filter: drop-shadow(0px 0px 30px #fbd260);
-          width: 200px;
-        }
-        .contact{
-          position: absolute;
-          text-align: center;
-          font-size: 1.1rem;
-          font-family: 'Kalnia', serif;
-          width: 200px;
+        #navbar {
           display: block;
-          margin: 0;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          word-wrap: break-word;
         }
-        .contacticon{
-          width: 75px;
-          z-index: 4;
-        }
-        .light{
-          position: absolute;
-          left: 50%;
-          bottom: 5%;
-          transform: translate(-50%, 0);
 
-          opacity: 0.5;
-          z-index: 2;
-          width: 50px;
-          aspect-ratio: 1;
-          background-color: #fa700e;
-          border-radius: 2% 87% 45% 85%;
-          transform: translate(-50%, -50%) rotate(45deg);
+        #navbar #icon {
+          float: right;
+          display: block;
+        }
+
+        #navbar.responsive {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          left: 0;
+        }
+        #navbar.responsive a#icon {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        #navbar.responsive a {
+          float: none;
+          display: block;
+          text-align: left;
+        }
+      }
+
+      /* Ava trying out something for the contacts section */
+      #contactlist {
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+        grid-gap: 2rem;
+        margin: 2rem;
+      }
+
+      @media screen and (min-width: 475px) {
+        #contactlist {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media screen and (min-width: 700px) {
+        #contactlist {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media screen and (min-width: 950px) {
+        #contactlist {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .lanterncontainer {
+        position: relative;
+        text-align: center;
+        transform-origin: center -20px;
+      }
+      .lantern {
+        filter: drop-shadow(0px 0px 30px #fbd260);
+        width: 200px;
+      }
+      .contact {
+        position: absolute;
+        text-align: center;
+        font-size: 1.1rem;
+        font-family: "Kalnia", serif;
+        width: 200px;
+        display: block;
+        margin: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        word-wrap: break-word;
+      }
+      .contacticon {
+        width: 75px;
+        z-index: 4;
+      }
+      .light {
+        position: absolute;
+        left: 50%;
+        bottom: 5%;
+        transform: translate(-50%, 0);
+
+        opacity: 0.5;
+        z-index: 2;
+        width: 50px;
+        aspect-ratio: 1;
+        background-color: #fa700e;
+        border-radius: 2% 87% 45% 85%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        box-shadow: -10px -10px 15px 5px #fa700e;
+      }
+      .lanterncontainer:hover,
+      .lanterncontainer:active {
+        animation: swing ease-in-out 1s infinite alternate;
+      }
+
+      .lanterncontainer:hover .lantern,
+      .lanterncontainer:active .lantern {
+        animation: glowBox 2s infinite alternate;
+      }
+
+      .lanterncontainer:hover .light,
+      .lanterncontainer:active .light {
+        animation: glow 2s infinite alternate;
+      }
+
+      @keyframes glowBox {
+        from {
+          filter: drop-shadow(0px 0px 5px #fbd260);
+        }
+        to {
+          filter: drop-shadow(0px 0px 30px #fbd260);
+        }
+      }
+
+      @keyframes swing {
+        0% {
+          transform: rotate(3deg);
+        }
+        100% {
+          transform: rotate(-3deg);
+        }
+      }
+
+      @keyframes glow {
+        from {
           box-shadow: -10px -10px 15px 5px #fa700e;
         }
-        .lanterncontainer:hover, .lanterncontainer:active{
-          animation: swing ease-in-out 1s infinite alternate;
-          .lantern{
-            animation: glowBox 2s infinite alternate;
-          }
-          .light{
-            animation: glow 2s infinite alternate;
-          }
-
+        to {
+          box-shadow: -10px -10px 15px 60px #fa700e;
         }
+      }
 
-        @keyframes glowBox {
-          from {
-            filter: drop-shadow(0px 0px 5px #fbd260);
-          }
-          to {
-            filter: drop-shadow(0px 0px 30px #fbd260);
-          }
-        }
-
-        @keyframes swing{
-          0% {transform: rotate(3deg);}
-          100%{transform: rotate(-3deg);}
-        }
-
-        @keyframes glow {
-          from {
-            box-shadow: -10px -10px 15px 5px #fa700e;
-          }
-          to {
-            box-shadow: -10px -10px 15px 60px #fa700e;
-          }
-        }
-
-        #loader-container {
+      #loader-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -507,9 +507,10 @@
           #35582c 1px 1px 0px 0px;
       }
       #flip #back {
+        /* avoid pages overlap */
         transform: rotateY(0.4deg);
         transform-origin: -100% 0;
-      } /* avoid pages overlap */
+      }
       #flip #back,
       #flip #back div {
         background-color: white;
@@ -560,9 +561,6 @@
         100% {
           transform: rotateY(-2deg);
         }
-        /* 100% {
-          transform: rotateY(0deg);
-        } */
       }
 
       #book {
@@ -738,16 +736,16 @@
   </head>
   <body>
     <div id="loader-container">
-        <div id="full-book" class="load">
-          <div id="book">
-            <div id="top" class="load">
-              <p style="font-size: 1rem">The King's Affair</p>
-              <!-- TODO: Check if we're allowed to release the date yet? -->
-              <p style="font-size: 0.75rem">19th June 2024</p>
-              <p style="font-size: 0.5rem; padding-top: 10%">
-                Made with ❤ by the <br />2024 King's Affair Committee
-              </p>
-              <!-- <p
+      <div id="full-book" class="load">
+        <div id="book">
+          <div id="top" class="load">
+            <p style="font-size: 1rem">The King's Affair</p>
+            <!-- TODO: Check if we're allowed to release the date yet? -->
+            <p style="font-size: 0.75rem">19th June 2024</p>
+            <p style="font-size: 0.5rem; padding-top: 10%">
+              Made with ❤ by the <br />2024 King's Affair Committee
+            </p>
+            <!-- <p
               style="
                 font-size: 0.5rem;
                 margin-bottom: 10%;
@@ -757,24 +755,25 @@
             >
               Published by the Ticketing and IT Subcommittee
             </p> -->
-            </div>
-            <div id="front"></div>
-            <div id="right"></div>
-            <div id="bottom"></div>
-            <div id="shadow" class="load"></div>
-            <div id="bookmark">
+          </div>
+          <div id="front"></div>
+          <div id="right"></div>
+          <div id="bottom"></div>
+          <div id="shadow" class="load"></div>
+          <div id="bookmark">
+            <div>
               <div>
                 <div>
-                  <div>
-                    <div></div>
-                  </div>
+                  <div></div>
                 </div>
               </div>
             </div>
-            <div id="bookmark-shadow"></div>
           </div>
-          <div id="flip" class="load">
-            <div id="front">
+          <div id="bookmark-shadow"></div>
+        </div>
+        <div id="flip" class="load">
+          <div id="front">
+            <div class="load">
               <div class="load">
                 <div class="load">
                   <div class="load">
@@ -783,9 +782,7 @@
                         <div class="load">
                           <div class="load">
                             <div class="load">
-                              <div class="load">
-                                <div class="load"></div>
-                              </div>
+                              <div class="load"></div>
                             </div>
                           </div>
                         </div>
@@ -795,7 +792,9 @@
                 </div>
               </div>
             </div>
-            <div id="back">
+          </div>
+          <div id="back">
+            <div class="load">
               <div class="load">
                 <div class="load">
                   <div class="load">
@@ -804,9 +803,7 @@
                         <div class="load">
                           <div class="load">
                             <div class="load">
-                              <div class="load">
-                                <div class="load"></div>
-                              </div>
+                              <div class="load"></div>
                             </div>
                           </div>
                         </div>
@@ -818,8 +815,9 @@
             </div>
           </div>
         </div>
-        <span id="loader-percentage">Loading...</span>
       </div>
+      <span id="loader-percentage">Loading...</span>
+    </div>
     <div id="navbar">
       <a class="navitem" href="#about">About</a>
       <a class="navitem" href="#launch">Launch Party</a>
@@ -827,7 +825,13 @@
       <a class="navitem" href="#namechange">Name Changes</a>
       <a class="navitem" href="#charity">Charity</a>
       <a class="navitem" href="#contact">Contact</a>
-      <a class="navitem" href="javascript:void(0);" id="icon" onclick="toggleNavbarResponse()">&#9776;</a>
+      <a
+        class="navitem"
+        href="javascript:void(0);"
+        id="icon"
+        onclick="toggleNavbarResponse()"
+        >&#9776;</a
+      >
     </div>
     <script>
       function toggleNavbarResponse() {
@@ -837,14 +841,14 @@
         } else {
           x.className = "navbar";
         }
-}
+      }
     </script>
     <section id="hero">
       <div class="container">
         <div id="splash" style="margin-top: 25vh">
-            <p class="title load">King's</p>
-            <p class="title load">Affair</p>
-            <p class="year load">2024</p>
+          <p class="title load">King's</p>
+          <p class="title load">Affair</p>
+          <p class="year load">2024</p>
           <a href="#about" aria-label="Scroll down to learn more"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -860,244 +864,371 @@
         </div>
       </div>
     </section>
-      <section id="about">
-        <div
-          class="container"
-          style="
-            top: 0;
-            height: 100vh;
-            font-size: 1.25em;
-            font-family: 'Kalnia', serif;
-          "
-        >
-          <h3>About the King's Affair</h3>
-          <p>At King's, we like to do things differently.</p>
-          <p>
-            Celebrated as the 'antidote to the monotony of traditional May Balls',
-            the King's Affair is held on the Wednesday of May Week, transforming
-            the infamous grounds of King's College into a spectacular, daring,
-            dream-like world for one night a year.
+    <section id="about">
+      <div
+        class="container"
+        style="
+          top: 0;
+          height: 100vh;
+          font-size: 1.25em;
+          font-family: 'Kalnia', serif;
+        "
+      >
+        <h3>About the King's Affair</h3>
+        <p>At King's, we like to do things differently.</p>
+        <p>
+          Celebrated as the 'antidote to the monotony of traditional May Balls',
+          the King's Affair is held on the Wednesday of May Week, transforming
+          the infamous grounds of King's College into a spectacular, daring,
+          dream-like world for one night a year.
+        </p>
+        <p>Here, inclusivity is our champion.</p>
+        <p>
+          Gowns and tuxedos are exchanged for extravagant fancy dress and
+          costume, up-and-coming artists rule the stage, whilst glittering
+          lights and wild artwork take over the senses.
+        </p>
+        <p>
+          Think festival, 'beats not bollingers', and a world turned upside
+          down.
+        </p>
+      </div>
+    </section>
+    <section id="contact">
+      <div
+        class="container"
+        style="
+          top: 0;
+          height: 100vh;
+          font-size: 1.25em;
+          font-family: CFOneTwoTrees;
+        "
+      >
+        <p style="font-size: 2.5em">Contact Us</p>
+      </div>
+    </section>
+    <section>
+      <div id="contactlist">
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Socials</b><br />
+            <a
+              href="https://www.facebook.com/people/Kings-Affair/100089874409050/"
+              target="_blank"
+              ><svg
+                class="contacticon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"
+                />
+              </svg>
+            </a>
+            <br />
+            <a href="https://www.instagram.com/kingsaffair" target="_blank"
+              ><svg
+                class="contacticon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                />
+              </svg>
+            </a>
           </p>
-          <p>Here, inclusivity is our champion.</p>
-          <p>
-            Gowns and tuxedos are exchanged for extravagant fancy dress and
-            costume, up-and-coming artists rule the stage, whilst glittering
-            lights and wild artwork take over the senses.
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Chairs</b><br />
+            <a href="mailto: chair@kingsaffair.co.uk"
+              >chair@kings<br />affair.co.uk</a
+            >
+            <br />
+            Esther Welbrock<br />
+            Marielle Lee
           </p>
-          <p>
-            Think festival, 'beats not bollingers', and a world turned upside
-            down.
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Treasurers</b><br />
+            <a href="mailto: treasurer@kingsaffair.co.uk"
+              >treasurer@kings<br />affair.co.uk</a
+            >
+            <br />
+            Joshitha Yeggoni<br />
+            Astrid Healy-Carrasco
           </p>
+          <div class="light"></div>
         </div>
-      </section>
-      <section id="contact">
-        <div
-          class="container"
-          style="
-            top: 0;
-            height: 100vh;
-            font-size: 1.25em;
-            font-family: CFOneTwoTrees;
-          "
-        >
-          <p style="font-size: 2.5em">Contact Us</p>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Arts</b><br />
+            <a href="mailto: arts@kingsaffair.co.uk"
+              >arts@kings<br />affair.co.uk</a
+            >
+            <br />
+            Edie Levine<br />
+            Teddy Graham<br />
+            Olga Krivdina
+          </p>
+          <div class="light"></div>
         </div>
-        </section>
-        <section>
-        <div id="contactlist">
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Socials</b><br>
-              <a href="https://www.facebook.com/people/Kings-Affair/100089874409050/" target="_blank"><svg class="contacticon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg></a>
-              <br>
-              <a href="https://www.instagram.com/kingsaffair" target="_blank"><svg class="contacticon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a> 
-              <div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Chairs</b><br> <a href="mailto: chair@kingsaffair.co.uk">chair@kings<br>affair.co.uk</a> <br> Esther Welbrock<br> Marielle Lee<div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Treasurers</b><br> <a href="mailto: treasurer@kingsaffair.co.uk">treasurer@kings<br>affair.co.uk</a> <br> Joshitha Yeggoni<br> Astrid Healy-Carrasco<div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Arts</b><br> <a href="mailto: arts@kingsaffair.co.uk">arts@kings<br>affair.co.uk</a> <br> Edie Levine<br> Teddy Graham<br> Olga Krivdina<div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Production</b> <br> <a href="mailto: production@kingsaffair.co.uk">production@kings<br>affair.co.uk</a> <br> Eva Lemmy<br> Will Rowlands<div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Music</b><br> <a href="mailto: music@kingsaffair.co.uk">music@kings<br>affair.co.uk</a> <br> Steph Theodorou<br> Izzy Wilkinson<br> Rose Papadopoulos-Hedden<div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Ents</b><br> <a href="mailto: ents@kingsaffair.co.uk">ents@kings<br>affair.co.uk</a> <br> Farzana Ramazan<br> Zaheda Hussain<div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Food and Drink</b><br> <a href="mailto: food@kingsaffair.co.uk">food@kings<br>affair.co.uk</a> <br> Lauren Todd<br> Kiya Gupta<div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Security and Infrastructure</b><br> <a href="mailto: security@kingsaffair.co.uk">security@kings<br>affair.co.uk</a> <br> Ed Marsh<br> Luca De Maestri<div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Sustainability</b><br> <a href="mailto: sustainability@kingsaffair.co.uk">sustainability@kings<br>affair.co.uk</a> <br> Lily-Rose Dupin<div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Workers and Legal</b><br> <a href="mailto: workers@kingsaffair.co.uk">workers@kings<br>affair.co.uk</a> <br> Prakruti Rao<br> Lara Riddell<div class="light"></div></p>
-          </div>
-          <div class="lanterncontainer">
-            <img src="/assets/KA Banner.png" class="lantern">
-            <p class="contact"><b>Ticketing and IT</b><br> <a href="mailto: ticketing@kingsaffair.co.uk">ticketing@kings<br>affair.co.uk</a> <br> Sam Mashil<br>  Hannah Yang<br> Ava James<div class="light"></div></p>
-          </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Production</b> <br />
+            <a href="mailto: production@kingsaffair.co.uk"
+              >production@kings<br />affair.co.uk</a
+            >
+            <br />
+            Eva Lemmy<br />
+            Will Rowlands
+          </p>
+          <div class="light"></div>
         </div>
-        </section>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Music</b><br />
+            <a href="mailto: music@kingsaffair.co.uk"
+              >music@kings<br />affair.co.uk</a
+            >
+            <br />
+            Steph Theodorou<br />
+            Izzy Wilkinson<br />
+            Rose Papadopoulos-Hedden
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Ents</b><br />
+            <a href="mailto: ents@kingsaffair.co.uk"
+              >ents@kings<br />affair.co.uk</a
+            >
+            <br />
+            Farzana Ramazan<br />
+            Zaheda Hussain
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Food and Drink</b><br />
+            <a href="mailto: food@kingsaffair.co.uk"
+              >food@kings<br />affair.co.uk</a
+            >
+            <br />
+            Lauren Todd<br />
+            Kiya Gupta
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Security and Infrastructure</b><br />
+            <a href="mailto: security@kingsaffair.co.uk"
+              >security@kings<br />affair.co.uk</a
+            >
+            <br />
+            Ed Marsh<br />
+            Luca De Maestri
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Sustainability</b><br />
+            <a href="mailto: sustainability@kingsaffair.co.uk"
+              >sustainability@kings<br />affair.co.uk</a
+            >
+            <br />
+            Lily-Rose Dupin
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Workers and Legal</b><br />
+            <a href="mailto: workers@kingsaffair.co.uk"
+              >workers@kings<br />affair.co.uk</a
+            >
+            <br />
+            Prakruti Rao<br />
+            Lara Riddell
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Ticketing and IT</b><br />
+            <a href="mailto: ticketing@kingsaffair.co.uk"
+              >ticketing@kings<br />affair.co.uk</a
+            >
+            <br />
+            Sam Mashil<br />
+            Hannah Yang<br />
+            Ava James
+          </p>
+          <div class="light"></div>
+        </div>
+      </div>
+    </section>
     <canvas id="bg"></canvas>
     <script>
-        const html = document.documentElement;
-        const body = document.body;
-        const canvas = document.getElementById("bg");
-        const ctx = canvas.getContext("2d");
-        const numFrames = 789;
-        const filePrefix = "/assets/bg/images/1920/";
-        const images = [];
-  
-        var fileExt = "jpg";
-  
-        var webp = new Image();
-  
-        function supportsWebp() {
-          // as promise
-          return new Promise(function (resolve) {
-            var img = new Image();
-            img.onload = function () {
-              resolve(img.width > 0 && img.height > 0);
-            };
-            img.onerror = function () {
-              resolve(false);
-            };
-            img.src =
-              "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA";
+      const html = document.documentElement;
+      const body = document.body;
+      const canvas = document.getElementById("bg");
+      const ctx = canvas.getContext("2d");
+      const numFrames = 789;
+      const filePrefix = "/assets/bg/images/1920/";
+      const images = [];
+
+      var fileExt = "jpg";
+
+      var webp = new Image();
+
+      function supportsWebp() {
+        // as promise
+        return new Promise(function (resolve) {
+          var img = new Image();
+          img.onload = function () {
+            resolve(img.width > 0 && img.height > 0);
+          };
+          img.onerror = function () {
+            resolve(false);
+          };
+          img.src =
+            "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA";
+        });
+      }
+
+      supportsWebp().then(function (result) {
+        fileExt = result ? "webp" : "jpg";
+
+        // load every third image first, then load the rest
+        for (var i = 0; i < numFrames; i += 3) {
+          load(i, () => {
+            loaded++;
+            // console.log((loaded / numFrames) * 100 + "%");
+            document.getElementById("loader-percentage").innerHTML =
+              Math.floor((loaded / numFrames) * 300) + "%";
+            if (loaded == Math.floor(numFrames / 3)) {
+              imgRatio = images[0].width / images[0].height;
+              document.querySelectorAll(".load").forEach((e) => {
+                e.classList.add("loaded");
+                e.classList.remove("load");
+              });
+              setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                html.style.scrollBehavior = "smooth";
+                body.style.overflowY = "scroll";
+              }, 1000);
+              setTimeout(() => {
+                document.getElementById("loader-container").style.opacity = 0;
+                setTimeout(() => {
+                  document.getElementById("loader-container").style.display =
+                    "none";
+                }, 1000);
+              }, 2500);
+              console.log("Loaded third images");
+              update(html, html);
+              update(body, body);
+              for (var i = 1; i < numFrames; i += 3) {
+                load(i, () => {
+                  loaded++;
+                  // console.log((loaded / numFrames) * 100 + "%");
+                });
+              }
+              for (var i = 2; i < numFrames; i += 3) {
+                load(i, () => {
+                  loaded++;
+                  // console.log((loaded / numFrames) * 100 + "%");
+                });
+              }
+            }
           });
         }
-  
-        supportsWebp().then(function (result) {
-          fileExt = result ? "webp" : "jpg";
-  
-          // load every third image first, then load the rest
-          for (var i = 0; i < numFrames; i += 3) {
-            load(i, () => {
-              loaded++;
-              // console.log((loaded / numFrames) * 100 + "%");
-              document.getElementById("loader-percentage").innerHTML =
-                Math.floor((loaded / numFrames) * 300) + "%";
-              if (loaded == Math.floor(numFrames / 3)) {
-                imgRatio = images[0].width / images[0].height;
-                document.querySelectorAll(".load").forEach((e) => {
-                  e.classList.add("loaded");
-                  e.classList.remove("load");
-                });
-                setTimeout(() => {
-                  window.scrollTo(0, 0);
-                  document.body.scrollTop = 0;
-                  document.documentElement.scrollTop = 0;
-                  html.style.scrollBehavior = "smooth";
-                  body.style.overflowY = "scroll";
-                }, 1000);
-                setTimeout(() => {
-                  document.getElementById("loader-container").style.opacity = 0;
-                  setTimeout(() => {
-                    document.getElementById("loader-container").style.display =
-                      "none";
-                  }, 1000);
-                }, 2500);
-                console.log("Loaded third images");
-                update(html, html);
-                update(body, body);
-                for (var i = 1; i < numFrames; i += 3) {
-                  load(i, () => {
-                    loaded++;
-                    // console.log((loaded / numFrames) * 100 + "%");
-                  });
-                }
-                for (var i = 2; i < numFrames; i += 3) {
-                  load(i, () => {
-                    loaded++;
-                    // console.log((loaded / numFrames) * 100 + "%");
-                  });
-                }
-              }
-            });
-          }
-        });
-  
-        const filePath = (i) =>
-          `${filePrefix}${fileExt}/${i.toString().padStart(3, "0")}.${fileExt}`;
-  
+      });
+
+      const filePath = (i) =>
+        `${filePrefix}${fileExt}/${i.toString().padStart(3, "0")}.${fileExt}`;
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      var loaded = 0;
+      var frameIndex = 0;
+      var loadPercentage = 0;
+      var imgRatio;
+
+      function updateImage(frame) {
+        if (canvas.width / canvas.height > imgRatio) {
+          var imgWidth = canvas.width;
+          var imgHeight = canvas.width / imgRatio;
+        } else {
+          var imgWidth = canvas.height * imgRatio;
+          var imgHeight = canvas.height;
+        }
+        try {
+          ctx.drawImage(images[frame], 0, 0, imgWidth, imgHeight);
+        } catch (e) {}
+      }
+
+      function load(i, callback) {
+        images[i] = new Image();
+        images[i].src = filePath(i + 1);
+        images[i].onload = callback;
+      }
+
+      body.style.overflowY = "hidden";
+
+      function resize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-  
-        var loaded = 0;
-        var frameIndex = 0;
-        var loadPercentage = 0;
-        var imgRatio;
-  
-        function updateImage(frame) {
-          if (canvas.width / canvas.height > imgRatio) {
-            var imgWidth = canvas.width;
-            var imgHeight = canvas.width / imgRatio;
-          } else {
-            var imgWidth = canvas.height * imgRatio;
-            var imgHeight = canvas.height;
-          }
-          try {
-            ctx.drawImage(images[frame], 0, 0, imgWidth, imgHeight);
-          } catch (e) {}
-        }
-  
-        function load(i, callback) {
-          images[i] = new Image();
-          images[i].src = filePath(i + 1);
-          images[i].onload = callback;
-        }
-  
-        body.style.overflowY = "hidden";
-  
-        function resize() {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-          updateImage(frameIndex);
-        }
-  
-        window.addEventListener("resize", resize);
-        window.addEventListener("orientationchange", resize);
-  
-        function update(scrollTopEl, maxScrollTopEl) {
-          const scrollTop = scrollTopEl.scrollTop;
-          const maxScrollTop = maxScrollTopEl.scrollHeight - window.innerHeight;
-          const scrollFraction = scrollTop / maxScrollTop;
-          frameIndex = Math.min(
-            numFrames - 1,
-            Math.floor(scrollFraction * numFrames)
-          );
-  
-          requestAnimationFrame(() => updateImage(frameIndex));
-        }
-  
-        document.body.addEventListener("scroll", () => update(body, body));
-        window.addEventListener("touchmove", () => update(html, html));
-        window.addEventListener("scroll", () => update(html, body));
-  
-        requestAnimationFrame(() => updateImage(0));
-  
-        // console.log("Loaded");  
+        updateImage(frameIndex);
+      }
+
+      window.addEventListener("resize", resize);
+      window.addEventListener("orientationchange", resize);
+
+      function update(scrollTopEl, maxScrollTopEl) {
+        const scrollTop = scrollTopEl.scrollTop;
+        const maxScrollTop = maxScrollTopEl.scrollHeight - window.innerHeight;
+        const scrollFraction = scrollTop / maxScrollTop;
+        frameIndex = Math.min(
+          numFrames - 1,
+          Math.floor(scrollFraction * numFrames)
+        );
+
+        requestAnimationFrame(() => updateImage(frameIndex));
+      }
+
+      document.body.addEventListener("scroll", () => update(body, body));
+      window.addEventListener("touchmove", () => update(html, html));
+      window.addEventListener("scroll", () => update(html, body));
+
+      requestAnimationFrame(() => updateImage(0));
+
+      // console.log("Loaded");
     </script>
   </body>
 </html>
