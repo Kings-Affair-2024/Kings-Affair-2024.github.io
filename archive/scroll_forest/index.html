@@ -79,11 +79,13 @@
         function scrollPlay(){  
         var frameNumber  = window.pageYOffset/playbackConst;
         vid.currentTime  = frameNumber;
-        window.requestAnimationFrame(scrollPlay);
+        // window.requestAnimationFrame(scrollPlay);
         }
     
         window.requestAnimationFrame(scrollPlay);
         
+        window.addEventListener('scroll', scrollPlay, false);
+
         </script>
     </body>
 </html>
