@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="King's Affair, the antidote to may balls"
+    />
+    <title>King's Affair 2024</title>
+    <link rel="stylesheet" href="/assets/css/fonts.css" />
+    <style>
+      body {
+        margin: 0;
+        min-width: fit-content;
+        overflow-x: hidden;
+        font-family: "Kalnia", serif;
+      }
+
+      canvas {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        min-width: 100%;
+      }
+
+      h3 {
+        font-weight: 800;
+      }
+
+      p {
+        margin: 1vh 0;
+        font-size: calc(1rem + 0.5vw);
+        font-weight: 550;
+        /* color: #fff; */
+      }
+
+      /* #region FONT DEFINITIONS */
+      .font-kalnia {
+        font-family: "Kalnia", serif;
+      }
+
+      .font-wild-wood {
+        font-family: "WildWood", serif;
+      }
+      /* #endregion */
+      /* #region HERO */
+      #hero {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      #hero-container {
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        height: 100%;
+        width: 100%;
+      }
+
+      #hero-text {
+        font-family: "WildWood", serif;
+        text-align: center;
+        /* align to bottom */
+        position: absolute;
+        bottom: calc(20vh + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #hero h1 {
+        font-size: calc(2rem + 2vmax);
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+
+      .arrows {
+        width: calc(2rem + 2vmin);
+        height: calc(2rem + 2vmin);
+        position: absolute;
+        bottom: calc(10vh + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        color: #000;
+        transition-duration: 0.2s;
+      }
+
+      .arrows.loaded {
+        animation: iconPulse 1s ease 2 2s;
+      }
+
+      .arrows:hover {
+        color: #858585;
+        animation: iconPulse 1s ease infinite;
+      }
+
+      @keyframes iconPulse {
+        0% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      @media screen and (orientation: portrait) and (max-width: 600px) {
+        /* keeps address bar visible on mobile */
+        html {
+          overflow: hidden;
+          width: 100%;
+        }
+        body {
+          height: 100vh;
+          position: fixed;
+          width: 100%;
+          scroll-behavior: smooth;
+        }
+        /* #hero-text {
+          width: 100vw;
+          text-align: right;
+          align to right of screen
+          position: absolute;
+          bottom: 15vh;
+          left: 0;
+          right: 0;
+          margin-right: calc(2rem + 2vmin);
+          margin-bottom: calc(3rem + 2vmin);
+          transform: translateX(0);
+        } */
+      }
+
+      /* #endregion */
+      /* #region ABOUT */
+      #about {
+        height: 300vmin;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        /* margin: auto 15rem; */
+        width: calc(280px + 15vw);
+        margin: auto;
+        text-align: justify;
+        text-align-last: center;
+      }
+
+      .container {
+        position: -webkit-sticky;
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* justify-content: flex-start; */
+        align-items: center;
+        top: 0;
+        height: 100vh;
+        font-family: "Kalnia", serif;
+      }
+      /* #endregion */
+      /* #region LOADING SCREEN */
+      #loader-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        z-index: 9999;
+        transition: opacity 1s ease-in-out;
+        margin: 0;
+        padding: 0;
+        perspective: 900px;
+      }
+
+      #full-book {
+        transform-style: preserve-3d;
+        transform: rotateX(60deg) rotateZ(29deg);
+        width: 248px;
+        height: 350px;
+      }
+
+      @media screen and (max-width: 600px) {
+        #full-book {
+          transform: rotateX(60deg) rotateZ(29deg) scale3d(0.7, 0.7, 0.7);
+        }
+      }
+
+      #full-book.loaded {
+        animation: new 3s ease-in-out forwards;
+      }
+
+      @keyframes new {
+        100% {
+          transform: rotateX(0deg) rotateZ(0deg) scale3d(2.5, 2.5, 2.5)
+            translateX(50%) translateY(5%);
+          /* opacity: 0; */
+        }
+      }
+
+      #loader-percentage {
+        color: #fff;
+        font-size: 2rem;
+        margin-top: 2rem;
+      }
+
+      #loader-container *::selection {
+        background: transparent;
+      }
+
+      #flip {
+        height: 350px;
+        width: auto;
+        position: absolute;
+        transform: translate3d(0px, 0px, -10px);
+        transform-style: preserve-3d;
+        transform-origin: 0 0 0;
+      }
+
+      #flip.loaded {
+        animation: wrapper 3s ease-in-out forwards;
+      }
+
+      @keyframes wrapper {
+        0% {
+          transform: translate3d(0px, 0px, -10px);
+        }
+        100% {
+          transform: translateZ(-10px) rotateY(-180deg);
+        }
+      }
+
+      #flip div {
+        height: 350px;
+        width: 24px;
+        position: absolute;
+        left: calc(100% - 1px);
+        transform-origin: 0 100%;
+        transform-style: preserve-3d;
+        background-size: 253px 350px;
+      }
+
+      #flip #front,
+      #flip #front div {
+        background-image: url("/assets/media/book_cover_temp.jpg");
+        /* add webp support with image-set */
+        background-image: image-set(
+          url("/assets/media/book_cover_temp.webp") type("image/webp"),
+          url("/assets/media/book_cover_temp.jpg") type("image/jpeg")
+        );
+        box-shadow: inset rgba(255, 255, 255, 0.3) 0px -1px 0 0,
+          #35582c 0px 1px 0px 0px;
+      }
+      #flip #front > div > div > div > div > div > div > div > div > div > div {
+        box-shadow: inset rgba(255, 255, 255, 0.3) -1px -1px 0 0,
+          #35582c 1px 1px 0px 0px;
+      }
+      #flip #back {
+        /* avoid pages overlap */
+        transform: rotateY(0.4deg);
+        transform-origin: -100% 0;
+      }
+      #flip #back,
+      #flip #back div {
+        background-color: white;
+      }
+
+      #flip > div {
+        left: 0;
+        background-position-x: 0;
+      }
+      #flip div > div {
+        background-position-x: -23px;
+      }
+      #flip div > div .loaded {
+        animation: page 3s ease-in-out forwards;
+      }
+      #flip div > div > div {
+        background-position-x: -46px;
+      }
+      #flip div > div > div > div {
+        background-position-x: -69px;
+      }
+      #flip div > div > div > div > div {
+        background-position-x: -92px;
+      }
+      #flip div > div > div > div > div > div {
+        background-position-x: -115px;
+      }
+      #flip div > div > div > div > div > div > div {
+        background-position-x: -138px;
+      }
+      #flip div > div > div > div > div > div > div > div {
+        background-position-x: -161px;
+      }
+      #flip div > div > div > div > div > div > div > div > div {
+        background-position-x: -184px;
+      }
+      #flip div > div > div > div > div > div > div > div > div > div {
+        background-position-x: -207px;
+      }
+      #flip div > div > div > div > div > div > div > div > div > div > div {
+        background-position-x: -229px;
+      }
+
+      @keyframes page {
+        30% {
+          transform: rotateY(-10deg);
+        }
+        100% {
+          transform: rotateY(-2deg);
+        }
+      }
+
+      #book {
+        width: 248px;
+        height: 350px;
+        position: absolute;
+        transform: translate3d(0px, 0px, -10px);
+        transform-style: preserve-3d;
+        -webkit-transform-origin: 0 0 0;
+        transform-origin: 0 0 0;
+      }
+      @keyframes book {
+        50% {
+          box-shadow: inset rgba(0, 0, 0, 0.2) 0px 0 50px -140px;
+        }
+        100% {
+          box-shadow: inset rgba(0, 0, 0, 0.2) 0px 0 50px -140px;
+        }
+      }
+      #book #top {
+        background-color: white;
+        background-size: 100% 100%;
+        background-position: 100%;
+        box-shadow: inset rgba(0, 0, 0, 0.2) 510px 0 50px -140px;
+        height: 350px;
+        width: 248px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        box-sizing: border-box;
+        z-index: -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 15%;
+        /* border-left: 0.5px solid black; */
+      }
+
+      #book #top.loaded {
+        animation: book 3s ease-in-out forwards;
+      }
+
+      #book #top p {
+        font-size: 15px;
+        font-family: "Libre Caslon Text", serif;
+        text-align: center;
+        margin: 0;
+      }
+
+      #book #bottom {
+        background: #e7ded1;
+        box-shadow: rgba(83, 53, 13, 0.2) 4px 2px 1px, #35582c 1px 1px 0px 0px;
+        height: 350px;
+        width: 253px;
+        position: absolute;
+        transform: translateZ(-40px);
+        left: 0;
+        top: 0;
+      }
+      #book #shadow {
+        box-shadow: inset rgba(83, 53, 13, 0) -200px 0 150px -140px;
+        height: 350px;
+        width: 248px;
+        position: absolute;
+        left: -100%;
+        top: 0;
+        transform: translateZ(-40px);
+      }
+
+      #book #shadow.loaded {
+        animation: shadow 3s ease-in-out forwards;
+      }
+
+      @keyframes shadow {
+        20% {
+          box-shadow: inset rgba(83, 53, 13, 0) -200px 0 150px -140px;
+        }
+        50% {
+          box-shadow: inset rgba(83, 53, 13, 0.3) -350px 0 150px -140px;
+        }
+        60% {
+          box-shadow: inset rgba(83, 53, 13, 0) -200px 0 150px -140px;
+        }
+      }
+      #book #front {
+        background: -webkit-linear-gradient(top, #fcf6ea, #d8d1c3);
+        background-size: 100% 2px;
+        box-shadow: inset #c2bba2 3px 0 0px, #35582c -2px 1px 0px 0px;
+        height: 40px;
+        width: 251px;
+        left: -3px;
+        position: absolute;
+        bottom: -40px;
+        transform: rotateX(-90deg);
+        transform-origin: 50% 0;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+      #book #right {
+        background: -webkit-linear-gradient(left, #ddd2bb, #bdb3a0);
+        background-size: 2px 100%;
+        box-shadow: inset rgba(0, 0, 0, 0) 0 0 0 20px;
+        height: 100%;
+        width: 40px;
+        position: absolute;
+        right: -40px;
+        top: 0;
+        transform: rotateY(90deg);
+        transform-origin: 0 50%;
+      }
+
+      #bookmark {
+        position: absolute;
+        transform: translate3d(20px, 335px, -16px);
+        transform-style: preserve-3d;
+      }
+      #bookmark div {
+        background: rgb(151, 88, 88);
+        box-shadow: rgb(133, 77, 77) 1px 0;
+        height: 10px;
+        width: 20px;
+        position: absolute;
+        top: 9px;
+        transform: rotateX(-14deg);
+        transform-origin: 50% 0;
+        transform-style: preserve-3d;
+      }
+      #bookmark > div > div {
+        background: linear-gradient(
+          to bottom,
+          rgb(151, 88, 88),
+          rgb(189, 123, 123),
+          rgb(151, 88, 88)
+        );
+      }
+      #bookmark > div > div > div {
+        background: linear-gradient(
+          to bottom,
+          rgb(151, 88, 88),
+          rgb(133, 77, 77)
+        );
+      }
+      #bookmark > div > div > div > div {
+        background: none;
+        border-top: 0px solid transparent;
+        border-right: 10px solid rgb(133, 77, 77);
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid rgb(133, 77, 77);
+        height: 0;
+        width: 0;
+      }
+      #bookmark-shadow {
+        background: linear-gradient(
+          to bottom,
+          rgba(83, 53, 13, 0.25),
+          rgba(83, 53, 13, 0.11)
+        );
+        height: 15px;
+        width: 20px;
+        position: absolute;
+        transform: translate3d(12px, 350px, -25px) rotateX(-90deg) skewX(20deg);
+        transform-origin: 0 0;
+      }
+      /*#endregion*/
+      /* #region NAVBAR */
+      #navbar {
+        overflow: hidden;
+        background-color: #666a3a;
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-evenly;
+        font-family: "Kalnia", serif;
+      }
+
+      #navbar #icon {
+        display: none;
+      }
+      .navitem {
+        float: left;
+        display: block;
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 1.25rem;
+        transition: 0.3s;
+      }
+      .navitem:hover {
+        background-color: #46562a;
+      }
+      .navitem:active {
+        background-color: #1e2719;
+      }
+
+      @media screen and (max-width: 850px) {
+        .navitem {
+          display: none;
+        }
+
+        #navbar {
+          display: block;
+        }
+
+        #navbar #icon {
+          float: right;
+          display: block;
+        }
+
+        #navbar.responsive a #navbar.responsive {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          left: 0;
+        }
+        #navbar.responsive #icon {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        #navbar.responsive a {
+          float: none;
+          display: block;
+          text-align: left;
+        }
+      }
+      /* #endregion */
+    </style>
+  </head>
+  <body>
+    <!-- #region LOADING SCREEN -->
+    <div id="loader-container">
+      <div id="full-book" class="load">
+        <div id="book">
+          <div id="top" class="load">
+            <p style="font-size: 1rem">The King's Affair</p>
+            <!-- TODO: Check if we're allowed to release the date yet? -->
+            <p style="font-size: 0.75rem">19th June 2024</p>
+            <p style="font-size: 0.5rem; padding-top: 10%">
+              Made with ❤ by the <br />2024 King's Affair Committee
+            </p>
+            <!-- <p
+                  style="
+                    font-size: 0.5rem;
+                    margin-bottom: 10%;
+                    position: absolute;
+                    bottom: 0;
+                  "
+                >
+                  Published by the Ticketing and IT Subcommittee
+                </p> -->
+          </div>
+          <div id="front"></div>
+          <div id="right"></div>
+          <div id="bottom"></div>
+          <div id="shadow" class="load"></div>
+          <div id="bookmark">
+            <div>
+              <div>
+                <div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="bookmark-shadow"></div>
+        </div>
+        <div id="flip" class="load">
+          <div id="front">
+            <div class="load">
+              <div class="load">
+                <div class="load">
+                  <div class="load">
+                    <div class="load">
+                      <div class="load">
+                        <div class="load">
+                          <div class="load">
+                            <div class="load">
+                              <div class="load"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="back">
+            <div class="load">
+              <div class="load">
+                <div class="load">
+                  <div class="load">
+                    <div class="load">
+                      <div class="load">
+                        <div class="load">
+                          <div class="load">
+                            <div class="load">
+                              <div class="load"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span id="loader-percentage" class="font-wild-wood">Loading...</span>
+    </div>
+    <!-- #endregion -->
+    <!-- #region NAVBAR -->
+    <div id="navbar" class="navbar">
+      <a class="navitem" href="#about">About</a>
+      <a class="navitem" href="#launch">Launch Party</a>
+      <a class="navitem" href="#tickets">Tickets</a>
+      <a class="navitem" href="#namechange">Name Changes</a>
+      <a class="navitem" href="#charity">Charity</a>
+      <a class="navitem" href="#contact">Contact</a>
+      <a
+        class="navitem"
+        href="javascript:void(0);"
+        id="icon"
+        onclick="toggleNavbarResponse()"
+        >&#9776;</a
+      >
+    </div>
+    <script>
+      function toggleNavbarResponse() {
+        var x = document.getElementById("navbar");
+        console.log(x.className);
+        x.className = x.className === "navbar" ? "navbar responsive" : "navbar";
+      }
+    </script>
+    <!-- #endregion -->
+    <section id="hero">
+      <div id="hero-container">
+        <div id="hero-text">
+          <h1>
+            King's <br />
+            Affair <br />
+            2024
+          </h1>
+        </div>
+        <a href="#about" aria-label="Scroll down to learn more"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="arrows load"
+            viewBox="0 0 448 512"
+          >
+            <!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+            <path
+              d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+    <section id="about">
+      <div class="container" style="font-size: 1.25em">
+        <h3>About the King's Affair</h3>
+        <p>At King's, we like to do things differently.</p>
+        <p>
+          Celebrated as the 'antidote to the monotony of traditional May Balls',
+          the King's Affair is held on the Wednesday of May Week, transforming
+          the infamous grounds of King's College into a spectacular, daring,
+          dream-like world for one night a year.
+        </p>
+        <p>Here, inclusivity is our champion.</p>
+        <p>
+          Gowns and tuxedos are exchanged for extravagant fancy dress and
+          costume, up-and-coming artists rule the stage, whilst glittering
+          lights and wild artwork take over the senses.
+        </p>
+        <p>
+          Think festival, 'beats not bollingers', and a world turned upside
+          down.
+        </p>
+      </div>
+    </section>
+    <canvas id="bg"></canvas>
+    <script>
+      // #region LOADING SCREEN
+      const TEST = true;
+
+      const html = document.documentElement;
+      const body = document.body;
+      const canvas = document.getElementById("bg");
+      const ctx = canvas.getContext("2d");
+      const numFrames = 789;
+      const filePrefix = "/assets/bg/images/1920/";
+      const images = [];
+
+      // TODO: remove for production
+      if (TEST) {
+        document.getElementById("loader-container").style.display = "none";
+        document.querySelectorAll(".load").forEach((e) => {
+          e.classList.add("loaded");
+          e.classList.remove("load");
+        });
+        html.style.scrollBehavior = "smooth";
+        body.style.overflowY = "scroll";
+      }
+
+      var fileExt = "jpg";
+
+      var webp = new Image();
+
+      function supportsWebp() {
+        // as promise
+        return new Promise(function (resolve) {
+          var img = new Image();
+          img.onload = function () {
+            resolve(img.width > 0 && img.height > 0);
+          };
+          img.onerror = function () {
+            resolve(false);
+          };
+          img.src =
+            "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA";
+        });
+      }
+
+      supportsWebp().then(function (result) {
+        fileExt = result ? "webp" : "jpg";
+
+        // load every third image first, then load the rest
+        for (var i = 0; i < numFrames; i += 3) {
+          load(i, () => {
+            loaded++;
+            // console.log((loaded / numFrames) * 100 + "%");
+            document.getElementById("loader-percentage").innerHTML =
+              Math.floor((loaded / numFrames) * 300) + "%";
+            if (loaded == Math.floor(numFrames / 3)) {
+              imgRatio = images[0].width / images[0].height;
+              document.querySelectorAll(".load").forEach((e) => {
+                e.classList.add("loaded");
+                e.classList.remove("load");
+              });
+              setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                html.style.scrollBehavior = "smooth";
+                body.style.overflowY = "scroll";
+              }, 1000);
+              setTimeout(() => {
+                document.getElementById("loader-container").style.opacity = 0;
+                setTimeout(() => {
+                  document.getElementById("loader-container").style.display =
+                    "none";
+                }, 1000);
+              }, 2500);
+              console.log("Loaded third images");
+              update(html, html);
+              update(body, body);
+              for (var i = 1; i < numFrames; i += 3) {
+                load(i, () => {
+                  loaded++;
+                  // console.log((loaded / numFrames) * 100 + "%");
+                });
+              }
+              for (var i = 2; i < numFrames; i += 3) {
+                load(i, () => {
+                  loaded++;
+                  // console.log((loaded / numFrames) * 100 + "%");
+                });
+              }
+            }
+          });
+        }
+      });
+
+      const filePath = (i) =>
+        `${filePrefix}${fileExt}/${i.toString().padStart(3, "0")}.${fileExt}`;
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      var loaded = 0;
+      var frameIndex = 0;
+      var loadPercentage = 0;
+      var imgRatio;
+
+      function updateImage(frame) {
+        if (canvas.width / canvas.height > imgRatio) {
+          var imgWidth = canvas.width;
+          var imgHeight = canvas.width / imgRatio;
+        } else {
+          var imgWidth = canvas.height * imgRatio;
+          var imgHeight = canvas.height;
+        }
+        try {
+          ctx.drawImage(images[frame], 0, 0, imgWidth, imgHeight);
+        } catch (e) {}
+      }
+
+      function load(i, callback) {
+        images[i] = new Image();
+        images[i].src = filePath(i + 1);
+        images[i].onload = callback;
+      }
+
+      body.style.overflowY = "hidden";
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        updateImage(frameIndex);
+      }
+
+      window.addEventListener("resize", resize);
+      window.addEventListener("orientationchange", resize);
+
+      function update(scrollTopEl, maxScrollTopEl) {
+        const scrollTop = scrollTopEl.scrollTop;
+        const maxScrollTop = maxScrollTopEl.scrollHeight - window.innerHeight;
+        const scrollFraction = scrollTop / maxScrollTop;
+        frameIndex = Math.min(
+          numFrames - 1,
+          Math.floor(scrollFraction * numFrames)
+        );
+
+        requestAnimationFrame(() => updateImage(frameIndex));
+      }
+
+      document.body.addEventListener("scroll", () => update(body, body));
+      window.addEventListener("touchmove", () => update(html, html));
+      window.addEventListener("scroll", () => update(html, body));
+
+      requestAnimationFrame(() => updateImage(0));
+
+      // console.log("Loaded");
+      // #endregion
+    </script>
+  </body>
+</html>
