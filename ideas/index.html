@@ -10,51 +10,6 @@
     <title>King's Affair 2024</title>
     <link rel="stylesheet" href="/assets/css/fonts.css" />
     <style>
-      @media (max-width: 600px) {
-        html {
-          overflow: hidden;
-          width: 100%;
-        }
-        body {
-          height: 100%;
-          position: fixed;
-        }
-        p {
-          font-size: large;
-        }
-
-        h3 {
-          font-size: larger;
-        }
-
-        #hero {
-          justify-content: center;
-        }
-
-        body {
-          width: 100%;
-          margin: auto;
-        }
-
-        #about,
-        #contact {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: auto;
-        }
-
-        .container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .ContactsColumn {
-          width: 100%;
-        }
-      }
-
       body {
         text-align: center;
         font-size: 1.5rem;
@@ -68,7 +23,8 @@
       }
 
       h3 {
-        font-size: 1.5em;
+        font-size: 3rem;
+        margin: 2% 0;
       }
 
       #hero {
@@ -147,6 +103,12 @@
         align-items: center;
         top: 0;
         height: 100vh;
+        font-family: 'Kalnia', serif;
+      }
+
+      #splash {
+        margin-top: 25vh;
+        font-family: 'WildWood', serif;
       }
 
       .title {
@@ -245,6 +207,7 @@
         left: 0;
         display: flex;
         justify-content: space-evenly;
+        font-family: "Kalnia", serif;
       }
 
       #navbar #icon {
@@ -256,7 +219,8 @@
         color: white;
         padding: 14px 16px;
         text-decoration: none;
-        font-size: 17px;
+        font-size: 1.25rem;
+        transition: 0.3s;
       }
       .navitem:hover {
         background-color: #46562a;
@@ -279,13 +243,13 @@
           display: block;
         }
 
-        #navbar.responsive {
+        #navbar.responsive a #navbar.responsive {
           position: fixed;
           top: 0;
           width: 100%;
           left: 0;
         }
-        #navbar.responsive a#icon {
+        #navbar.responsive #icon {
           position: absolute;
           right: 0;
           top: 0;
@@ -725,6 +689,45 @@
         transform: translate3d(12px, 350px, -25px) rotateX(-90deg) skewX(20deg);
         transform-origin: 0 0;
       }
+      @media (max-width: 600px) {
+        html {
+          overflow: hidden;
+          width: 100%;
+        }
+        body {
+          height: 300%;
+          position: fixed;
+          scroll-behavior: smooth;
+        }
+        p {
+          font-size: 1rem;
+        }
+
+        h3 {
+          font-size: 2rem;
+        }
+
+        body {
+          width: 100%;
+          margin: auto;
+        }
+
+        #about,
+        #contact {
+          align-items: center;
+          margin: 0;
+        }
+
+        .container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .ContactsColumn {
+          width: 100%;
+        }
+      }
     </style>
     <script
       defer
@@ -818,7 +821,7 @@
       </div>
       <span id="loader-percentage">Loading...</span>
     </div>
-    <div id="navbar">
+    <div id="navbar" class="navbar">
       <a class="navitem" href="#about">About</a>
       <a class="navitem" href="#launch">Launch Party</a>
       <a class="navitem" href="#tickets">Tickets</a>
@@ -836,16 +839,13 @@
     <script>
       function toggleNavbarResponse() {
         var x = document.getElementById("navbar");
-        if (x.className === "navbar") {
-          x.className += " responsive";
-        } else {
-          x.className = "navbar";
-        }
+        console.log(x.className);
+        x.className = x.className === "navbar" ? "navbar responsive" : "navbar";
       }
     </script>
     <section id="hero">
-      <div class="container">
-        <div id="splash" style="margin-top: 25vh">
+      <div class="container" id="hero-container">
+        <div id="splash">
           <p class="title load">King's</p>
           <p class="title load">Affair</p>
           <p class="year load">2024</p>
@@ -865,15 +865,7 @@
       </div>
     </section>
     <section id="about">
-      <div
-        class="container"
-        style="
-          top: 0;
-          height: 100vh;
-          font-size: 1.25em;
-          font-family: 'Kalnia', serif;
-        "
-      >
+      <div class="container" style="font-size: 1.25em">
         <h3>About the King's Affair</h3>
         <p>At King's, we like to do things differently.</p>
         <p>
@@ -1092,6 +1084,8 @@
     </section>
     <canvas id="bg"></canvas>
     <script>
+      const TEST = true;
+
       const html = document.documentElement;
       const body = document.body;
       const canvas = document.getElementById("bg");
@@ -1099,6 +1093,17 @@
       const numFrames = 789;
       const filePrefix = "/assets/bg/images/1920/";
       const images = [];
+
+      // TODO: remove for production
+      if (TEST) {
+        document.getElementById("loader-container").style.display = "none";
+        document.querySelectorAll(".load").forEach((e) => {
+          e.classList.add("loaded");
+          e.classList.remove("load");
+        });
+        html.style.scrollBehavior = "smooth";
+        body.style.overflowY = "scroll";
+      }
 
       var fileExt = "jpg";
 
