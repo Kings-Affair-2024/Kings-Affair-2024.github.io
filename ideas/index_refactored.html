@@ -158,11 +158,166 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* justify-content: flex-start; */
         align-items: center;
-        top: 0;
-        height: 100vh;
+        top: calc(28px + 1.5rem);
+        height: calc(100vh - 28px - 1.5rem);
         font-family: "Kalnia", serif;
+      }
+      /* #endregion */
+      /* #region CONTACT */
+      #contactlist {
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem;
+      }
+
+      @media screen and (min-width: 400px) {
+        #contactlist {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media screen and (min-width: 700px) {
+        #contactlist {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media screen and (min-width: 950px) {
+        #contactlist {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media screen and (min-width: 1450px) {
+        #contactlist {
+          grid-template-columns: repeat(6, 1fr);
+        }
+      }
+
+      .lanterncontainer {
+        position: relative;
+        text-align: center;
+        transform-origin: center -20px;
+        transition: transform 0.2s ease-in-out;
+      }
+      .lantern {
+        /* filter: drop-shadow(0px 0px 30px #fbd260); */
+        filter: drop-shadow(0px 0px 5px #fbd260);
+        /* width: 200px; */
+        width: calc(150px + 2vw);
+      }
+      .contact {
+        position: absolute;
+        text-align: center;
+        /* font-size: 1.1rem; */
+        /* relative font size */
+        font-size: calc(0.8rem + 0.2vw);
+        font-family: "Kalnia", serif;
+        width: 200px;
+        display: block;
+        margin: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        word-wrap: break-word;
+        z-index: 3;
+      }
+      .contacticon {
+        width: 55px;
+        padding-top: 10px;
+        z-index: 4;
+      }
+      .light {
+        position: absolute;
+        left: 50%;
+        bottom: 5%;
+        transform: translate(-50%, 0);
+        opacity: 0.5;
+        z-index: 2;
+        width: 50px;
+        aspect-ratio: 1;
+        background-color: #fa700e;
+        border-radius: 2% 87% 45% 85%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        box-shadow: -10px -10px 15px 5px #fa700e;
+      }
+      .lanterncontainer.hover {
+        animation: swing 6s ease-in-out infinite;
+      }
+
+      .lanterncontainer .lantern.hover {
+        animation: glowBox 4s infinite;
+      }
+
+      .lanterncontainer .light.hover {
+        animation: glow 4s infinite alternate;
+      }
+
+      /* as before, but returns to original state */
+      @keyframes glowBox {
+        0% {
+          filter: drop-shadow(0px 0px 5px #fbd260);
+        }
+        50% {
+          filter: drop-shadow(0px 0px 30px #fbd260);
+        }
+        100% {
+          filter: drop-shadow(0px 0px 5px #fbd260);
+        }
+      }
+
+      /* starting from rotation of 0deg to avoid jank */
+      @keyframes swing {
+        0% {
+          transform: rotate(0deg);
+        }
+        10% {
+          transform: rotate(3deg);
+        }
+        20% {
+          transform: rotate(-3deg);
+        }
+        30% {
+          transform: rotate(3deg);
+        }
+        40% {
+          transform: rotate(-3deg);
+        }
+        50% {
+          transform: rotate(3deg);
+        }
+        60% {
+          transform: rotate(-3deg);
+        }
+        70% {
+          transform: rotate(3deg);
+        }
+        80% {
+          transform: rotate(-3deg);
+        }
+        90% {
+          transform: rotate(3deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      /* as before, but returns to original state */
+      @keyframes glow {
+        0% {
+          box-shadow: -10px -10px 15px 5px #fa700e;
+        }
+        50% {
+          box-shadow: -10px -10px 15px 60px #fa700e;
+        }
+        100% {
+          box-shadow: -10px -10px 15px 5px #fa700e;
+        }
       }
       /* #endregion */
       /* #region LOADING SCREEN */
@@ -708,6 +863,189 @@
         </p>
       </div>
     </section>
+    <section>
+      <div id="contactlist">
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Socials</b><br />
+            <a
+              href="https://www.facebook.com/people/Kings-Affair/100089874409050/"
+              target="_blank"
+              ><svg
+                class="contacticon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"
+                />
+              </svg>
+            </a>
+            <br />
+            <a href="https://www.instagram.com/kingsaffair" target="_blank"
+              ><svg
+                class="contacticon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                />
+              </svg>
+            </a>
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Chairs</b><br />
+            <a href="mailto: chair@kingsaffair.co.uk"
+              >chair@kings<br />affair.co.uk</a
+            >
+            <br />
+            Esther Welbrock<br />
+            Marielle Lee
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Treasurers</b><br />
+            <a href="mailto: treasurer@kingsaffair.co.uk"
+              >treasurer@kings<br />affair.co.uk</a
+            >
+            <br />
+            Joshitha Yeggoni<br />
+            Astrid Healy-Carrasco
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Arts</b><br />
+            <a href="mailto: arts@kingsaffair.co.uk"
+              >arts@kings<br />affair.co.uk</a
+            >
+            <br />
+            Edie Levine<br />
+            Teddy Graham<br />
+            Olga Krivdina
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Production</b> <br />
+            <a href="mailto: production@kingsaffair.co.uk"
+              >production@kings<br />affair.co.uk</a
+            >
+            <br />
+            Eva Lemmy<br />
+            Will Rowlands
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Music</b><br />
+            <a href="mailto: music@kingsaffair.co.uk"
+              >music@kings<br />affair.co.uk</a
+            >
+            <br />
+            Steph Theodorou<br />
+            Izzy Wilkinson<br />
+            Rose Papadopoulos-Hedden
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Ents</b><br />
+            <a href="mailto: ents@kingsaffair.co.uk"
+              >ents@kings<br />affair.co.uk</a
+            >
+            <br />
+            Farzana Ramazan<br />
+            Zaheda Hussain
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Food and Drink</b><br />
+            <a href="mailto: food@kingsaffair.co.uk"
+              >food@kings<br />affair.co.uk</a
+            >
+            <br />
+            Lauren Todd<br />
+            Kiya Gupta
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Security and Infrastructure</b><br />
+            <a href="mailto: security@kingsaffair.co.uk"
+              >security@kings<br />affair.co.uk</a
+            >
+            <br />
+            Ed Marsh<br />
+            Luca De Maestri
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Sustainability</b><br />
+            <a href="mailto: sustainability@kingsaffair.co.uk"
+              >sustainability@kings<br />affair.co.uk</a
+            >
+            <br />
+            Lily-Rose Dupin
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Workers and Legal</b><br />
+            <a href="mailto: workers@kingsaffair.co.uk"
+              >workers@kings<br />affair.co.uk</a
+            >
+            <br />
+            Prakruti Rao<br />
+            Lara Riddell
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/KA Banner.png" class="lantern" />
+          <p class="contact">
+            <b>Ticketing and IT</b><br />
+            <a href="mailto: ticketing@kingsaffair.co.uk"
+              >ticketing@kings<br />affair.co.uk</a
+            >
+            <br />
+            Sam Mashil<br />
+            Hannah Yang<br />
+            Ava James
+          </p>
+          <div class="light"></div>
+        </div>
+      </div>
+    </section>
     <canvas id="bg"></canvas>
     <script>
       // #region LOADING SCREEN
@@ -737,7 +1075,6 @@
       var webp = new Image();
 
       function supportsWebp() {
-        // as promise
         return new Promise(function (resolve) {
           var img = new Image();
           img.onload = function () {
@@ -861,6 +1198,37 @@
       requestAnimationFrame(() => updateImage(0));
 
       // console.log("Loaded");
+      // #endregion
+    </script>
+    <script>
+      // #region LANTERNS
+      if (window.innerWidth > 850) {
+        document.querySelectorAll(".lanterncontainer").forEach((e) => {
+          e.addEventListener("mouseenter", () => {
+            e.classList.add("hover");
+            e.querySelector(".light").classList.add("hover");
+            e.querySelector(".lantern").classList.add("hover");
+            e.dataset.listenerEvents = 0;
+            e.dataset.mouseover = 1;
+          });
+
+          e.addEventListener("mouseleave", () => {
+            e.dataset.mouseover = 0;
+          });
+
+          e.addEventListener("animationiteration", (event) => {
+            if (e.dataset.mouseover == 0) {
+              event.animationName == "glow"
+                ? e.querySelector(".light").classList.remove("hover")
+                : event.animationName == "glowBox"
+                ? e.querySelector(".lantern").classList.remove("hover")
+                : event.animationName == "swing"
+                ? e.classList.remove("hover")
+                : null;
+            }
+          });
+        });
+      }
       // #endregion
     </script>
   </body>
