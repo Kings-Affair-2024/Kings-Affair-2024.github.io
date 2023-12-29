@@ -726,6 +726,48 @@
 
         .ContactsColumn {
           width: 100%;
+        } 
+        /* .lantern { 
+          width: 25 px;
+          height: 100%; 
+        } */
+        .lanterncontainer {
+          width: 30%;
+          position: relative;
+          text-align: center;
+          transform-origin: center -20px;
+          margin-left: -10px; 
+        }
+        .lantern {
+          filter: drop-shadow(0px 0px 30px #fbd260);
+          width: 100%;
+        }
+        #contactlist { 
+          align-items: stretch;
+          justify-content: center;
+          flex-direction: row; 
+          display:  flex; 
+          flex-wrap: wrap; 
+          margin: 0; 
+          /* overflow: hidden;  */
+        }
+        p.contact {
+          position: absolute;
+          text-align: center;
+          font-size: 0.5em;
+          font-family: "Kalnia", serif;
+          width: 100%;
+          height: 100%; 
+          display: block;
+          margin: 0;
+          top: 65%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          word-wrap: break-word;
+        }
+        svg.contacticon {
+          margin-top: 10px; 
+          height: 25%; 
         }
       }
     </style>
@@ -1084,7 +1126,7 @@
     </section>
     <canvas id="bg"></canvas>
     <script>
-      const TEST = true;
+      const TEST = false;
 
       const html = document.documentElement;
       const body = document.body;
