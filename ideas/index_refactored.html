@@ -16,6 +16,7 @@
         min-width: fit-content;
         overflow-x: hidden;
         font-family: "Kalnia", serif;
+        color: #fff;
       }
 
       canvas {
@@ -88,7 +89,9 @@
         bottom: calc(10vh + 10px);
         left: 50%;
         transform: translateX(-50%);
-        color: #000;
+        /* color: #fff; */
+        /* fill: #c4ceac; */
+        fill: #fff;
         transition-duration: 0.2s;
       }
 
@@ -142,7 +145,7 @@
       /* #endregion */
       /* #region ABOUT */
       #about {
-        height: 300vmin;
+        height: 200vmin;
         display: flex;
         justify-content: center;
         /* align-items: center; */
@@ -173,6 +176,7 @@
         justify-content: center;
         gap: 1rem;
         margin: 2rem;
+        color: #000;
       }
 
       @media screen and (min-width: 400px) {
@@ -338,6 +342,7 @@
         margin: 0;
         padding: 0;
         perspective: 900px;
+        color: #000;
       }
 
       #full-book {
@@ -415,6 +420,7 @@
           url("/assets/media/book_cover/book_cover.webp") type("image/webp"),
           url("/assets/media/book_cover/book_cover.jpg") type("image/jpeg")
         );
+        background-color: #291e0c;
         box-shadow: inset rgba(255, 255, 255, 0.3) 0px -1px 0 0,
           #35582c 0px 1px 0px 0px;
       }
@@ -429,7 +435,7 @@
       }
       #flip #back,
       #flip #back div {
-        background-color: white;
+        background-color: #fff;
       }
 
       #flip > div {
@@ -497,7 +503,7 @@
         }
       }
       #book #top {
-        background-color: white;
+        background-color: #fff;
         background-size: 100% 100%;
         background-position: 100%;
         box-shadow: inset rgba(0, 0, 0, 0.2) 510px 0 50px -140px;
@@ -523,6 +529,7 @@
       #book #top p {
         font-size: 15px;
         font-family: "Libre Caslon Text", serif;
+        font-smooth: always;
         text-align: center;
         margin: 0;
       }
@@ -662,7 +669,7 @@
       .navitem {
         float: left;
         display: block;
-        color: white;
+        color: #fff;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 1.25rem;
@@ -1050,14 +1057,14 @@
     <canvas id="bg"></canvas>
     <script>
       // #region LOADING SCREEN
-      const TEST = true;
+      const TEST = false;
 
       const html = document.documentElement;
       const body = document.body;
       const canvas = document.getElementById("bg");
       const ctx = canvas.getContext("2d");
-      const numFrames = 789;
-      const filePrefix = "/assets/bg/images/1920/";
+      const numFrames = 412;
+      const filePrefix = "/assets/bg/images/";
       const images = [];
 
       // TODO: remove for production
