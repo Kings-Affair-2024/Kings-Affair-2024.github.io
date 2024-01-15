@@ -143,8 +143,22 @@
       }
 
       /* #endregion */
+      /* #region LAUNCH */
+      #launch {
+        height: 200vmin;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        /* margin: auto 15rem; */
+        width: calc(280px + 15vw);
+        margin: auto;
+        text-align: justify;
+        text-align-last: center;
+      }
+    
+      /* #endregion */
       /* #region TICKETS*/
-      #ticketButton{
+      .linkButton{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -160,8 +174,20 @@
         color: black;
       }
       
-      #ticketButton:hover{
+      .linkButton:hover{
         animation: glowBox 4s infinite;
+      }
+
+      #tickets {
+        height: 200vmin;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        /* margin: auto 15rem; */
+        width: calc(280px + 15vw);
+        margin: auto;
+        text-align: justify;
+        text-align-last: center;
       }
       /* #endregion */
       /* #region ABOUT */
@@ -892,6 +918,20 @@
         </p>
       </div>
     </section>
+    <section id="launch">
+      <div class="container" style="font-size: 1.25em">
+        <h3>Launch Party</h3>
+        <p>The theme for this year's wildly anticipated King's Affair will be revealed at midnight on 17th February.</p>
+        <p>You're going to want to be there!</p>
+        <p>To avoid missing out, click below:</p>
+        <br/>
+        <a href="https://www.google.co.uk/" target="_blank" style="text-decoration: none;">
+          <div class="linkButton">
+            <h3 class="buttonText">Launch</h3>
+          </div>
+        </a>
+      </div>
+    </section>
     <section id="tickets">
       <div class="container" style="font-size: 1.25em">
         <h3>Tickets</h3>
@@ -899,7 +939,7 @@
         <p>To view prices or buy tickets, click below:</p>
         <br/>
         <a href="https://www.google.co.uk/" target="_blank" style="text-decoration: none;">
-          <div id="ticketButton">
+          <div class="linkButton">
             <h3 class="buttonText">Tickets</h3>
           </div>
         </a>
@@ -1005,7 +1045,7 @@
             <br />
             Steph Theodorou<br />
             Izzy Wilkinson<br />
-            Rose Papadopoulos-Hedden
+            Rose Papadopoulos-<br />Hedden
           </p>
           <div class="light"></div>
         </div>
