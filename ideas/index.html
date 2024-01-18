@@ -155,10 +155,10 @@
         text-align: justify;
         text-align-last: center;
       }
-    
+
       /* #endregion */
-      /* #region TICKETS*/
-      .linkButton{
+      /* #region TICKETS */
+      .linkButton {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -170,11 +170,11 @@
         border-radius: 75px 75px;
         filter: drop-shadow(0px 0px 5px #fbd260);
       }
-      .buttonText{
+      .buttonText {
         color: black;
       }
-      
-      .linkButton:hover{
+
+      .linkButton.hover {
         animation: glowBox 4s infinite;
       }
 
@@ -235,7 +235,7 @@
       @media screen and (min-width: 700px) {
         #contactlist {
           grid-template-columns: repeat(3, 1fr);
-margin: 2rem;
+          margin: 2rem;
         }
       }
 
@@ -917,11 +917,18 @@ margin: 2rem;
     <section id="launch">
       <div class="container" style="font-size: 1.25em">
         <h3>Launch Party</h3>
-        <p>The theme for this year's wildly anticipated King's Affair will be revealed at midnight on 17th February.</p>
+        <p>
+          The theme for this year's wildly anticipated King's Affair will be
+          revealed at midnight on 17th February.
+        </p>
         <p>You're going to want to be there!</p>
         <p>To avoid missing out, click below:</p>
-        <br/>
-        <a href="https://www.google.co.uk/" target="_blank" style="text-decoration: none;">
+        <br />
+        <a
+          href="https://www.google.co.uk/"
+          target="_blank"
+          style="text-decoration: none"
+        >
           <div class="linkButton">
             <h3 class="buttonText">Launch</h3>
           </div>
@@ -931,16 +938,22 @@ margin: 2rem;
     <section id="tickets">
       <div class="container" style="font-size: 1.25em">
         <h3>Tickets</h3>
-        <p>Tickets for the King's Affair will be made available through Oxex on the night of the launch party.</p>
+        <p>
+          Tickets for the King's Affair will be made available through Oxex on
+          the night of the launch party.
+        </p>
         <p>To view prices or buy tickets, click below:</p>
-        <br/>
-        <a href="https://www.google.co.uk/" target="_blank" style="text-decoration: none;">
+        <br />
+        <a
+          href="https://www.google.co.uk/"
+          target="_blank"
+          style="text-decoration: none"
+        >
           <div class="linkButton">
             <h3 class="buttonText">Tickets</h3>
           </div>
         </a>
       </div>
-    </section>
     </section>
     <section id="contact">
       <div id="contactlist">
@@ -1281,13 +1294,12 @@ margin: 2rem;
     </script>
     <script>
       // #region LANTERNS
-      if (window.innerWidth > 850) {
+      if (window.innerWidth > 500) {
         document.querySelectorAll(".lanterncontainer").forEach((e) => {
           e.addEventListener("mouseenter", () => {
             e.classList.add("hover");
             e.querySelector(".light").classList.add("hover");
             e.querySelector(".lantern").classList.add("hover");
-            e.dataset.listenerEvents = 0;
             e.dataset.mouseover = 1;
           });
 
@@ -1304,6 +1316,22 @@ margin: 2rem;
                 : event.animationName == "swing"
                 ? e.classList.remove("hover")
                 : null;
+            }
+          });
+        });
+        document.querySelectorAll(".linkButton").forEach((e) => {
+          e.addEventListener("mouseenter", () => {
+            e.classList.add("hover");
+            e.dataset.mouseover = 1;
+          });
+
+          e.addEventListener("mouseleave", () => {
+            e.dataset.mouseover = 0;
+          });
+
+          e.addEventListener("animationiteration", (event) => {
+            if (e.dataset.mouseover == 0) {
+              e.classList.remove("hover");
             }
           });
         });
