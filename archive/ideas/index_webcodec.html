@@ -331,7 +331,7 @@
       canvasEl.width = window.innerWidth;
       canvasEl.height = window.innerHeight;
 
-      let file = await fetch("/assets/bg/video/1080.mp4");
+      let file = await fetch("/assets/bg/video/upscaled.mp4");
       let blob = await file.blob();
       let videoUrl = URL.createObjectURL(blob);
 
