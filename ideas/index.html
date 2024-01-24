@@ -927,7 +927,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <img src="/assets/media/logo/logo.png" class="lantern" />
           <h1>King's Affair 2024</h1>
         </div>
-        <a href="#about" aria-label="Scroll down to learn more"
+        <a href="#launch" aria-label="Scroll down to learn more"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             class="arrows load"
@@ -1041,8 +1041,8 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
               >chair@kings<br />affair.co.uk</a
             >
             <br />
-            Esther Welbrock<br />
-            Marielle Lee
+            Marielle Lee<br />
+            Esther Welbrock
           </p>
           <div class="light"></div>
         </div>
@@ -1192,7 +1192,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
       const body = document.body;
       const canvas = document.getElementById("bg");
       const ctx = canvas.getContext("2d");
-      const numFrames = 412;
+      const numFrames = 823;
       const filePrefix = "/assets/bg/images/";
       const images = [];
 
@@ -1229,13 +1229,13 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         fileExt = result ? "webp" : "jpg";
 
         // load every third image first, then load the rest
-        for (var i = 0; i < numFrames; i += 3) {
+        for (var i = 0; i < numFrames; i += 4) {
           load(i, () => {
             loaded++;
             // console.log((loaded / numFrames) * 100 + "%");
             document.getElementById("loader-percentage").innerHTML =
-              Math.floor((loaded / numFrames) * 300) + "%";
-            if (loaded == Math.floor(numFrames / 3)) {
+              Math.floor((loaded / numFrames) * 400) + "%";
+            if (loaded == Math.floor(numFrames / 4)) {
               imgRatio = images[0].width / images[0].height;
               document.querySelectorAll(".load").forEach((e) => {
                 e.classList.add("loaded");
@@ -1258,16 +1258,19 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
               console.log("Loaded third images");
               update(html, html);
               update(body, body);
-              for (var i = 1; i < numFrames; i += 3) {
+              for (var i = 2; i < numFrames; i += 4) {
                 load(i, () => {
                   loaded++;
-                  // console.log((loaded / numFrames) * 100 + "%");
                 });
               }
-              for (var i = 2; i < numFrames; i += 3) {
+              for (var i = 1; i < numFrames; i += 4) {
                 load(i, () => {
                   loaded++;
-                  // console.log((loaded / numFrames) * 100 + "%");
+                });
+              }
+              for (var i = 3; i < numFrames; i += 4) {
+                load(i, () => {
+                  loaded++;
                 });
               }
             }
