@@ -20,9 +20,23 @@
                 (__)\       )\/\
                     ||----w |
                     ||     ||
-            -->
-    <link rel="icon" href="/assets/media/logo.png" />
-    <link rel="stylesheet" href="/assets/css/fonts.css" />
+    -->
+    <link
+      rel="preload"
+      href="/assets/fonts/woff2/wild-wood-font.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/woff2/kalnia.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="icon" href="/assets/media/favicon.ico" />
+    <link rel="stylesheet" href="/assets/fonts/fonts.css" />
     <script
       src="https://cdn.userway.org/widget.js"
       data-account="3yfIkdOQox"
@@ -55,16 +69,6 @@
         font-weight: 550;
         /* color: #fff; */
       }
-
-      /* #region FONT DEFINITIONS */
-      .font-kalnia {
-        font-family: "Kalnia", serif;
-      }
-
-      .font-wild-wood {
-        font-family: "WildWood", serif;
-      }
-      /* #endregion */
       /* #region HERO */
       #hero {
         height: 100vh;
@@ -439,6 +443,7 @@
 
       #loader-percentage {
         color: #fff;
+        font-family: "WildWood", serif;
         font-size: 2rem;
         margin-top: 2rem;
       }
@@ -887,7 +892,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           </div>
         </div>
       </div>
-      <span id="loader-percentage" class="font-wild-wood">Loading...</span>
+      <span id="loader-percentage">Loading...</span>
     </div>
     <!-- #endregion -->
     <!-- #region NAVBAR -->
@@ -917,7 +922,10 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
     <section id="hero">
       <div id="hero-container">
         <div id="hero-text">
-          <img src="/assets/media/logo.png" class="lantern" />
+          <picture>
+            <source srcset="/assets/media/logo.webp" type="image/webp" />
+            <img src="/assets/media/logo.png" class="lantern" />
+          </picture>
           <h1>King's Affair 2024</h1>
         </div>
         <a href="#launch" aria-label="Scroll down to learn more"
