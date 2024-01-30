@@ -1198,7 +1198,6 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
       const canvas = document.getElementById("bg");
       const ctx = canvas.getContext("2d");
       const numFrames = 823;
-      const filePrefix = "/assets/bg/images/";
       const images = [];
 
       // TODO: remove for production
@@ -1212,6 +1211,8 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         body.style.overflowY = "scroll";
       }
 
+      const filePrefix = (window.innerWidth < 500 && window.innerHeight > window.innerWidth) ? "/assets/bg/images/mobile/" : "/assets/bg/images/desktop/";
+      
       var fileExt = "jpg";
 
       var webp = new Image();
