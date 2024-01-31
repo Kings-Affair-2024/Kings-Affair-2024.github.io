@@ -40,6 +40,7 @@
     <script
       src="https://cdn.userway.org/widget.js"
       data-account="3yfIkdOQox"
+      defer
     ></script>
     <style>
       body {
@@ -1005,7 +1006,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
       <h3 style="text-align: center">Socials and Contacts</h3>
       <div id="contactlist">
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Socials</b><br />
             <a
@@ -1039,7 +1040,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Chairs</b><br />
             <a href="mailto:chair@kingsaffair.co.uk"
@@ -1052,7 +1053,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Treasurers</b><br />
             <a href="mailto:treasurer@kingsaffair.co.uk"
@@ -1065,7 +1066,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Arts</b><br />
             <a href="mailto:arts@kingsaffair.co.uk"
@@ -1079,7 +1080,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Production</b> <br />
             <a href="mailto:production@kingsaffair.co.uk"
@@ -1092,7 +1093,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Music</b><br />
             <a href="mailto:music@kingsaffair.co.uk"
@@ -1106,7 +1107,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Ents</b><br />
             <a href="mailto:ents@kingsaffair.co.uk"
@@ -1119,7 +1120,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Food & Drink</b><br />
             <a href="mailto:food@kingsaffair.co.uk"
@@ -1132,7 +1133,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b
               >Accessibility, Security<br />
@@ -1148,7 +1149,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Sustainability</b><br />
             <a href="mailto:sustainability@kingsaffair.co.uk"
@@ -1160,7 +1161,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Workers & Legal</b><br />
             <a href="mailto:workers@kingsaffair.co.uk"
@@ -1173,7 +1174,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           <div class="light"></div>
         </div>
         <div class="lanterncontainer">
-          <img src="/assets/media/lantern.png" class="lantern" />
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
           <p class="contact">
             <b>Ticketing & IT</b><br />
             <a href="mailto:ticketing@kingsaffair.co.uk"
@@ -1211,8 +1212,11 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         body.style.overflowY = "scroll";
       }
 
-      const filePrefix = (window.innerWidth < 500 && window.innerHeight > window.innerWidth) ? "/assets/bg/images/mobile/" : "/assets/bg/images/desktop/";
-      
+      const filePrefix =
+        window.innerWidth < 500 && window.innerHeight > window.innerWidth
+          ? "/assets/bg/images/mobile/"
+          : "/assets/bg/images/desktop/";
+
       var fileExt = "jpg";
 
       var webp = new Image();
