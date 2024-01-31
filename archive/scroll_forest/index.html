@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> King's Affair </title>
+        <link rel = "stylesheet" href = "style.css">
+        <script src = "script.js"> </script>
+    </head>
+    <body>
+        <section class = "introduction">
+            <h1> Welcome to King's Affair</h1>
+            <h1> Something edgy </h1>
+        </section>
+        <section class = "container">
+            <section class = "content">
+                <h1> Frame 1 </h1>
+                <p> show some content </p>
+            </section>
+        </section>
+        <section class = "container">
+            <section class = "content">
+                <h1> Frame 2 </h1>
+                <p> show some content </p>
+            </section>
+        </section>
+        <section class = "container">
+            <section class = "content">
+                <h1> Frame 3 </h1>
+                <p> show some content </p>
+            </section>
+        </section>
+        <section class = "container">
+            <section class = "content">
+                <h1> Frame 3 </h1>
+                <p> show some content </p>
+            </section>
+        </section>
+        <section class = "container">
+            <section class = "content">
+                <h1> Frame 3 </h1>
+                <p> show some content </p>
+            </section>
+        </section>
+        <section class = "container">
+            <section class = "content">
+                <h1> Frame 3 </h1>
+                <p> show some content </p>
+            </section>
+        </section>
+        <div id="set-height"></div>
+
+        <video id="v0" tabindex="0", autobuffer preload>
+            <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="background_video.MP4"></source>
+        </video>
+        <script>
+    
+            // enterView({
+            //     selector: 'section',
+            //     enter: function(el) {
+            //         el.classList.add('entered');
+            //     }
+            // })
+        
+            var frameNumber = 0, // start video at frame 0
+            // lower numbers = faster playback
+            playbackConst = 1000, 
+            // get page height from video duration
+            setHeight = document.getElementById("set-height"), 
+            // select video element         
+            vid = document.getElementById('v0'); 
+            // var vid = $('#v0')[0]; // jquery option
+    
+        // dynamically set the page height according to video length
+        vid.addEventListener('loadedmetadata', function() {
+        setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+        });
+    
+    
+        // Use requestAnimationFrame for smooth playback
+        function scrollPlay(){  
+        var frameNumber  = window.pageYOffset/playbackConst;
+        vid.currentTime  = frameNumber;
+        // window.requestAnimationFrame(scrollPlay);
+        }
+    
+        window.requestAnimationFrame(scrollPlay);
+        
+        window.addEventListener('scroll', scrollPlay, false);
+
+        </script>
+    </body>
+</html>
