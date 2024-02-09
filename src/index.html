@@ -62,6 +62,8 @@
 
       h3 {
         font-weight: 800;
+        font-size: calc(1.5rem + 1vw);
+        margin-bottom: 3%;
       }
 
       p {
@@ -165,21 +167,11 @@
       }
 
       /* #endregion */
-      /* #region LAUNCH */
-      #launch {
-        height: 200vmin;
-        display: flex;
-        justify-content: center;
-        /* align-items: center; */
-        /* margin: auto 15rem; */
-        width: calc(280px + 15vw);
-        margin: auto;
-        text-align: justify;
-        text-align-last: center;
+      /* #region MAIN SECTIONS */
+      .buttonLink {
+        text-decoration: none;
       }
 
-      /* #endregion */
-      /* #region TICKETS */
       .linkButton {
         display: flex;
         justify-content: center;
@@ -191,6 +183,13 @@
         text-align: center;
         border-radius: 75px 75px;
         filter: drop-shadow(0px 0px 5px #fbd260);
+        text-decoration: none;
+      }
+
+      .linkButton.small {
+        width: calc(150px + 2vw);
+        height: calc(30px + 2vw);
+        font-size: 1rem;
       }
 
       .disabled {
@@ -200,32 +199,22 @@
 
       .buttonText {
         color: black;
+        font-weight: 800;
+        /* font-size: calc(1.5rem + 1vw); */
       }
 
       .linkButton.hover {
         animation: glowBox 4s infinite;
       }
 
-      #tickets {
+      .section {
         height: 200vmin;
         display: flex;
         justify-content: center;
         /* align-items: center; */
         /* margin: auto 15rem; */
         width: calc(280px + 15vw);
-        margin: auto;
-        text-align: justify;
-        text-align-last: center;
-      }
-      /* #endregion */
-      /* #region ABOUT */
-      #about {
-        height: 200vmin;
-        display: flex;
-        justify-content: center;
-        /* align-items: center; */
-        /* margin: auto 15rem; */
-        width: calc(280px + 15vw);
+        /* width: calc(180px + 25vw); */
         margin: auto;
         text-align: justify;
         text-align-last: center;
@@ -240,8 +229,13 @@
         align-items: center;
         top: calc(28px + 1.5rem);
         height: calc(100vh - 28px - 1.5rem);
-        font-family: "Kalnia", serif;
+        font-size: 1.25em;
       }
+
+      .container.small > p {
+        font-size: large;
+      }
+
       /* #endregion */
       /* #region CONTACT */
       #contactlist {
@@ -297,7 +291,6 @@
         /* font-size: 1.1rem; */
         /* relative font size */
         font-size: calc(0.8rem + 0.2vw);
-        font-family: "Kalnia", serif;
         width: 200px;
         display: block;
         margin: 0;
@@ -732,7 +725,6 @@
         left: 0;
         display: flex;
         justify-content: space-evenly;
-        font-family: "Kalnia", serif;
       }
 
       #navbar #icon {
@@ -754,7 +746,7 @@
         background-color: #1e2719;
       }
 
-      @media screen and (max-width: 550px) {
+      @media screen and (max-width: 600px) {
         .navitem {
           display: none;
         }
@@ -901,8 +893,8 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
       <a class="navitem" href="#about">About</a>
       <a class="navitem" href="#launch">Launch Party</a>
       <a class="navitem" href="#tickets">Tickets</a>
-      <!--<a class="navitem" href="#namechange">Name Changes</a>
-      <a class="navitem" href="#charity">Charity</a>-->
+      <!-- <a class="navitem" href="#namechange">Name Changes</a> -->
+      <a class="navitem" href="#charity">Charity</a>
       <a class="navitem" href="#contact">Contact</a>
       <a
         class="navitem"
@@ -943,8 +935,8 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         </a>
       </div>
     </section>
-    <section id="about">
-      <div class="container" style="font-size: 1.25em">
+    <section id="about" class="section">
+      <div class="container">
         <h3>About the King's Affair</h3>
         <p>At King's, we like to do things differently.</p>
         <p>
@@ -965,39 +957,69 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         </p>
       </div>
     </section>
-    <section id="launch">
-      <div class="container" style="font-size: 1.25em">
+    <section id="launch" class="section">
+      <div class="container">
         <h3>Launch Party</h3>
         <p>
           The theme for this year's wildly anticipated King's Affair will be
-          revealed at midnight on February 17th.
+          revealed at midnight on <b>February 17th</b>.
         </p>
         <p>You're going to want to be there!</p>
-        <p>To avoid missing out, click below:</p>
         <br />
         <a
           href="https://tickets.kingsaffair.co.uk"
           target="_blank"
-          style="text-decoration: none"
+          class="buttonLink"
         >
           <div class="linkButton">
-            <h3 class="buttonText">Launch</h3>
+            <p class="buttonText">Buy Tickets</p>
           </div>
         </a>
       </div>
     </section>
-    <section id="tickets">
-      <div class="container" style="font-size: 1.25em">
+    <section id="tickets" class="section">
+      <div class="container">
         <h3>Tickets</h3>
         <p>
-          Tickets for the King's Affair will be made available at midnight
-          through OXEX on the night of the launch party.
+          Tickets for the King's Affair will be released at <b>12pm</b> on
+          <b>February 18th</b>.
         </p>
-        <p>To view prices or buy tickets, click below:</p>
         <br />
-        <a href="javascript:void(0)" style="text-decoration: none">
+        <a href="javascript:void(0)" class="buttonLink">
           <div class="linkButton disabled">
-            <h3 class="buttonText">Coming Soon</h3>
+            <p class="buttonText">Coming Soon</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="charity" class="section">
+      <div class="container small">
+        <h3>Charity</h3>
+        <p>
+          Women for Refugee Women is a charity supporting women who are seeking
+          safety from war, persecution, gender-based and sexual violence, and
+          other torture to rebuild their lives. Through our creative and
+          educational activities we empower refugee and asylum-seeking women to
+          build their confidence and skills and to rebuild their lives in the
+          ways they wish to do so.
+        </p>
+        <p>
+          We seek to influence wide audiences and build empathy for refugee
+          women through supporting women to share their stories and experiences
+          to the media, at events, and through the arts; and we make change
+          through working alongside refugee women, parliamentarians and
+          policy-makers to implement the necessary changes for a fairer,
+          compassionate asylum system for women.
+        </p>
+        <br />
+        <a
+          href="https://www.refugeewomen.co.uk/"
+          target="_blank"
+          class="buttonLink"
+        >
+          <div class="linkButton small">
+            <p class="buttonText">Learn More</p>
           </div>
         </a>
       </div>
