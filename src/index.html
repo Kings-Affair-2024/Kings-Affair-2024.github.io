@@ -43,12 +43,27 @@
       defer
     ></script>
     <style>
+      html {
+        scroll-snap-type: y mandatory;
+      }
+
       body {
         margin: 0;
         min-width: fit-content;
         overflow-x: hidden;
         font-family: "Kalnia", serif;
         color: #fff;
+        scroll-snap-type: y mandatory;
+      }
+
+      /* @media screen and (max-width: 600px) {
+        section {
+          scroll-snap-align: start;
+        }
+      } */
+
+      section.visible {
+        scroll-snap-align: center;
       }
 
       canvas {
@@ -1024,7 +1039,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         </a>
       </div>
     </section>
-    <section id="contact" style="font-size: 1.25em">
+    <section id="contact" style="font-size: 1.25em; scroll-snap-align: unset;">
       <h3 style="text-align: center">Socials and Contacts</h3>
       <div id="contactlist">
         <div class="lanterncontainer">
@@ -1419,6 +1434,70 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         });
       }
       // #endregion
+    </script>
+    <script>
+      const sections = document.querySelectorAll("section");
+      const x = window.matchMedia("(max-width: 600px)");
+
+      // var listener;
+
+      // function mediaQuery(x) {
+      //   console.log(x);
+      //   if (!x.matches) {
+      //     listener = window.addEventListener("scroll", (e) => {
+      //       var currentSectionIndex;
+      //       for (let i = 0; i < sections.length; i++) {
+      //         if (
+      //           window.scrollY + window.innerHeight / 2 >
+      //           sections[i].offsetTop
+      //         ) {
+      //           currentSectionIndex = i;
+      //         }
+      //       }
+      //       sections[currentSectionIndex].classList.add("visible");
+      //       for (let i = 0; i < sections.length; i++) {
+      //         if (i != currentSectionIndex) {
+      //           sections[i].classList.remove("visible");
+      //         }
+      //       }
+      //     });
+      //   } else {
+      //     window.removeEventListener("scroll", listener);
+      //     sections.forEach((e) => {
+      //       e.classList.remove("visible");
+      //     });
+      //   }
+      // }
+
+      // mediaQuery(x);
+      // x.addListener(mediaQuery);
+
+      function snapScrolling() {
+        if (!x.matches) {
+          var currentSectionIndex;
+          for (let i = 0; i < sections.length; i++) {
+            if (
+              window.scrollY + window.innerHeight / 2 > sections[i].offsetTop
+            ) {
+              currentSectionIndex = i;
+            }
+          }
+          sections[currentSectionIndex].classList.add("visible");
+          for (let i = 0; i < sections.length; i++) {
+            if (i != currentSectionIndex) {
+              sections[i].classList.remove("visible");
+            }
+          }
+        } else {
+          sections.forEach((e) => {
+            e.classList.remove("visible");
+          });
+        }
+      }
+
+      window.addEventListener("scroll", snapScrolling);
+      x.addListener(snapScrolling);
+
     </script>
   </body>
 </html>
