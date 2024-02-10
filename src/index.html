@@ -1066,7 +1066,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         </a>
       </div>
     </section>
-    <section id="contact" style="font-size: 1.25em; scroll-snap-align: unset;">
+    <section id="contact" style="font-size: 1.25em; scroll-snap-align: unset">
       <h3 style="text-align: center">Socials and Contacts</h3>
       <div id="contactlist">
         <div class="lanterncontainer">
@@ -1504,7 +1504,8 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
           var currentSectionIndex;
           for (let i = 0; i < sections.length; i++) {
             if (
-              window.scrollY + window.innerHeight / 2 > sections[i].offsetTop
+              window.scrollY + window.innerHeight / 2 >
+              sections[i].offsetTop
             ) {
               currentSectionIndex = i;
             }
@@ -1523,8 +1524,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
       }
 
       window.addEventListener("scroll", snapScrolling);
-      x.addListener(snapScrolling);
-
+      x.addEventListener("change", snapScrolling);
     </script>
   </body>
 </html>
