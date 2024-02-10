@@ -236,8 +236,35 @@
         font-size: large;
       }
 
+      @media screen and (max-width: 600px) {
+        /* .section {
+          height: 200vh;
+        }
+
+        .container {
+          height: auto;
+          padding: 10vh 0;
+          font-size: 1rem;
+        } */
+
+        .section {
+          align-items: center;
+          height: 100vh;
+        }
+
+        .container {
+          position: unset;
+          height: fit-content;
+        }
+      }
+
       /* #endregion */
       /* #region CONTACT */
+      #contact {
+        margin-top: 10vh;
+        padding-top: 10vh;
+      }
+
       #contactlist {
         box-sizing: border-box;
         display: grid;
@@ -992,10 +1019,10 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         </a>
       </div>
     </section>
-
     <section id="charity" class="section">
       <div class="container small">
         <h3>Charity</h3>
+        <h4 style="margin: 2vh">Women for Refugee Women</h4>
         <p>
           Women for Refugee Women is a charity supporting women who are seeking
           safety from war, persecution, gender-based and sexual violence, and
