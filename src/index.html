@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+     ____________
+    / There's    \
+    | nothing to |
+    | find back  |
+    \ here...    /
+     ------------
+            \   ^__^
+             \  (oo)\_______
+                (__)\       )\/\
+                    ||----w |
+                    ||     ||
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="King's Affair, the antidote to may balls. Launch tickets on sale now!"
+    />
+    <!-- add og tags -->
+    <meta property="og:title" content="King's Affair 2024" />
+    <meta
+      property="og:description"
+      content="King's Affair, the antidote to may balls. Launch tickets on sale now!"
+    />
+    <meta property="og:image" content="/assets/media/logo.png" />
+    <title>King's Affair 2024</title>
+    <link
+      rel="preload"
+      href="/assets/fonts/woff2/wild-wood-font.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/woff2/kalnia.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="icon" href="/assets/media/favicon.png" />
+    <link rel="stylesheet" href="/assets/fonts/fonts.css" />
+    <script
+      src="https://cdn.userway.org/widget.js"
+      data-account="3yfIkdOQox"
+      defer
+    ></script>
+    <style>
+      body {
+        margin: 0;
+        min-width: fit-content;
+        overflow-x: hidden;
+        font-family: "Kalnia", serif;
+        color: #fff;
+      }
+
+      canvas {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        min-width: 100%;
+      }
+
+      h3 {
+        font-weight: 800;
+        font-size: calc(1.5rem + 1vw);
+        margin-bottom: 3%;
+      }
+
+      p {
+        margin: 1vh 0;
+        font-size: calc(1rem + 0.5vw);
+        font-weight: 550;
+        /* color: #fff; */
+      }
+      /* #region HERO */
+      #hero {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      #hero-container {
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        height: 100%;
+        width: 100%;
+      }
+
+      #hero-text {
+        font-family: "WildWood", serif;
+        text-align: center;
+        /* align to bottom */
+        position: absolute;
+        bottom: calc(20vh + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #hero h1 {
+        font-size: calc(2rem + 1vmax);
+        font-weight: 400;
+        margin: 0;
+      }
+
+      .arrows {
+        width: calc(2rem + 2vmin);
+        height: calc(2rem + 2vmin);
+        position: absolute;
+        bottom: calc(10vh + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        /* color: #fff; */
+        /* fill: #c4ceac; */
+        fill: #fff;
+        transition-duration: 0.2s;
+      }
+
+      .arrows.loaded {
+        animation: iconPulse 1s ease 2 2s;
+      }
+
+      .arrows:hover {
+        color: #858585;
+        animation: iconPulse 1s ease infinite;
+      }
+
+      @keyframes iconPulse {
+        0% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      @media screen and (orientation: portrait) and (max-width: 600px) {
+        /* keeps address bar visible on mobile */
+        html {
+          overflow: hidden;
+          width: 100%;
+        }
+        body {
+          height: 100vh;
+          position: fixed;
+          width: 100%;
+          scroll-behavior: smooth;
+        }
+        /* #hero-text {
+          width: 100vw;
+          text-align: right;
+          align to right of screen
+          position: absolute;
+          bottom: 15vh;
+          left: 0;
+          right: 0;
+          margin-right: calc(2rem + 2vmin);
+          margin-bottom: calc(3rem + 2vmin);
+          transform: translateX(0);
+        } */
+      }
+
+      /* #endregion */
+      /* #region MAIN SECTIONS */
+      .buttonLink {
+        text-decoration: none;
+      }
+
+      .linkButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        background-color: #fd9113;
+        width: calc(175px + 2vw);
+        height: calc(35px + 2vw);
+        text-align: center;
+        border-radius: 75px 75px;
+        filter: drop-shadow(0px 0px 5px #fbd260);
+        text-decoration: none;
+      }
+
+      .linkButton.small {
+        width: calc(150px + 2vw);
+        height: calc(30px + 2vw);
+        font-size: 1rem;
+      }
+
+      .disabled {
+        background-color: #858585;
+        filter: drop-shadow(0px 0px 5px #858585);
+      }
+
+      .buttonText {
+        color: black;
+        font-weight: 800;
+        /* font-size: calc(1.5rem + 1vw); */
+      }
+
+      .linkButton.hover {
+        animation: glowBox 4s infinite;
+      }
+
+      .section {
+        height: 200vmin;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        /* margin: auto 15rem; */
+        width: calc(280px + 15vw);
+        /* width: calc(180px + 25vw); */
+        margin: auto;
+        text-align: justify;
+        text-align-last: center;
+      }
+
+      .container {
+        position: -webkit-sticky;
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: calc(28px + 1.5rem);
+        height: calc(100vh - 28px - 1.5rem);
+        font-size: 1.25em;
+      }
+
+      .container.small > p {
+        font-size: large;
+      }
+
+      @media screen and (max-width: 600px) {
+        /* .section {
+          height: 200vh;
+        }
+
+        .container {
+          height: auto;
+          padding: 10vh 0;
+          font-size: 1rem;
+        } */
+
+        .section {
+          align-items: center;
+          height: 100vh;
+        }
+
+        .container {
+          position: unset;
+          height: fit-content;
+        }
+      }
+
+      /* #endregion */
+      /* #region CONTACT */
+      #contact {
+        margin-top: 10vh;
+        padding-top: 10vh;
+      }
+
+      #contactlist {
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        gap: 1rem;
+        margin: 0.25rem;
+        color: #000;
+      }
+
+      @media screen and (min-width: 400px) {
+        #contactlist {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media screen and (min-width: 700px) {
+        #contactlist {
+          grid-template-columns: repeat(3, 1fr);
+          margin: 2rem;
+        }
+      }
+
+      @media screen and (min-width: 950px) {
+        #contactlist {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media screen and (min-width: 1450px) {
+        #contactlist {
+          grid-template-columns: repeat(6, 1fr);
+        }
+      }
+
+      .lanterncontainer {
+        position: relative;
+        text-align: center;
+        transform-origin: center -20px;
+        transition: transform 0.2s ease-in-out;
+      }
+      .lantern {
+        /* filter: drop-shadow(0px 0px 30px #fbd260); */
+        filter: drop-shadow(0px 0px 5px #fbd260);
+        /* width: 200px; */
+        width: calc(150px + 2vw);
+      }
+      .contact {
+        position: absolute;
+        text-align: center;
+        /* font-size: 1.1rem; */
+        /* relative font size */
+        font-size: calc(0.8rem + 0.2vw);
+        width: 200px;
+        display: block;
+        margin: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        word-wrap: break-word;
+        z-index: 3;
+      }
+      .contacticon {
+        width: 55px;
+        padding-top: 10px;
+        z-index: 4;
+      }
+      .light {
+        position: absolute;
+        left: 50%;
+        bottom: 5%;
+        transform: translate(-50%, 0);
+        opacity: 0.5;
+        z-index: 2;
+        width: 50px;
+        aspect-ratio: 1;
+        background-color: #fa700e;
+        border-radius: 2% 87% 45% 85%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        box-shadow: -10px -10px 15px 5px #fa700e;
+      }
+      .lanterncontainer.hover {
+        animation: swing 6s ease-in-out infinite;
+      }
+
+      .lanterncontainer .lantern.hover {
+        animation: glowBox 4s infinite;
+      }
+
+      .lanterncontainer .light.hover {
+        animation: glow 4s infinite alternate;
+      }
+
+      @keyframes glowBox {
+        0% {
+          filter: drop-shadow(0px 0px 5px #fbd260);
+        }
+        50% {
+          filter: drop-shadow(0px 0px 30px #fbd260);
+        }
+        100% {
+          filter: drop-shadow(0px 0px 5px #fbd260);
+        }
+      }
+
+      @keyframes swing {
+        0% {
+          transform: rotate(0deg);
+        }
+        10% {
+          transform: rotate(3deg);
+        }
+        20% {
+          transform: rotate(-3deg);
+        }
+        30% {
+          transform: rotate(3deg);
+        }
+        40% {
+          transform: rotate(-3deg);
+        }
+        50% {
+          transform: rotate(3deg);
+        }
+        60% {
+          transform: rotate(-3deg);
+        }
+        70% {
+          transform: rotate(3deg);
+        }
+        80% {
+          transform: rotate(-3deg);
+        }
+        90% {
+          transform: rotate(3deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      @keyframes glow {
+        0% {
+          box-shadow: -10px -10px 15px 5px #fa700e;
+        }
+        50% {
+          box-shadow: -10px -10px 15px 60px #fa700e;
+        }
+        100% {
+          box-shadow: -10px -10px 15px 5px #fa700e;
+        }
+      }
+      /* #endregion */
+      /* #region LOADING SCREEN */
+      #loader-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        z-index: 9999;
+        transition: opacity 1s ease-in-out;
+        margin: 0;
+        padding: 0;
+        perspective: 900px;
+        color: #000;
+      }
+
+      #full-book {
+        transform-style: preserve-3d;
+        transform: rotateX(60deg) rotateZ(29deg);
+        width: 248px;
+        height: 350px;
+      }
+
+      @media screen and (max-width: 600px) {
+        #full-book {
+          transform: rotateX(60deg) rotateZ(29deg) scale3d(0.7, 0.7, 0.7);
+        }
+      }
+
+      #full-book.loaded {
+        animation: new 3s ease-in-out forwards;
+      }
+
+      @keyframes new {
+        100% {
+          transform: rotateX(0deg) rotateZ(0deg) scale3d(2.5, 2.5, 2.5)
+            translateX(50%) translateY(5%);
+        }
+      }
+
+      #loader-percentage {
+        color: #fff;
+        font-family: "WildWood", serif;
+        font-size: 2rem;
+        margin-top: 2rem;
+      }
+
+      #loader-container *::selection {
+        background: transparent;
+      }
+
+      #flip {
+        height: 350px;
+        width: auto;
+        position: absolute;
+        transform: translate3d(0px, 0px, -10px);
+        transform-style: preserve-3d;
+        transform-origin: 0 0 0;
+      }
+
+      #flip.loaded {
+        animation: wrapper 3s ease-in-out forwards;
+      }
+
+      @keyframes wrapper {
+        0% {
+          transform: translate3d(0px, 0px, -10px);
+        }
+        100% {
+          transform: translateZ(-10px) rotateY(-180deg);
+        }
+      }
+
+      #flip div {
+        height: 350px;
+        width: 24px;
+        position: absolute;
+        left: calc(100% - 1px);
+        transform-origin: 0 100%;
+        transform-style: preserve-3d;
+        background-size: 253px 350px;
+      }
+
+      #flip #front,
+      #flip #front div {
+        background-image: url("/assets/media/book_cover.jpg");
+        background-image: image-set(
+          url("/assets/media/book_cover.webp") type("image/webp"),
+          url("/assets/media/book_cover.jpg") type("image/jpeg")
+        );
+        background-color: #291e0c;
+        box-shadow: inset rgba(255, 255, 255, 0.3) 0px -1px 0 0,
+          #35582c 0px 1px 0px 0px;
+      }
+      #flip #front > div > div > div > div > div > div > div > div > div > div {
+        box-shadow: inset rgba(255, 255, 255, 0.3) -1px -1px 0 0,
+          #35582c 1px 1px 0px 0px;
+      }
+      #flip #back {
+        /* avoid pages overlap */
+        transform: rotateY(0.4deg);
+        transform-origin: -100% 0;
+      }
+      #flip #back,
+      #flip #back div {
+        background-color: #fff;
+      }
+
+      #flip > div {
+        left: 0;
+        background-position-x: 0;
+      }
+      #flip div > div {
+        background-position-x: -23px;
+      }
+      #flip div > div .loaded {
+        animation: page 3s ease-in-out forwards;
+      }
+      #flip div > div > div {
+        background-position-x: -46px;
+      }
+      #flip div > div > div > div {
+        background-position-x: -69px;
+      }
+      #flip div > div > div > div > div {
+        background-position-x: -92px;
+      }
+      #flip div > div > div > div > div > div {
+        background-position-x: -115px;
+      }
+      #flip div > div > div > div > div > div > div {
+        background-position-x: -138px;
+      }
+      #flip div > div > div > div > div > div > div > div {
+        background-position-x: -161px;
+      }
+      #flip div > div > div > div > div > div > div > div > div {
+        background-position-x: -184px;
+      }
+      #flip div > div > div > div > div > div > div > div > div > div {
+        background-position-x: -207px;
+      }
+      #flip div > div > div > div > div > div > div > div > div > div > div {
+        background-position-x: -229px;
+      }
+
+      @keyframes page {
+        30% {
+          transform: rotateY(-10deg);
+        }
+        100% {
+          transform: rotateY(-2deg);
+        }
+      }
+
+      #book {
+        width: 248px;
+        height: 350px;
+        position: absolute;
+        transform: translate3d(0px, 0px, -10px);
+        transform-style: preserve-3d;
+        -webkit-transform-origin: 0 0 0;
+        transform-origin: 0 0 0;
+      }
+      @keyframes book {
+        50% {
+          box-shadow: inset rgba(0, 0, 0, 0.2) 0px 0 50px -140px;
+        }
+        100% {
+          box-shadow: inset rgba(0, 0, 0, 0.2) 0px 0 50px -140px;
+        }
+      }
+      #book #top {
+        background-color: #fff;
+        background-size: 100% 100%;
+        background-position: 100%;
+        box-shadow: inset rgba(0, 0, 0, 0.2) 510px 0 50px -140px;
+        height: 350px;
+        width: 248px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        box-sizing: border-box;
+        z-index: -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 15%;
+        /* border-left: 0.5px solid black; */
+      }
+
+      #book #top.loaded {
+        animation: book 3s ease-in-out forwards;
+      }
+
+      #book #top p {
+        font-size: 15px;
+        font-family: "Libre Caslon Text", serif;
+        font-smooth: always;
+        text-align: center;
+        margin: 0;
+      }
+
+      #book #bottom {
+        background: #e7ded1;
+        box-shadow: rgba(83, 53, 13, 0.2) 4px 2px 1px, #35582c 1px 1px 0px 0px;
+        height: 350px;
+        width: 253px;
+        position: absolute;
+        transform: translateZ(-40px);
+        left: 0;
+        top: 0;
+      }
+      #book #shadow {
+        box-shadow: inset rgba(83, 53, 13, 0) -200px 0 150px -140px;
+        height: 350px;
+        width: 248px;
+        position: absolute;
+        left: -100%;
+        top: 0;
+        transform: translateZ(-40px);
+      }
+
+      #book #shadow.loaded {
+        animation: shadow 3s ease-in-out forwards;
+      }
+
+      @keyframes shadow {
+        20% {
+          box-shadow: inset rgba(83, 53, 13, 0) -200px 0 150px -140px;
+        }
+        50% {
+          box-shadow: inset rgba(83, 53, 13, 0.3) -350px 0 150px -140px;
+        }
+        60% {
+          box-shadow: inset rgba(83, 53, 13, 0) -200px 0 150px -140px;
+        }
+      }
+      #book #front {
+        background: -webkit-linear-gradient(top, #fcf6ea, #d8d1c3);
+        background-size: 100% 2px;
+        box-shadow: inset #c2bba2 3px 0 0px, #35582c -2px 1px 0px 0px;
+        height: 40px;
+        width: 251px;
+        left: -3px;
+        position: absolute;
+        bottom: -40px;
+        transform: rotateX(-90deg);
+        transform-origin: 50% 0;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+      #book #right {
+        background: -webkit-linear-gradient(left, #ddd2bb, #bdb3a0);
+        background-size: 2px 100%;
+        box-shadow: inset rgba(0, 0, 0, 0) 0 0 0 20px;
+        height: 100%;
+        width: 40px;
+        position: absolute;
+        right: -40px;
+        top: 0;
+        transform: rotateY(90deg);
+        transform-origin: 0 50%;
+      }
+
+      #bookmark {
+        position: absolute;
+        transform: translate3d(20px, 335px, -16px);
+        transform-style: preserve-3d;
+      }
+      #bookmark div {
+        background: rgb(151, 88, 88);
+        box-shadow: rgb(133, 77, 77) 1px 0;
+        height: 10px;
+        width: 20px;
+        position: absolute;
+        top: 9px;
+        transform: rotateX(-14deg);
+        transform-origin: 50% 0;
+        transform-style: preserve-3d;
+      }
+      #bookmark > div > div {
+        background: linear-gradient(
+          to bottom,
+          rgb(151, 88, 88),
+          rgb(189, 123, 123),
+          rgb(151, 88, 88)
+        );
+      }
+      #bookmark > div > div > div {
+        background: linear-gradient(
+          to bottom,
+          rgb(151, 88, 88),
+          rgb(133, 77, 77)
+        );
+      }
+      #bookmark > div > div > div > div {
+        background: none;
+        border-top: 0px solid transparent;
+        border-right: 10px solid rgb(133, 77, 77);
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid rgb(133, 77, 77);
+        height: 0;
+        width: 0;
+      }
+      #bookmark-shadow {
+        background: linear-gradient(
+          to bottom,
+          rgba(83, 53, 13, 0.25),
+          rgba(83, 53, 13, 0.11)
+        );
+        height: 15px;
+        width: 20px;
+        position: absolute;
+        transform: translate3d(12px, 350px, -25px) rotateX(-90deg) skewX(20deg);
+        transform-origin: 0 0;
+      }
+      /*#endregion*/
+      /* #region NAVBAR */
+      #navbar {
+        overflow: hidden;
+        background-color: #666a3a;
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      #navbar #icon {
+        display: none;
+      }
+      .navitem {
+        float: left;
+        display: block;
+        color: #fff;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 1.25rem;
+        transition: 0.3s;
+      }
+      .navitem:hover {
+        background-color: #46562a;
+      }
+      .navitem:active {
+        background-color: #1e2719;
+      }
+
+      @media screen and (max-width: 600px) {
+        .navitem {
+          display: none;
+        }
+
+        #navbar {
+          display: block;
+        }
+
+        #navbar #icon {
+          float: right;
+          display: block;
+        }
+
+        #navbar.responsive a #navbar.responsive {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          left: 0;
+        }
+        #navbar.responsive #icon {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        #navbar.responsive a {
+          float: none;
+          display: block;
+          text-align: left;
+        }
+      }
+      /* #endregion */
+    </style>
+  </head>
+  <body>
+    <!-- 
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀ 
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀⠀⠀⠀⠀⠀ 
+⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⠋⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠈⢻⣿⣿⡄⠀⠀⠀⠀ 
+⠀⠀⠀⠀⠀⠀⠀⣸⣿⡏⠀⠀⠀⣠⣶⣾⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣄⠀⠀⠀ 
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⢰⣿⣿⣯⠁⠀⠀⠀⠀⠀⠀⠀⠈⠙⢿⣷⡄⠀ 
+⠀⠀⣀⣤⣴⣶⣶⣿⡟⠀⠀⠀⢸⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣷⠀ 
+⠀⢰⣿⡟⠋⠉⣹⣿⡇⠀⠀⠀⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿⣿⠀ 
+⠀⢸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀ 
+⠀⣸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛⢻⣿⡇⠀⠀ 
+⠀⣿⣿⠁⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣧⠀⠀ 
+⠀⣿⣿⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀ 
+⠀⣿⣿⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀ 
+⠀⢿⣿⡆⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀ 
+⠀⠸⣿⣧⡀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠃⠀⠀ 
+⠀⠀⠛⢿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣰⣿⣿⣷⣶⣶⣶⣶⠶⢠⣿⣿⠀⠀⠀ 
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⣽⣿⡏⠁⠀⠀⢸⣿⡇⠀⠀⠀ 
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⢹⣿⡆⠀⠀⠀⣸⣿⠇⠀⠀⠀ 
+⠀⠀⠀⠀⠀⠀⠀⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁⠀⠈⠻⣿⣿⣿⣿⡿⠏⠀⠀⠀⠀ 
+⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⠿⠿⠿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!     
+-->
+    <!-- #region LOADING SCREEN -->
+    <div id="loader-container">
+      <div id="full-book" class="load">
+        <div id="book">
+          <div id="top" class="load">
+            <p style="font-size: 1rem">The King's Affair</p>
+            <!-- TODO: Check if we're allowed to release the date yet? -->
+            <p style="font-size: 0.75rem">19th June 2024</p>
+            <p style="font-size: 0.5rem; padding-top: 10%">
+              Made with ❤ by the <br />2024 King's Affair Committee
+            </p>
+            <!-- <p
+                  style="
+                    font-size: 0.5rem;
+                    margin-bottom: 10%;
+                    position: absolute;
+                    bottom: 0;
+                  "
+                >
+                  Published by the Ticketing and IT Subcommittee
+                </p> -->
+          </div>
+          <div id="front"></div>
+          <div id="right"></div>
+          <div id="bottom"></div>
+          <div id="shadow" class="load"></div>
+          <div id="bookmark">
+            <div>
+              <div>
+                <div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="bookmark-shadow"></div>
+        </div>
+        <div id="flip" class="load">
+          <div id="front">
+            <div class="load">
+              <div class="load">
+                <div class="load">
+                  <div class="load">
+                    <div class="load">
+                      <div class="load">
+                        <div class="load">
+                          <div class="load">
+                            <div class="load">
+                              <div class="load"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="back">
+            <div class="load">
+              <div class="load">
+                <div class="load">
+                  <div class="load">
+                    <div class="load">
+                      <div class="load">
+                        <div class="load">
+                          <div class="load">
+                            <div class="load">
+                              <div class="load"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span id="loader-percentage">Loading...</span>
+    </div>
+    <!-- #endregion -->
+    <!-- #region NAVBAR -->
+    <div id="navbar" class="navbar">
+      <a class="navitem" href="#about">About</a>
+      <a class="navitem" href="#launch">Launch Party</a>
+      <a class="navitem" href="#tickets">Tickets</a>
+      <!-- <a class="navitem" href="#namechange">Name Changes</a> -->
+      <a class="navitem" href="#charity">Charity</a>
+      <a class="navitem" href="#contact">Contact</a>
+      <a
+        class="navitem"
+        href="javascript:void(0);"
+        id="icon"
+        onclick="toggleNavbarResponse()"
+        >&#9776;</a
+      >
+    </div>
+    <script>
+      function toggleNavbarResponse() {
+        var x = document.getElementById("navbar");
+        // console.log(x.className);
+        x.className = x.className === "navbar" ? "navbar responsive" : "navbar";
+      }
+    </script>
+    <!-- #endregion -->
+    <section id="hero">
+      <div id="hero-container">
+        <div id="hero-text">
+          <picture>
+            <source srcset="/assets/media/logo.webp" type="image/webp" />
+            <img src="/assets/media/logo.png" class="lantern" />
+          </picture>
+          <h1>King's Affair 2024</h1>
+        </div>
+        <a href="#launch" aria-label="Scroll down to learn more"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="arrows load"
+            viewBox="0 0 448 512"
+          >
+            <!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+            <path
+              d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+    <section id="about" class="section">
+      <div class="container">
+        <h3>About the King's Affair</h3>
+        <p>At King's, we like to do things differently.</p>
+        <p>
+          Celebrated as the 'antidote to the monotony of traditional May Balls',
+          the King's Affair is held on the Wednesday of May Week, transforming
+          the infamous grounds of King's College into a spectacular, daring,
+          dream-like world for one night a year.
+        </p>
+        <p>Here, inclusivity is our champion.</p>
+        <p>
+          Gowns and tuxedos are exchanged for extravagant fancy dress and
+          costume, up-and-coming artists rule the stage, whilst glittering
+          lights and wild artwork take over the senses.
+        </p>
+        <p>
+          Think festival, 'beats not bollingers', and a world turned upside
+          down.
+        </p>
+      </div>
+    </section>
+    <section id="launch" class="section">
+      <div class="container">
+        <h3>Launch Party</h3>
+        <p>
+          The theme for this year's wildly anticipated King's Affair will be
+          revealed at midnight on <b>February 17th</b>.
+        </p>
+        <p>You're going to want to be there!</p>
+        <br />
+        <a
+          href="https://tickets.kingsaffair.co.uk/launch"
+          target="_blank"
+          class="buttonLink"
+        >
+          <div class="linkButton">
+            <p class="buttonText">Buy Tickets</p>
+          </div>
+        </a>
+      </div>
+    </section>
+    <section id="tickets" class="section">
+      <div class="container">
+        <h3>Tickets</h3>
+        <p>
+          Tickets for the King's Affair will be released at <b>12am</b> on
+          <b>February 18th</b>.
+        </p>
+        <br />
+        <a href="javascript:void(0)" class="buttonLink">
+          <div class="linkButton disabled">
+            <p class="buttonText">Coming Soon</p>
+          </div>
+        </a>
+      </div>
+    </section>
+    <section id="charity" class="section">
+      <div class="container small">
+        <h3>Charity</h3>
+        <h4 style="margin: 2vh">Women for Refugee Women</h4>
+        <p>
+          Women for Refugee Women is a charity supporting women who are seeking
+          safety from war, persecution, gender-based and sexual violence, and
+          other torture to rebuild their lives. Through our creative and
+          educational activities we empower refugee and asylum-seeking women to
+          build their confidence and skills and to rebuild their lives in the
+          ways they wish to do so.
+        </p>
+        <p>
+          We seek to influence wide audiences and build empathy for refugee
+          women through supporting women to share their stories and experiences
+          to the media, at events, and through the arts; and we make change
+          through working alongside refugee women, parliamentarians and
+          policy-makers to implement the necessary changes for a fairer,
+          compassionate asylum system for women.
+        </p>
+        <br />
+        <a
+          href="https://www.refugeewomen.co.uk/"
+          target="_blank"
+          class="buttonLink"
+        >
+          <div class="linkButton small">
+            <p class="buttonText">Learn More</p>
+          </div>
+        </a>
+      </div>
+    </section>
+    <section id="contact" style="font-size: 1.25em">
+      <h3 style="text-align: center">Socials and Contacts</h3>
+      <div id="contactlist">
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Socials</b><br />
+            <a
+              href="https://www.facebook.com/people/Kings-Affair/100089874409050/"
+              target="_blank"
+              ><svg
+                class="contacticon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"
+                />
+              </svg>
+            </a>
+            <br />
+            <a href="https://www.instagram.com/kingsaffair" target="_blank"
+              ><svg
+                class="contacticon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                />
+              </svg>
+            </a>
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Chairs</b><br />
+            <a href="mailto:chair@kingsaffair.co.uk"
+              >chair@kings<br />affair.co.uk</a
+            >
+            <br />
+            Marielle Lee<br />
+            Esther Welbrock
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Treasurers</b><br />
+            <a href="mailto:treasurer@kingsaffair.co.uk"
+              >treasurer@kings<br />affair.co.uk</a
+            >
+            <br />
+            Joshitha Yeggoni<br />
+            Astrid Healy-Carrasco
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Arts</b><br />
+            <a href="mailto:arts@kingsaffair.co.uk"
+              >arts@kings<br />affair.co.uk</a
+            >
+            <br />
+            Edie Levine<br />
+            Teddy Graham<br />
+            Olga Krivdina
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Production</b> <br />
+            <a href="mailto:production@kingsaffair.co.uk"
+              >production@kings<br />affair.co.uk</a
+            >
+            <br />
+            Eva Lemmy<br />
+            Will Rowlands
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Music</b><br />
+            <a href="mailto:music@kingsaffair.co.uk"
+              >music@kings<br />affair.co.uk</a
+            >
+            <br />
+            Steph Theodorou<br />
+            Izzy Wilkinson<br />
+            Rose Papadopoulos-<br />Hedden
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Ents</b><br />
+            <a href="mailto:ents@kingsaffair.co.uk"
+              >ents@kings<br />affair.co.uk</a
+            >
+            <br />
+            Farzana Ramazan<br />
+            Zaheda Hussain
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Food & Drink</b><br />
+            <a href="mailto:food@kingsaffair.co.uk"
+              >food@kings<br />affair.co.uk</a
+            >
+            <br />
+            Lauren Todd<br />
+            Kiya Gupta
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b
+              >Accessibility, Security<br />
+              & Infrastructure</b
+            ><br />
+            <a href="mailto:security@kingsaffair.co.uk"
+              >security@kings<br />affair.co.uk</a
+            >
+            <br />
+            Ed Marsh<br />
+            Luca De Maestri
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Sustainability</b><br />
+            <a href="mailto:sustainability@kingsaffair.co.uk"
+              >sustainability@kings<br />affair.co.uk</a
+            >
+            <br />
+            Lily-Rose Dupin
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Workers & Legal</b><br />
+            <a href="mailto:workers@kingsaffair.co.uk"
+              >workers@kings<br />affair.co.uk</a
+            >
+            <br />
+            Prakruti Rao<br />
+            Lara Riddell
+          </p>
+          <div class="light"></div>
+        </div>
+        <div class="lanterncontainer">
+          <img src="/assets/media/lantern.png" class="lantern" loading="lazy" />
+          <p class="contact">
+            <b>Ticketing & IT</b><br />
+            <a href="mailto:ticketing@kingsaffair.co.uk"
+              >ticketing@kings<br />affair.co.uk</a
+            >
+            <br />
+            Sam Mashil<br />
+            Hannah Yang<br />
+            Ava James
+          </p>
+          <div class="light"></div>
+        </div>
+      </div>
+    </section>
+    <canvas id="bg"></canvas>
+    <script>
+      // #region LOADING SCREEN
+      const TEST = false;
+
+      const html = document.documentElement;
+      const body = document.body;
+      const canvas = document.getElementById("bg");
+      const ctx = canvas.getContext("2d");
+      const numFrames = 823;
+      const images = [];
+
+      // TODO: remove for production
+      if (TEST) {
+        document.getElementById("loader-container").style.display = "none";
+        document.querySelectorAll(".load").forEach((e) => {
+          e.classList.add("loaded");
+          e.classList.remove("load");
+        });
+        html.style.scrollBehavior = "smooth";
+        body.style.overflowY = "scroll";
+      }
+
+      const filePrefix =
+        window.innerWidth < 500 && window.innerHeight > window.innerWidth
+          ? "/assets/bg/images/mobile/"
+          : "/assets/bg/images/desktop/";
+
+      var fileExt = "jpg";
+
+      var webp = new Image();
+
+      function supportsWebp() {
+        return new Promise(function (resolve) {
+          var img = new Image();
+          img.onload = function () {
+            resolve(img.width > 0 && img.height > 0);
+          };
+          img.onerror = function () {
+            resolve(false);
+          };
+          img.src =
+            "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA";
+        });
+      }
+
+      supportsWebp().then(function (result) {
+        fileExt = result ? "webp" : "jpg";
+
+        // load every third image first, then load the rest
+        for (var i = 0; i < numFrames; i += 4) {
+          load(i, () => {
+            loaded++;
+            // console.log((loaded / numFrames) * 100 + "%");
+            document.getElementById("loader-percentage").innerHTML =
+              Math.floor((loaded / numFrames) * 400) + "%";
+            if (loaded == Math.floor(numFrames / 4)) {
+              imgRatio = images[0].width / images[0].height;
+              document.querySelectorAll(".load").forEach((e) => {
+                e.classList.add("loaded");
+                e.classList.remove("load");
+              });
+              setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                html.style.scrollBehavior = "smooth";
+                body.style.overflowY = "scroll";
+              }, 1000);
+              setTimeout(() => {
+                document.getElementById("loader-container").style.opacity = 0;
+                setTimeout(() => {
+                  document.getElementById("loader-container").style.display =
+                    "none";
+                }, 1000);
+              }, 2500);
+              // console.log("Loaded third images");
+              update(html, html);
+              update(body, body);
+              for (var i = 2; i < numFrames; i += 4) {
+                load(i, () => {
+                  loaded++;
+                });
+              }
+              for (var i = 1; i < numFrames; i += 4) {
+                load(i, () => {
+                  loaded++;
+                });
+              }
+              for (var i = 3; i < numFrames; i += 4) {
+                load(i, () => {
+                  loaded++;
+                });
+              }
+            }
+          });
+        }
+      });
+
+      const filePath = (i) =>
+        `${filePrefix}${fileExt}/${i.toString().padStart(3, "0")}.${fileExt}`;
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      var loaded = 0;
+      var frameIndex = 0;
+      var loadPercentage = 0;
+      var imgRatio;
+
+      function updateImage(frame) {
+        if (canvas.width / canvas.height > imgRatio) {
+          var imgWidth = canvas.width;
+          var imgHeight = canvas.width / imgRatio;
+        } else {
+          var imgWidth = canvas.height * imgRatio;
+          var imgHeight = canvas.height;
+        }
+        try {
+          ctx.drawImage(images[frame], 0, 0, imgWidth, imgHeight);
+        } catch (e) {}
+      }
+
+      function load(i, callback) {
+        images[i] = new Image();
+        images[i].src = filePath(i + 1);
+        images[i].onload = callback;
+      }
+
+      body.style.overflowY = "hidden";
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        updateImage(frameIndex);
+      }
+
+      window.addEventListener("resize", resize);
+      window.addEventListener("orientationchange", resize);
+
+      function update(scrollTopEl, maxScrollTopEl) {
+        const scrollTop = scrollTopEl.scrollTop;
+        const maxScrollTop = maxScrollTopEl.scrollHeight - window.innerHeight;
+        const scrollFraction = scrollTop / maxScrollTop;
+        frameIndex = Math.min(
+          numFrames - 1,
+          Math.floor(scrollFraction * numFrames)
+        );
+
+        requestAnimationFrame(() => updateImage(frameIndex));
+      }
+
+      document.body.addEventListener("scroll", () => update(body, body));
+      window.addEventListener("touchmove", () => update(html, html));
+      window.addEventListener("scroll", () => update(html, body));
+
+      requestAnimationFrame(() => updateImage(0));
+
+      // console.log("Loaded");
+      // #endregion
+    </script>
+    <script>
+      // #region LANTERNS
+      if (window.innerWidth > 500) {
+        document.querySelectorAll(".lanterncontainer").forEach((e) => {
+          e.addEventListener("mouseenter", () => {
+            e.classList.add("hover");
+            e.querySelector(".light").classList.add("hover");
+            e.querySelector(".lantern").classList.add("hover");
+            e.dataset.mouseover = 1;
+          });
+
+          e.addEventListener("mouseleave", () => {
+            e.dataset.mouseover = 0;
+          });
+
+          e.addEventListener("animationiteration", (event) => {
+            if (e.dataset.mouseover == 0) {
+              event.animationName == "glow"
+                ? e.querySelector(".light").classList.remove("hover")
+                : event.animationName == "glowBox"
+                ? e.querySelector(".lantern").classList.remove("hover")
+                : event.animationName == "swing"
+                ? e.classList.remove("hover")
+                : null;
+            }
+          });
+        });
+        document.querySelectorAll(".linkButton").forEach((e) => {
+          if (!e.classList.contains("disabled")) {
+            e.addEventListener("mouseenter", () => {
+              e.classList.add("hover");
+              e.dataset.mouseover = 1;
+            });
+
+            e.addEventListener("mouseleave", () => {
+              e.dataset.mouseover = 0;
+            });
+
+            e.addEventListener("animationiteration", (event) => {
+              if (e.dataset.mouseover == 0) {
+                e.classList.remove("hover");
+              }
+            });
+          }
+        });
+      }
+      // #endregion
+    </script>
+  </body>
+</html>
