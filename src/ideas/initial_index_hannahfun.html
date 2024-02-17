@@ -1489,8 +1489,7 @@
     const body = document.body;
     const canvas = document.getElementById("bg");
     const ctx = canvas.getContext("2d");
-    const numFrames = 412;
-    const filePrefix = "/assets/bg/images/";
+    const numFrames = 823;
     const images = [];
 
     // TODO: remove for production
@@ -1503,6 +1502,11 @@
       html.style.scrollBehavior = "smooth";
       body.style.overflowY = "scroll";
     }
+
+    const filePrefix =
+      window.innerWidth < 500 && window.innerHeight > window.innerWidth
+        ? "/assets/bg/images/mobile/"
+        : "/assets/bg/images/desktop/";
 
     var fileExt = "jpg";
 
@@ -1526,13 +1530,13 @@
       fileExt = result ? "webp" : "jpg";
 
       // load every third image first, then load the rest
-      for (var i = 0; i < numFrames; i += 3) {
+      for (var i = 0; i < numFrames; i += 4) {
         load(i, () => {
           loaded++;
           // console.log((loaded / numFrames) * 100 + "%");
           document.getElementById("loader-percentage").innerHTML =
-            Math.floor((loaded / numFrames) * 300) + "%";
-          if (loaded == Math.floor(numFrames / 3)) {
+            Math.floor((loaded / numFrames) * 400) + "%";
+          if (loaded == Math.floor(numFrames / 4)) {
             imgRatio = images[0].width / images[0].height;
             document.querySelectorAll(".load").forEach((e) => {
               e.classList.add("loaded");
@@ -1552,19 +1556,22 @@
                   "none";
               }, 1000);
             }, 2500);
-            console.log("Loaded third images");
+            // console.log("Loaded third images");
             update(html, html);
             update(body, body);
-            for (var i = 1; i < numFrames; i += 3) {
+            for (var i = 2; i < numFrames; i += 4) {
               load(i, () => {
                 loaded++;
-                // console.log((loaded / numFrames) * 100 + "%");
               });
             }
-            for (var i = 2; i < numFrames; i += 3) {
+            for (var i = 1; i < numFrames; i += 4) {
               load(i, () => {
                 loaded++;
-                // console.log((loaded / numFrames) * 100 + "%");
+              });
+            }
+            for (var i = 3; i < numFrames; i += 4) {
+              load(i, () => {
+                loaded++;
               });
             }
           }
@@ -1593,7 +1600,7 @@
       }
       try {
         ctx.drawImage(images[frame], 0, 0, imgWidth, imgHeight);
-      } catch (e) { }
+      } catch (e) {}
     }
 
     function load(i, callback) {
@@ -1654,30 +1661,35 @@
             event.animationName == "glow"
               ? e.querySelector(".light").classList.remove("hover")
               : event.animationName == "glowBox"
-                ? e.querySelector(".lantern").classList.remove("hover")
-                : event.animationName == "swing"
-                  ? e.classList.remove("hover")
-                  : null;
+              ? e.querySelector(".lantern").classList.remove("hover")
+              : event.animationName == "swing"
+              ? e.classList.remove("hover")
+              : null;
           }
         });
       });
       document.querySelectorAll(".linkButton").forEach((e) => {
-        e.addEventListener("mouseenter", () => {
-          e.classList.add("hover");
-          e.dataset.mouseover = 1;
-        });
+        if (!e.classList.contains("disabled")) {
+          e.addEventListener("mouseenter", () => {
+            e.classList.add("hover");
+            e.dataset.mouseover = 1;
+          });
 
-        e.addEventListener("mouseleave", () => {
-          e.dataset.mouseover = 0;
-        });
+          e.addEventListener("mouseleave", () => {
+            e.dataset.mouseover = 0;
+          });
 
-        e.addEventListener("animationiteration", (event) => {
-          if (e.dataset.mouseover == 0) {
-            e.classList.remove("hover");
-          }
-        });
+          e.addEventListener("animationiteration", (event) => {
+            if (e.dataset.mouseover == 0) {
+              e.classList.remove("hover");
+            }
+          });
+        }
       });
     }
+    // #endregion
+  </script>
+  <script>
     // #endregion
     // function showAndAnimate() {
     //   var theme = document.getElementById("p#themetext");
@@ -1710,8 +1722,6 @@
     //   const el = document.querySelector('.rn' + i.toString);
     //   observer.observe(el);
     // };
-  </script>
-
   </script>
 </body>
 
