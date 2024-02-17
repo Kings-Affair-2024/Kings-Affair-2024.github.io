@@ -7,7 +7,7 @@
   <meta name="description" content="King's Affair, the antidote to may balls" />
   <title>King's Affair 2024</title>
   <link rel="icon" href="/assets/media/favicon/favicon_green.ico" />
-  <link rel="stylesheet" href="/assets/css/fonts.css" />
+  <link rel="stylesheet" href="/assets/fonts/fonts.css" />
   <script src="https://cdn.userway.org/widget.js" data-account="3yfIkdOQox"></script>
   <style>
     body {
@@ -117,36 +117,16 @@
         transform: translateX(-50%) translateY(0);
       }
     }
-
-    @media screen and (orientation: portrait) and (max-width: 600px) {
-
-      /* keeps address bar visible on mobile */
-      html {
-        overflow: hidden;
-        width: 100%;
-      }
-
-      body {
-        height: 100vh;
-        position: fixed;
-        width: 100%;
-        scroll-behavior: smooth;
-      }
-
-      /* #hero-text {
-          width: 100vw;
-          text-align: right;
-          align to right of screen
-          position: absolute;
-          bottom: 15vh;
-          left: 0;
-          right: 0;
-          margin-right: calc(2rem + 2vmin);
-          margin-bottom: calc(3rem + 2vmin);
-          transform: translateX(0);
-        } */
+   
+  
+    #theme {
+      justify-content: center; 
+      align-items: center;
+      width: calc(280px + 15vw);
+      margin: auto ; 
+      height: 200vmin; 
+      display: flex; 
     }
-
     /* #endregion */
     /* #region LAUNCH */
     #launch {
@@ -223,6 +203,7 @@
     }
 
     .container {
+      width: 100%;
       /* position: -webkit-sticky; */
       position: sticky;
       display: flex;
@@ -271,6 +252,43 @@
       }
     }
 
+    @media screen and (max-width: 600px) { 
+      .rww { 
+        width: 100%;
+        height: 100%; 
+        transform: scale(0.5);
+        justify-content: center;
+      }
+
+      .rn1 { 
+        transform: scale(0.7);
+      }
+      .rn2 { 
+        transform: scale(0.4);
+      }
+      .rn3 { 
+        transform: scale(0.4);
+      }
+      .rn4 { 
+        transform: scale(0.4);
+      }
+      .rn5 { 
+        transform: scale(0.4);
+      }
+      .rn6 { 
+        transform: scale(0.4);
+      }
+      .rn7{ 
+        transform: scale(0.4);
+      }
+      .rn8 { 
+        transform: scale(0.4);
+      }
+      .rn9 { 
+        transform: scale(0.4);
+      }
+    }
+    
     .lanterncontainer {
       position: relative;
       text-align: center;
@@ -437,7 +455,7 @@
       height: 350px;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 400px) {
       #full-book {
         transform: rotateX(60deg) rotateZ(29deg) scale3d(0.7, 0.7, 0.7);
       }
@@ -864,19 +882,23 @@
       line-height: normal;
       /* word-spacing: 0. */
       position: relative;
-      width: 100%
+      width: 100%;
+      height: 100%;
+      justify-items: center;
+      /* justify-content: center;  */
+      /* display: flex;  */
+      align-items: center; 
+      align-content: center;
+
     }
 
-    #ransomizer div {
-      /* display: flex;
-        width: auto; 
-        justify-content: space-around; */
-    }
-
-    #ransomizer .rww {
-      position: relative;
+    .rww {
+      margin-left: auto; 
+      margin-right: auto; 
+      position: absolute;
       display: flex;
       justify-content: center;
+      width: 100%; 
     }
 
     .rn1 {
@@ -895,7 +917,6 @@
       transition: all 1.5s;
       border-style: solid;
       border-color: #fdf9dc;
-      overflow: hidden;
     }
 
     .rn2 {
@@ -938,7 +959,6 @@
       transform: translate3d(200%, -100%, 0);
       transition: all 1.5s;
       border-style: solid;
-      overflow: hidden;
     }
 
     .rn4 {
