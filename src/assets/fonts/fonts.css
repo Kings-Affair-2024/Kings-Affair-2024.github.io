@@ -29,43 +29,6 @@
 }
 
 @font-face {
-  font-family: CFOneTwoTrees;
-  font-display: swap;
-  src: url("/assets/fonts/woff2/cf-one-two-trees-font.woff2");
-}
-
-@font-face {
-  font-family: BosqueEncantado;
-  font-display: swap;
-  src: url("/assets/fonts/woff2/bosque-encantado.woff2");
-}
-
-@font-face { 
-  font-family: Merienda; 
-  src: url("/assets/fonts/ttf/Merienda-ExtraBold.ttf") format('truetype');
-}
-
-@font-face { 
-  font-family: Kaushan; 
-  src: url("/assets/fonts/ttf/KaushanScript-Regular.ttf"); 
-}
-
-@font-face { 
-  font-family: Apple; 
-  src: url("/assets/fonts/ttf/HomemadeApple-Regular.ttf"); 
-}
-
-@font-face { 
-  font-family: Announcement; 
-  src: url("/assets/fonts/ttf/Announcement-Regular.ttf"); 
-}
-
-@font-face { 
-  font-family: Calligraphy; 
-  src: url("/assets/fonts/ttf/DuolineCalligraphyTitles-Regular.ttf")
-}
-
-@font-face {
-  font-family: Subheading;
-  src: url("/assets/fonts/ttf/Subheading-Regular.ttf");
+  font-family: Theme;
+  src: url("/assets/fonts/woff2/theme.woff2");
 }
