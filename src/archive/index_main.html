@@ -1122,109 +1122,6 @@
         opacity: 1;
         transform: translateX(0);
       }
-
-      /* #region POPUP */
-
-      .popup {
-        position: fixed;
-        z-index: 20;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.8);
-        transition: 0.5s;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .popup-content {
-        position: fixed;
-        background-color: #666a3a;
-        margin: 15% auto;
-        padding: 2% 5%;
-        padding-bottom: 0;
-        width: 40%;
-        border-radius: 20px;
-        text-align: center;
-      }
-
-      .popup-text {
-        font-size: 26px;
-      }
-
-      .popup-buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1em;
-        margin-top: 5%;
-        margin-bottom: 5%;
-      }
-
-      @media screen and (max-width: 900px) {
-        .popup-content {
-          width: 80%;
-        }
-
-        .popup-buttons {
-          flex-direction: column;
-        }
-      }
-
-      .popup-button {
-        appearance: none;
-        backface-visibility: hidden;
-        background-color: #3e5331;
-        border-radius: 8px;
-        border-style: none;
-        box-shadow: rgba(39, 174, 96, 0.15) 0 4px 9px;
-        box-sizing: border-box;
-        color: #fff;
-        cursor: pointer;
-        display: inline-block;
-        /* font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
-          Arial, sans-serif; */
-        font-family: "Kalnia", serif;
-        font-size: 16px;
-        /* font-weight: 600; */
-        letter-spacing: normal;
-        line-height: 1.5;
-        outline: none;
-        overflow: hidden;
-        padding: 13px 20px;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        transform: translate3d(0, 0, 0);
-        transition: all 0.3s;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        vertical-align: top;
-        white-space: nowrap;
-        width: 100%;
-      }
-
-      .popup-button:hover {
-        background-color: #222b1c;
-        opacity: 1;
-        transform: translateY(0);
-        transition-duration: 0.35s;
-      }
-
-      .popup-button:active {
-        transform: translateY(2px);
-        transition-duration: 0.35s;
-      }
-
-      .popup-button:hover {
-        box-shadow: rgba(39, 174, 96, 0.2) 0 6px 12px;
-      }
-
-      /* #endregion */
     </style>
   </head>
   <body>
@@ -1256,6 +1153,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         <div id="book">
           <div id="top" class="load">
             <p style="font-size: 1rem">The King's Affair</p>
+            <!-- TODO: Check if we're allowed to release the date yet? -->
             <p style="font-size: 0.75rem">19th June 2024</p>
             <p style="font-size: 0.5rem; padding-top: 10%">
               Made with ❤ by the <br />2024 King's Affair Committee
@@ -1666,17 +1564,6 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
       </div>
     </section>
     <canvas id="bg"></canvas>
-    <div id="popup" class="popup" onclick="popupDismiss()">
-      <div class="popup-content" onclick="event.stopPropagation();">
-        <p class="popup-text">Error</p>
-        <div class="popup-buttons">
-          <div class="popup-button" onclick="popupDismiss()">
-            Choose to Ignore
-          </div>
-          <a href="/secret" class="popup-button">Choose to Investigate</a>
-        </div>
-      </div>
-    </div>
     <script type="text/javascript">
       function toggleNavbarResponse() {
         var x = document.getElementById("navbar");
@@ -1684,6 +1571,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         x.className = x.className === "navbar" ? "navbar responsive" : "navbar";
       }
       // #region LOADING SCREEN
+      const TEST = false;
 
       const html = document.documentElement;
       const body = document.body;
@@ -1692,8 +1580,8 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
       const numFrames = 823;
       const images = [];
 
-      // TESTING
-      if (false) {
+      // TODO: remove for production
+      if (TEST) {
         document.getElementById("loader-container").style.display = "none";
         document.querySelectorAll(".load").forEach((e) => {
           e.classList.add("loaded");
@@ -1729,7 +1617,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
       supportsWebp().then(function (result) {
         fileExt = result ? "webp" : "jpg";
 
-        // load every fourth image first, then load the rest
+        // load every third image first, then load the rest
         for (var i = 0; i < numFrames; i += 4) {
           load(i, () => {
             loaded++;
@@ -1756,7 +1644,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
                     "none";
                 }, 1000);
               }, 2500);
-              // console.log("Loaded quarter images");
+              // console.log("Loaded third images");
               update(html, html);
               update(body, body);
               for (var i = 2; i < numFrames; i += 4) {
@@ -1884,6 +1772,7 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
         });
       }
       // #endregion
+      // #endregion
       // function showAndAnimate() {
       //   var theme = document.getElementById("p#themetext");
       //   theme.classList.remove("hidden");
@@ -1926,18 +1815,6 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
       //   const el = document.querySelector('.rn' + i.toString);
       //   observer.observe(el);
       // };
-
-      // #region POPUP
-
-      const popup = document.getElementById("popup");
-      function popupDismiss() {
-        popup.style.opacity = 0;
-        setTimeout(() => {
-          popup.style.display = "none";
-        }, 500);
-      }
-
-      // #endregion
     </script>
   </body>
 </html>
