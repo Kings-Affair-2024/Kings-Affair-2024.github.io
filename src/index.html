@@ -458,6 +458,18 @@
         }
       }
 
+      @keyframes glowBox-alt {
+        0% {
+          filter: drop-shadow(0px 0px 5px #fbd260);
+        }
+        50% {
+          filter: drop-shadow(0px 0px 20px #fbd260);
+        }
+        100% {
+          filter: drop-shadow(0px 0px 5px #fbd260);
+        }
+      }
+
       @keyframes swing {
         0% {
           transform: rotate(0deg);
@@ -1208,11 +1220,29 @@
         width: 100%;
       }
 
+      .popup-button-enhanced {
+        /* background-color: #9e4c00; */
+        background-color: #cb6c1e;
+        filter: drop-shadow(0px 0px 5px #fbd260);
+        animation: glowBox-alt 4s infinite;
+      }
+
       .popup-button:hover {
-        background-color: #222b1c;
         opacity: 1;
         transform: translateY(0);
-        transition-duration: 0.35s;
+        transition-duration: 0.5s;
+      }
+
+      .popup-button-regular:hover {
+        background-color: #222b1c;
+      }
+
+      .popup-button-enhanced:hover {
+        background-color: #804604;
+      }
+
+      .popup-button-enhanced.hover {
+        animation: glowBox 4s infinite;
       }
 
       .popup-button:active {
@@ -1668,12 +1698,17 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
     <canvas id="bg"></canvas>
     <div id="popup" class="popup" onclick="popupDismiss()">
       <div class="popup-content" onclick="event.stopPropagation();">
-        <p class="popup-text">Error</p>
+        <p class="popup-text">An <b>expected error</b> has occured.</p>
         <div class="popup-buttons">
-          <div class="popup-button" onclick="popupDismiss()">
+          <div
+            class="popup-button popup-button-regular"
+            onclick="popupDismiss()"
+          >
             Choose to Ignore
           </div>
-          <a href="/secret" class="popup-button">Choose to Investigate</a>
+          <a href="/secret" class="popup-button popup-button-enhanced">
+            <div>Choose to Investigate</div></a
+          >
         </div>
       </div>
     </div>
@@ -1866,6 +1901,24 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
             }
           });
         });
+
+        // function buttonGlow(e) {
+        //   e.addEventListener("mouseenter", () => {
+        //     e.classList.add("hover");
+        //     e.dataset.mouseover = 1;
+        //   });
+
+        //   e.addEventListener("mouseleave", () => {
+        //     e.dataset.mouseover = 0;
+        //   });
+
+        //   e.addEventListener("animationiteration", (event) => {
+        //     if (e.dataset.mouseover == 0) {
+        //       e.classList.remove("hover");
+        //     }
+        //   });
+        // }
+
         document.querySelectorAll(".linkButton").forEach((e) => {
           e.addEventListener("mouseenter", () => {
             e.classList.add("hover");
@@ -1882,6 +1935,8 @@ UR AN IMPOSTER !! SUS SUS SUS GET OUT OF ME SWAMP !!!!!
             }
           });
         });
+
+        // buttonGlow(document.querySelector(".popup-button-enhanced"));
       }
       // #endregion
       // function showAndAnimate() {
