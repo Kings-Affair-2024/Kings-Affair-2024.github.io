@@ -5,6 +5,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_cancellable_tile_provider/flutter_map_cancellable_tile_provider.dart';
 import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 
 void main() {
@@ -22,25 +23,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          // This is the theme of your application.
+          //
+          // TRY THIS: Try running your application with "flutter run". You'll see
+          // the application has a purple toolbar. Then, without quitting the app,
+          // try changing the seedColor in the colorScheme below to Colors.green
+          // and then invoke "hot reload" (save your changes or press the "hot
+          // reload" button in a Flutter-supported IDE, or press "r" if you used
+          // the command line to start the app).
+          //
+          // Notice that the counter didn't reset back to zero; the application
+          // state is not lost during the reload. To reset the state, use hot
+          // restart instead.
+          //
+          // This works for code too, not just values: Most code changes can be
+          // tested with just a hot reload.
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xfffef9d9)),
+          useMaterial3: true,
+          fontFamily: "Kalnia"),
+      home: const MyHomePage(title: 'Site Map | King\'s Affair 2024'),
     );
   }
 }
@@ -116,11 +117,11 @@ class _MyHomePageState extends State<MyHomePage> {
         const LatLng(52.20369754322185, 0.11731848317160916): "Karaoke",
       },
       MarkerType.music: {
-        const LatLng(52.20412289536054, 0.11637913585336272): 'Main Stage',
+        // const LatLng(52.20412289536054, 0.11637913585336272): 'Main Stage',
         const LatLng(52.20334198400167, 0.11697623200289282): 'Bunker',
       },
       MarkerType.toilet: {
-        const LatLng(52.20456094517504, 0.1171314508745287): 'Toilets',
+        // const LatLng(52.20456094517504, 0.1171314508745287): 'Toilets',
         const LatLng(52.203791281689206, 0.11730061301859251): 'Toilets',
       },
       MarkerType.firstAid: {
@@ -130,7 +131,17 @@ class _MyHomePageState extends State<MyHomePage> {
     };
 
     // marker colors and icons
-    final Map<MarkerType, 
+    // final Map<MarkerType,
+
+    // marker colors
+    final Map<MarkerType, Color> markerColors = {
+      MarkerType.food: Colors.red,
+      MarkerType.drinks: Colors.blue,
+      MarkerType.entertainment: Colors.green,
+      MarkerType.music: Colors.purple,
+      MarkerType.toilet: Colors.brown,
+      MarkerType.firstAid: Colors.orange,
+    };
 
     // marker list
     // final List<Marker> markers = popupInfo.keys
@@ -223,7 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(widget.title, style: GoogleFonts.kalnia()),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -232,12 +243,11 @@ class _MyHomePageState extends State<MyHomePage> {
             options: MapOptions(
               initialCenter:
                   const LatLng(52.20430051719541, 0.11661901333656707),
-              initialZoom: 18.0,
+              initialZoom: 19.0,
               maxZoom: 20.0,
-              cameraConstraint: CameraConstraint.contain(
-                  bounds: LatLngBounds(
-                      const LatLng(52.20574901603438, 0.11132502359980097),
-                      const LatLng(52.20306621898261, 0.12162888492616687))),
+              cameraConstraint: CameraConstraint.containCenter(
+                  bounds: LatLngBounds(const LatLng(52.2048189, 0.1150632),
+                      const LatLng(52.2035128, 0.1174941))),
               // interactionOptions: InteractionOptions(
               //     flags: InteractiveFlag.all & ~InteractiveFlag.rotate),
               onPositionChanged: (MapCamera camera, bool hasGesture) {
@@ -254,6 +264,46 @@ class _MyHomePageState extends State<MyHomePage> {
                 tileProvider: CancellableNetworkTileProvider(),
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
               ),
+              PolygonLayer(polygons: [
+                Polygon(
+                    points: [
+                      const LatLng(52.2040226, 0.1162603),
+                      const LatLng(52.2040518, 0.116584),
+                      const LatLng(52.2041987, 0.1165479),
+                      const LatLng(52.2041733, 0.116221)
+                    ],
+                    color: Colors.red.withOpacity(0.5),
+                    label: "Main Stage",
+                    labelPlacement: PolygonLabelPlacement.polylabel,
+                    labelStyle: GoogleFonts.kalnia()),
+                Polygon(
+                    points: [
+                      const LatLng(52.2045037, 0.1170742),
+                      const LatLng(52.2045136, 0.1171868),
+                      const LatLng(52.20465, 0.11716),
+                      const LatLng(52.2046416, 0.1170462)
+                    ],
+                    color: Colors.blue.withOpacity(0.5),
+                    label: "Toilets",
+                    labelPlacement: PolygonLabelPlacement.polylabel),
+                Polygon(
+                    points: [
+                      const LatLng(52.2043626, 0.1156598),
+                      const LatLng(52.2043521, 0.1155141),
+                      const LatLng(52.2042548, 0.1155335),
+                      const LatLng(52.2042613, 0.1156795)
+                    ],
+                    color: Colors.blue.withOpacity(0.5),
+                    label: "Stretch Tent",
+                    labelPlacement: PolygonLabelPlacement.polylabel)
+              ]),
+              CircleLayer(circles: [
+                CircleMarker(
+                    point: const LatLng(52.2045707, 0.1168874),
+                    radius: 6,
+                    color: Colors.green.withOpacity(0.5),
+                    useRadiusInMeter: true)
+              ]),
               MarkerLayer(
                 markers: markers,
               ),
@@ -309,6 +359,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )
             ]),
+      ),
+      bottomSheet: Container(
+        color: Theme.of(context).colorScheme.surface,
+        child: SizedBox(
+          height: 200,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: []
+            ),
+          ),
+        ),
       ),
     );
   }
